@@ -1,4 +1,12 @@
-﻿using System;
+﻿//-----------------------------------------------------------------------
+// <copyright file="MainWindow.xaml.cs" company="Holon Institute of Technology">
+//     Copyright (c) Holon Institute of Technology. All rights reserved.
+// </copyright>
+// <author>319512893 - Vldimir Karpov</author>
+// <author>314440009 - Yulia Sinenko</author>
+//-----------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +33,7 @@ namespace C12Ex01Y314440009V319512893
 
         public MainWindow()
         {
+            
             InitializeComponent();
             this.Title = "Facebook Photos Browser.  DP.H.B12.319512893.314440009";
         }

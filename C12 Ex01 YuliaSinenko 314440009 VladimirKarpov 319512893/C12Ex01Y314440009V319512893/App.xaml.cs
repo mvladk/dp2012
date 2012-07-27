@@ -12,5 +12,10 @@ namespace C12Ex01Y314440009V319512893
     /// </summary>
     public partial class App : Application
     {
+        App() : base()
+        {
+            //this.MainWindow.Visibility.
+           // this.Properties.
+        }
     }
 }
