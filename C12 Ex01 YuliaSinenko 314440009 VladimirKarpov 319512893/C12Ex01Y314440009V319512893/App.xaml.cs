@@ -14,8 +14,7 @@ namespace C12Ex01Y314440009V319512893
     {
         App() : base()
         {
-            //this.MainWindow.Visibility.
-           // this.Properties.
+            
         }
     }
 }
