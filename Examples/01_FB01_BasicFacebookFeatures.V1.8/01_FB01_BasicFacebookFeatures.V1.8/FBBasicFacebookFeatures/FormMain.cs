@@ -129,7 +129,7 @@ namespace BasicFacebookFeatures.WithSingltonAppSettings
 
         private void fetchFriends()
         {
-            listBoxFriends.DisplayMemeber = "Name";
+            //listBoxFriends.DisplayMemeber = "Name";
             foreach (User friend in m_LoggedInUser.Friends)
             {
                 listBoxFriends.Items.Add(friend);
@@ -164,7 +164,7 @@ namespace BasicFacebookFeatures.WithSingltonAppSettings
 
         private void fetchEvents()
         {
-            listBoxEvents.DisplayMemeber = "Name";
+            //listBoxEvents.DisplayMemeber = "Name";
             foreach (Event fbEvent in m_LoggedInUser.Events)
             {
                 listBoxEvents.Items.Add(fbEvent);
