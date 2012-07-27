@@ -22,7 +22,7 @@ namespace C12Ex01Y314440009V319512893
         public MainWindow()
         {
             InitializeComponent();
-            this.Title = "Facebook Exras";
+            this.Title = "Facebook Photos Browser";
         }
     }
 }
