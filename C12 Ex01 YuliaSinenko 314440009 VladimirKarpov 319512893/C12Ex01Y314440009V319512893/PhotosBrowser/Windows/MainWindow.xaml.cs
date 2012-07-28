@@ -23,6 +23,7 @@ using System.Net;
 using System.Threading;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
+using Infrastructure.Adapters.Facebook;
 
 
 namespace C12Ex01Y314440009V319512893
@@ -32,88 +33,71 @@ namespace C12Ex01Y314440009V319512893
     /// </summary>
     public partial class MainWindow : Window
     {
-        //public delegate void UpdateImageSource(ImageSource i_ImageSource);
-        private User m_LoggedInUser;
-        //private Thread m_LoadImageThread;
-        //public UpdateImageSource m_UpdateImageSource;
-
-        public string LocationString;// { get { return "http://www.digitaltrends.com/wp-content/uploads/2010/07/starcraft2_logo.jpg"; } }
-
+        FBAdapter m_FBAdapter;
         public MainWindow()
-        {
-            
+        {            
             InitializeComponent();
             this.Title = "Facebook Photos Browser.  DP.H.B12.319512893.314440009";
-            //m_UpdateImageSource = new UpdateImageSource(UpdateImageSourceMethod);
+            m_FBAdapter = new FBAdapter();
         }
 
-        //public void UpdateImageSourceMethod(ImageSource i_ImageSource)
-        //{
-        //    image_smallPictureBox.Source = i_ImageSource;
-        //}
 
         private void loginAndInit()
         {
-            //LoginResult result = FacebookService.Login("229916837130733",
-            //    "user_about_me", "friends_about_me", "publish_stream", "user_events", "read_stream",
-            //    "user_status", // this is instead of the 'user_checkins' permission, as desricbed here: http://developers.facebook.com/bugs/170251059758531
-            //    "user_photo_video_tags", "friends_photo_video_tags", "user_photos", "friends_photos", "user_videos", "friends_videos"
-            //    , "offline_access"
-            //    );
-
-            LoginResult result = FacebookService.Connect(@"AAADRG69nse0BADt5k0PRb8IxIEQRLZBVk1hro195rbpT5U8HyOkt2Y0sd9WUwIjZATbwzO8uUpfmUueLiSci0qCKXGi4ySGy1k1PLxcwZDZD");
-
-            if (string.IsNullOrEmpty(result.ErrorMessage))
-            {
-                m_LoggedInUser = result.LoggedInUser;
-                fetchUserInfo();
-            }
-            else
-            {
-                MessageBox.Show(result.ErrorMessage);
-            }
+            m_FBAdapter.Login();
+            fetchUserInfo();
+            fetchFriends();
+            fetchEvents();
         }
 
         private void fetchUserInfo()
         {
-            //picture_smallPictureBox.LoadAsync(m_LoggedInUser.PictureNormalURL);
-            //image_smallPictureBox.LoadAsync(m_LoggedInUser.PictureNormalURL);
-            //image_smallPictureBox.Source =   // m_LoggedInUser.PictureNormalURL;
-
-            //LocationString = m_LoggedInUser.PictureNormalURL;
-
-            //Image i = new Image();
-            //image.Source = new BitmapSource(new Uri(imageLocation));
-           
-
-            //image_smallPictureBox.SourceUpdated +=
-
-            //m_LoadImageThread = new Thread(new ThreadStart(loadProfileImage));
-            //m_LoadImageThread.Start();
-
-            if (m_LoggedInUser.Statuses.Count > 0)
+            if (m_FBAdapter.LoggedInUser.Statuses.Count > 0)
             {
-                //textBoxStatus.Text = m_LoggedInUser.Statuses[0].Message;
-                this.Title = m_LoggedInUser.Statuses[0].Message;
+                this.Title = m_FBAdapter.LoggedInUser.Statuses[0].Message;
             }
 
-            //BitmapImage src = new BitmapImage();
-            //src.BeginInit();
+            image_smallPictureBox.Source = new BitmapImage(new Uri(m_FBAdapter.LoggedInUser.PictureNormalURL, UriKind.Absolute));
+            image_smallPictureBox.Stretch = Stretch.Uniform;
+        }
 
-            //src.UriSource = new Uri(
-            //    m_LoggedInUser.PictureNormalURL
-            //    , UriKind.Absolute);
+        private void fetchFriends()
+        {
+            listBoxFriends.DisplayMemberPath = "Name";
+            foreach (User friend in m_FBAdapter.LoggedInUser.Friends)
+            {
+                listBoxFriends.Items.Add(friend);
+            }
+        }
 
-            //src.CacheOption = BitmapCacheOption.OnLoad;
-            //src.EndInit();
-            //image_smallPictureBox.Source = src;
-            //image_smallPictureBox.Stretch = Stretch.Uniform;
+        private void fetchEvents()
+        {
+            listBoxEvents.DisplayMemberPath = "Name";
+            foreach (Event fbEvent in m_FBAdapter.LoggedInUser.Events)
+            {
+                listBoxEvents.Items.Add(fbEvent);
+            }
+        }
 
-            image_smallPictureBox.Source = new BitmapImage(new Uri(
-            m_LoggedInUser.PictureNormalURL
-            , UriKind.Absolute)//, BitmapCacheOption.OnLoad
-            );
-
+        private void displaySelectedFriend()
+        {
+            if (listBoxFriends.SelectedItems.Count == 1)
+            {
+                User selectedFriend = listBoxFriends.SelectedItem as User;
+                if (selectedFriend.PictureNormalURL != null)
+                {
+                    imageFriend.Source = new BitmapImage(new Uri(selectedFriend.PictureNormalURL, UriKind.Absolute));
+                    imageFriend.Stretch = Stretch.Uniform;
+                    
+                    image_smallPictureBox.Source = new BitmapImage(new Uri(selectedFriend.PictureNormalURL, UriKind.Absolute));
+                    image_smallPictureBox.Stretch = Stretch.Uniform;
+                }
+                else
+                {
+                    image_smallPictureBox.Source = new BitmapImage(new Uri(m_FBAdapter.LoggedInUser.PictureNormalURL, UriKind.Absolute));
+                    image_smallPictureBox.Stretch = Stretch.Uniform;
+                }
+            }
         }
 
         private void buttonLogin_Click(object sender, RoutedEventArgs e)
@@ -121,71 +105,9 @@ namespace C12Ex01Y314440009V319512893
             loginAndInit();
         }
 
-
-        //public void loadProfileImage()
-        //{
-        //    BitmapImage src = new BitmapImage();
-        //    src.BeginInit();
-
-        //    src.UriSource = new Uri(
-        //        m_LoggedInUser.PictureNormalURL
-        //        , UriKind.Absolute);
-
-        //    src.CacheOption = BitmapCacheOption.OnLoad;
-        //    src.EndInit();
-        //    //this.m_UpdateImageSource.Invoke(src);
-        //    //image_smallPictureBox.Source = new BitmapImage(new Uri(
-        //    //m_LoggedInUser.PictureNormalURL
-        //    //, UriKind.Absolute)//, BitmapCacheOption.OnLoad
-        //    //);
-        //}
-    }
-
-
-
-
-
-
-
-
-
-
-
-    public class ImageAsyncHelper : DependencyObject
-    {
-        public static Uri GetSourceUri(DependencyObject obj) { return (Uri)obj.GetValue(SourceUriProperty); }
-        public static void SetSourceUri(DependencyObject obj, Uri value) { obj.SetValue(SourceUriProperty, value); }
-        public static readonly DependencyProperty SourceUriProperty = DependencyProperty.RegisterAttached("SourceUri", typeof(Uri), typeof(ImageAsyncHelper), new PropertyMetadata
+        private void listBoxFriends_SelectedIndexChanged(object sender, SelectionChangedEventArgs e)
         {
-            PropertyChangedCallback = (obj, e) =>
-            {
-                ((Image)obj).SetBinding(Image.SourceProperty,
-                  new Binding("VerifiedUri")
-                  {
-                      Source = new ImageAsyncHelper { GivenUri = (Uri)e.NewValue },
-                      IsAsync = true,
-                  });
-            }
-        });
-
-        Uri GivenUri;
-        public Uri VerifiedUri
-        {
-            get
-            {
-                try
-                {
-                    Dns.GetHostEntry(GivenUri.DnsSafeHost);
-                    return GivenUri;
-                }
-                catch (Exception)
-                {
-                    return null;
-                }
-
-            }
+            displaySelectedFriend();
         }
     }
-
-
 }
