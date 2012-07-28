@@ -7,6 +7,7 @@
 //-----------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -49,7 +50,7 @@ namespace C12Ex01Y314440009V319512893
             m_FBAdapter.Login();
             fetchUserInfo();
             fetchFriends();
-            fetchEvents();
+            //fetchEvents();
         }
 
         private void fetchUserInfo()
@@ -72,14 +73,14 @@ namespace C12Ex01Y314440009V319512893
             }
         }
 
-        private void fetchEvents()
-        {
-            listBoxEvents.DisplayMemberPath = "Name";
-            foreach (Event fbEvent in m_FBAdapter.LoggedInUser.Events)
-            {
-                listBoxEvents.Items.Add(fbEvent);
-            }
-        }
+        //private void fetchEvents()
+        //{
+        //    listBoxEvents.DisplayMemberPath = "Name";
+        //    foreach (Event fbEvent in m_FBAdapter.LoggedInUser.Events)
+        //    {
+        //        listBoxEvents.Items.Add(fbEvent);
+        //    }
+        //}
 
         private void displaySelectedFriend()
         {
@@ -134,16 +135,40 @@ namespace C12Ex01Y314440009V319512893
                 {
                     Image albomsImg = new Image();
                     albomsImg.Source = new BitmapImage(new Uri(albomFoto.URL, UriKind.Absolute));
-                    albomsImg.Width = 100;
-                    albomsImg.Height = 100;
+                    albomsImg.MaxWidth = 100;
+                    albomsImg.MaxHeight = 100;
+                    albomsImg.Margin = new Thickness(0, 10, 0, 0);
 
                     CheckBox selectedPhotoCheckBox = new CheckBox();
-                    selectedPhotoCheckBox.Margin = new Thickness(105,-25,0,0);
-                 //   albomsImg.MouseLeftButtonUp += new MouseButtonEventHandler();
+                    selectedPhotoCheckBox.Margin = new Thickness(105,-10,0,0);
+                 //   albomsImg.MouseLeftButtonUp += new MouseButtonEventHandler();   
                     listBoxPictures.Items.Add(albomsImg);
                     listBoxPictures.Items.Add(selectedPhotoCheckBox);
-                    
+                }
+            }
+        }
 
+        private void displaySelectedAlbomsTags()
+        {
+            if (listBoxAlbums.SelectedItems.Count == 1)
+            {
+                Hashtable albomsTaggetFreans = new Hashtable();
+                foreach (Photo selectedAlbomsfoto in m_Album.Photos)
+                {
+                    if (selectedAlbomsfoto != null && selectedAlbomsfoto.Tags != null)
+                    {
+                        if (selectedAlbomsfoto.Tags.Count > 0)
+                        {
+                            foreach (PhotoTag tagg in selectedAlbomsfoto.Tags)
+                            {
+                                if (!albomsTaggetFreans.ContainsKey(tagg.User.Name))
+                                {
+                                    albomsTaggetFreans.Add(tagg.User.Name, selectedAlbomsfoto);
+                                    listBoxTaggetFriends.Items.Add(tagg.User.Name);
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -162,6 +187,7 @@ namespace C12Ex01Y314440009V319512893
         private void listBoxAlbums_SelectedIndexChanged(object sender, SelectionChangedEventArgs e)
         {
             displaySelectedAlbomsPhotos();
+            displaySelectedAlbomsTags();
         }
 
         private void buttonExit_Click(object sender, RoutedEventArgs e)
