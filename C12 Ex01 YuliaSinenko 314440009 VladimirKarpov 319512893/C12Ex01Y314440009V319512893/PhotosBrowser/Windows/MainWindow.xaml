@@ -4,5 +4,7 @@
         Title="MainWindow" Height="350" Width="525">
     <Grid>
         <Button Content="Login" Height="20" HorizontalAlignment="Left" Margin="16,16,0,0" Name="buttonLogin" VerticalAlignment="Top" Width="64" Click="buttonLogin_Click" />
+        <Image Height="60" HorizontalAlignment="Left" Margin="20,51,0,0" Name="image_smallPictureBox" Stretch="Fill" VerticalAlignment="Top" Width="81" Cursor="SizeAll" />
+        
     </Grid>
 </Window>
