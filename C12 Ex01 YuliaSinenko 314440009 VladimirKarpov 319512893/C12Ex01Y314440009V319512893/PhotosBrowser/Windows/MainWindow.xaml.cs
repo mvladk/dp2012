@@ -109,5 +109,10 @@ namespace C12Ex01Y314440009V319512893
         {
             displaySelectedFriend();
         }
+
+        private void buttonExit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
