@@ -6,16 +6,16 @@
         <Button Content="Login" Height="31" HorizontalAlignment="Left" Name="buttonLogin" VerticalAlignment="Top" Width="96" Click="buttonLogin_Click" Margin="12,60,0,0" />
         <Image Height="110" HorizontalAlignment="Left" Margin="132,35,0,0" Name="image_smallPictureBox" Stretch="Fill" VerticalAlignment="Top" Width="103" Cursor="SizeAll" />
         <ListBox Height="201" HorizontalAlignment="Left" Margin="12,163,0,0" Name="listBoxFriends" VerticalAlignment="Top" Width="223" SelectionChanged="listBoxFriends_SelectedIndexChanged" />
-        <ListBox Height="197" HorizontalAlignment="Left" Margin="12,399,0,0" Name="listBoxEvents" VerticalAlignment="Top" Width="223" />
+        <ListBox Height="197" HorizontalAlignment="Left" Margin="510,399,0,0" Name="listBoxEvents" VerticalAlignment="Top" Width="223" />
         <Image Height="329" HorizontalAlignment="Left" Margin="510,35,0,0" Name="imageFriend" Stretch="Fill" VerticalAlignment="Top" Width="465" />
-        <Button Content="Taging" Height="31" HorizontalAlignment="Left" Margin="804,469,0,0" Name="buttonTaging" VerticalAlignment="Top" Width="103" />
+        <Button Content="Taging" Height="31" HorizontalAlignment="Left" Margin="804,478,0,0" Name="buttonTaging" VerticalAlignment="Top" Width="103" />
         <Button Content="Exit" Height="31" HorizontalAlignment="Left" Margin="804,521,0,0" Name="buttonExit" VerticalAlignment="Top" Width="103" Click="buttonExit_Click" />
         <Label Content="Friends" Height="28" HorizontalAlignment="Left" Margin="12,140,0,0" Name="label1" VerticalAlignment="Top" Width="79" />
         <Label Content="Alboms" Height="28" HorizontalAlignment="Left" Margin="12,379,0,0" Name="label2" VerticalAlignment="Top" Width="79" />
         <Label Content="Pictures" Height="27" Margin="0,12,645,0" Name="label3" VerticalAlignment="Top" HorizontalAlignment="Right" Width="79" />
         <Label Content="Tagget Friends" Height="28" HorizontalAlignment="Left" Margin="510,379,0,0" Name="label4" VerticalAlignment="Top" Width="102" />
-        <ListBox HorizontalAlignment="Left" Margin="510,399,0,25" Name="listBox1" Width="214" />
-        <Button Content="Download" Height="31" HorizontalAlignment="Left" Margin="803,418,0,0" Name="buttonDowload" VerticalAlignment="Top" Width="104" />
-        <ListBox Height="561" HorizontalAlignment="Left" Margin="263,35,0,0" Name="listBoxPictures" VerticalAlignment="Top" Width="219" />
+        <ListBox HorizontalAlignment="Left" Margin="12,399,0,25" Name="listBoxAlbums" Width="214" SelectionChanged="listBoxAlbums_SelectedIndexChanged" />
+        <Button Content="Download" Height="31" HorizontalAlignment="Left" Margin="804,432,0,0" Name="buttonDowload" VerticalAlignment="Top" Width="104" />
+        <ListBox Height="561" HorizontalAlignment="Left" Margin="263,35,0,0" Name="listBoxPictures" VerticalAlignment="Top" Width="218" SelectionChanged="listBoxAlbums_SelectedIndexChanged" />
     </Grid>
 </Window>

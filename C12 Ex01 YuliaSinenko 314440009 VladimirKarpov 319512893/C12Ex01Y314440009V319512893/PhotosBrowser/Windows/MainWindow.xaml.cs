@@ -34,6 +34,8 @@ namespace C12Ex01Y314440009V319512893
     public partial class MainWindow : Window
     {
         FBAdapter m_FBAdapter;
+        Album m_Album = new Album();
+        User m_SelectedFriend = new User();
         public MainWindow()
         {            
             InitializeComponent();
@@ -83,19 +85,65 @@ namespace C12Ex01Y314440009V319512893
         {
             if (listBoxFriends.SelectedItems.Count == 1)
             {
-                User selectedFriend = listBoxFriends.SelectedItem as User;
-                if (selectedFriend.PictureNormalURL != null)
+                m_SelectedFriend = listBoxFriends.SelectedItem as User;
+
+                if (m_SelectedFriend.PictureNormalURL != null)
                 {
-                    imageFriend.Source = new BitmapImage(new Uri(selectedFriend.PictureNormalURL, UriKind.Absolute));
+                    imageFriend.Source = new BitmapImage(new Uri(m_SelectedFriend.PictureNormalURL, UriKind.Absolute));
                     imageFriend.Stretch = Stretch.Uniform;
-                    
-                    image_smallPictureBox.Source = new BitmapImage(new Uri(selectedFriend.PictureNormalURL, UriKind.Absolute));
+
+                    image_smallPictureBox.Source = new BitmapImage(new Uri(m_SelectedFriend.PictureNormalURL, UriKind.Absolute));
                     image_smallPictureBox.Stretch = Stretch.Uniform;
                 }
                 else
                 {
                     image_smallPictureBox.Source = new BitmapImage(new Uri(m_FBAdapter.LoggedInUser.PictureNormalURL, UriKind.Absolute));
                     image_smallPictureBox.Stretch = Stretch.Uniform;
+                }
+            }
+        }
+
+        private void displaySelectedFriendAlboms()
+        {
+            if (listBoxFriends.SelectedItems.Count == 1)
+            {
+                if (listBoxAlbums.Items.Count > 0)
+                {
+                    listBoxAlbums.Items.Clear();
+                    listBoxPictures.Items.Clear();
+                }
+
+                if (m_SelectedFriend.Albums.Count > 0)
+                {
+                    foreach (Album album in m_SelectedFriend.Albums)
+                    {
+                        listBoxAlbums.DisplayMemberPath = "Name";
+                        listBoxAlbums.Items.Add(album);
+                    }
+                }
+            }       
+        }
+
+        private void displaySelectedAlbomsPhotos()
+        {
+            if (listBoxAlbums.SelectedItems.Count == 1)
+            {
+                m_Album = listBoxAlbums.SelectedItem as Album;
+                listBoxPictures.Items.Clear();
+                foreach (Photo albomFoto in m_Album.Photos)
+                {
+                    Image albomsImg = new Image();
+                    albomsImg.Source = new BitmapImage(new Uri(albomFoto.URL, UriKind.Absolute));
+                    albomsImg.Width = 100;
+                    albomsImg.Height = 100;
+
+                    CheckBox selectedPhotoCheckBox = new CheckBox();
+                    selectedPhotoCheckBox.Margin =new Thickness(80,20,0,0);
+                 //   albomsImg.MouseLeftButtonUp += new MouseButtonEventHandler();
+                    listBoxPictures.Items.Add(selectedPhotoCheckBox);
+                    listBoxPictures.Items.Add(albomsImg);
+                    
+
                 }
             }
         }
@@ -108,6 +156,12 @@ namespace C12Ex01Y314440009V319512893
         private void listBoxFriends_SelectedIndexChanged(object sender, SelectionChangedEventArgs e)
         {
             displaySelectedFriend();
+            displaySelectedFriendAlboms();
+        }
+
+        private void listBoxAlbums_SelectedIndexChanged(object sender, SelectionChangedEventArgs e)
+        {
+            displaySelectedAlbomsPhotos();
         }
 
         private void buttonExit_Click(object sender, RoutedEventArgs e)
