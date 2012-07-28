@@ -107,6 +107,7 @@ namespace C12Ex01Y314440009V319512893
         {
             if (listBoxFriends.SelectedItems.Count == 1)
             {
+<<<<<<< HEAD
                 if (listBoxAlbums.Items.Count > 0)
                 {
                     listBoxAlbums.Items.Clear();
@@ -146,6 +147,27 @@ namespace C12Ex01Y314440009V319512893
 
                 }
             }
+=======
+                User selectedFriend = listBoxFriends.SelectedItem as User;
+
+                if (listBoxAlbums.Items.Count > 0)
+                {
+                    listBoxAlbums.Items.Clear();
+                }
+
+                if (selectedFriend.Albums.Count > 0)
+                {
+                    foreach (Album album in selectedFriend.Albums)
+                    {
+                        listBoxAlbums.Items.Add(album.Name);
+                    }
+                }
+                else
+                {
+                    listBoxAlbums.Items.Add(" * No Photo albums! ");
+                }
+            }       
+>>>>>>> origin/album_01
         }
 
         private void buttonLogin_Click(object sender, RoutedEventArgs e)
@@ -157,6 +179,7 @@ namespace C12Ex01Y314440009V319512893
         {
             displaySelectedFriend();
             displaySelectedFriendAlboms();
+<<<<<<< HEAD
         }
 
         private void listBoxAlbums_SelectedIndexChanged(object sender, SelectionChangedEventArgs e)
@@ -167,6 +190,8 @@ namespace C12Ex01Y314440009V319512893
         private void buttonExit_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+=======
+>>>>>>> origin/album_01
         }
     }
 }
