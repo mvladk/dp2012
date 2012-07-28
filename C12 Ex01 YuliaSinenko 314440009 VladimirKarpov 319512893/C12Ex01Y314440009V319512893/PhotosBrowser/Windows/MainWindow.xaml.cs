@@ -112,6 +112,7 @@ namespace C12Ex01Y314440009V319512893
                 {
                     listBoxAlbums.Items.Clear();
                     listBoxPictures.Items.Clear();
+                    listBoxTaggetFriends.Items.Clear();
                 }
 
                 if (m_SelectedFriend.Albums.Count > 0)
@@ -131,6 +132,7 @@ namespace C12Ex01Y314440009V319512893
             {
                 m_Album = listBoxAlbums.SelectedItem as Album;
                 listBoxPictures.Items.Clear();
+                listBoxTaggetFriends.Items.Clear();
                 foreach (Photo albomFoto in m_Album.Photos)
                 {
                     Image albomsImg = new Image();
@@ -152,7 +154,7 @@ namespace C12Ex01Y314440009V319512893
         {
             if (listBoxAlbums.SelectedItems.Count == 1)
             {
-                Hashtable albomsTaggetFreans = new Hashtable();
+                Hashtable albomsTaggetFreans = new Hashtable();     
                 foreach (Photo selectedAlbomsfoto in m_Album.Photos)
                 {
                     if (selectedAlbomsfoto != null && selectedAlbomsfoto.Tags != null)
