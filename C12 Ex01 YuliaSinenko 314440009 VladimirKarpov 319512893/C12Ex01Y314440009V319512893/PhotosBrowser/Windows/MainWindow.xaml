@@ -17,7 +17,7 @@
 
         <ListBox HorizontalAlignment="Left" Margin="12,399,0,25" Name="listBoxAlbums" Width="223" SelectionChanged="listBoxAlbums_SelectedIndexChanged" />
         <Button Content="Download" Height="31" HorizontalAlignment="Left" Margin="804,432,0,0" Name="buttonDowload" VerticalAlignment="Top" Width="104" />
-        <ListBox Height="561" HorizontalAlignment="Left" Margin="263,35,0,0" Name="listBoxPictures" VerticalAlignment="Top" Width="218" />
+        <ListBox Height="561" HorizontalAlignment="Left" Margin="263,35,0,0" Name="listBoxPictures" VerticalAlignment="Top" Width="218" SelectionChanged="listBoxPictures_SelectedIndexChanged" />
         
     </Grid>
 </Window>

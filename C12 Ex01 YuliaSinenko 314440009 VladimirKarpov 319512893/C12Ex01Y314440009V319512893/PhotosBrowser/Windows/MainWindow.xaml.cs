@@ -90,9 +90,6 @@ namespace C12Ex01Y314440009V319512893
 
                 if (m_SelectedFriend.PictureNormalURL != null)
                 {
-                    imageFriend.Source = new BitmapImage(new Uri(m_SelectedFriend.PictureNormalURL, UriKind.Absolute));
-                    imageFriend.Stretch = Stretch.Uniform;
-
                     image_smallPictureBox.Source = new BitmapImage(new Uri(m_SelectedFriend.PictureNormalURL, UriKind.Absolute));
                     image_smallPictureBox.Stretch = Stretch.Uniform;
                 }
@@ -104,7 +101,7 @@ namespace C12Ex01Y314440009V319512893
             }
         }
 
-        private void displaySelectedFriendAlboms()
+        private void displaySelectedFriendAlbums()
         {
             if (listBoxFriends.SelectedItems.Count == 1)
             {
@@ -113,6 +110,7 @@ namespace C12Ex01Y314440009V319512893
                     listBoxAlbums.Items.Clear();
                     listBoxPictures.Items.Clear();
                     listBoxTaggetFriends.Items.Clear();
+                    imageFriend.Source = null;
                 }
 
                 if (m_SelectedFriend.Albums.Count > 0)
@@ -126,52 +124,65 @@ namespace C12Ex01Y314440009V319512893
             }
         }
 
-        private void displaySelectedAlbomsPhotos()
+        private void displaySelectedAlbumsPhotos()
         {
             if (listBoxAlbums.SelectedItems.Count == 1)
             {
                 m_Album = listBoxAlbums.SelectedItem as Album;
                 listBoxPictures.Items.Clear();
                 listBoxTaggetFriends.Items.Clear();
-                foreach (Photo albomFoto in m_Album.Photos)
+                imageFriend.Source = null;
+
+                foreach (Photo albumFoto in m_Album.Photos)
                 {
-                    Image albomsImg = new Image();
-                    albomsImg.Source = new BitmapImage(new Uri(albomFoto.URL, UriKind.Absolute));
-                    albomsImg.MaxWidth = 100;
-                    albomsImg.MaxHeight = 100;
-                    albomsImg.Margin = new Thickness(0, 10, 0, 0);
+                    Image albumsImg = new Image();//TODO change value name 
+                    albumsImg.Source = new BitmapImage(new Uri(albumFoto.URL, UriKind.Absolute));
+                    albumsImg.MaxWidth = 100;
+                    albumsImg.MaxHeight = 100;
+                    albumsImg.Margin = new Thickness(-10, 10, 0, 0);
 
                     CheckBox selectedPhotoCheckBox = new CheckBox();
-                    selectedPhotoCheckBox.Margin = new Thickness(105,-10,0,0);
-                 //   albomsImg.MouseLeftButtonUp += new MouseButtonEventHandler();   
-                    listBoxPictures.Items.Add(albomsImg);
+                    selectedPhotoCheckBox.Margin = new Thickness(0,-15,0,0);
+  
+                    listBoxPictures.Items.Add(albumsImg);
                     listBoxPictures.Items.Add(selectedPhotoCheckBox);
                 }
             }
         }
 
-        private void displaySelectedAlbomsTags()
+        private void displaySelectedAlbumsTags()
         {
             if (listBoxAlbums.SelectedItems.Count == 1)
             {
-                Hashtable albomsTaggetFreans = new Hashtable();     
-                foreach (Photo selectedAlbomsfoto in m_Album.Photos)
+                Hashtable albumsTaggetFreans = new Hashtable();     
+                foreach (Photo selectedAlbumsfoto in m_Album.Photos)
                 {
-                    if (selectedAlbomsfoto != null && selectedAlbomsfoto.Tags != null)
+                    if (selectedAlbumsfoto != null && selectedAlbumsfoto.Tags != null)
                     {
-                        if (selectedAlbomsfoto.Tags.Count > 0)
+                        if (selectedAlbumsfoto.Tags.Count > 0)
                         {
-                            foreach (PhotoTag tagg in selectedAlbomsfoto.Tags)
+                            foreach (PhotoTag tagg in selectedAlbumsfoto.Tags)
                             {
-                                if (!albomsTaggetFreans.ContainsKey(tagg.User.Name))
+                                if (!albumsTaggetFreans.ContainsKey(tagg.User.Name))
                                 {
-                                    albomsTaggetFreans.Add(tagg.User.Name, selectedAlbomsfoto);
+                                    albumsTaggetFreans.Add(tagg.User.Name, selectedAlbumsfoto);
                                     listBoxTaggetFriends.Items.Add(tagg.User.Name);
                                 }
                             }
                         }
                     }
                 }
+            }
+        }
+
+        private void displaySelectedAlbumsPhoto()
+        {
+            if (listBoxPictures.SelectedItems.Count == 1 && listBoxPictures.SelectedItem is Image)
+            {
+                Image selectedPhoto = listBoxPictures.SelectedItem as Image;
+
+                imageFriend.Source = selectedPhoto.Source;
+                imageFriend.Stretch = Stretch.Uniform;
             }
         }
 
@@ -183,13 +194,18 @@ namespace C12Ex01Y314440009V319512893
         private void listBoxFriends_SelectedIndexChanged(object sender, SelectionChangedEventArgs e)
         {
             displaySelectedFriend();
-            displaySelectedFriendAlboms();
+            displaySelectedFriendAlbums();
         }
 
         private void listBoxAlbums_SelectedIndexChanged(object sender, SelectionChangedEventArgs e)
         {
-            displaySelectedAlbomsPhotos();
-            displaySelectedAlbomsTags();
+            displaySelectedAlbumsPhotos();
+            displaySelectedAlbumsTags();
+        }
+
+        private void listBoxPictures_SelectedIndexChanged(object sender, SelectionChangedEventArgs e)
+        {
+            displaySelectedAlbumsPhoto();
         }
 
         private void buttonExit_Click(object sender, RoutedEventArgs e)
