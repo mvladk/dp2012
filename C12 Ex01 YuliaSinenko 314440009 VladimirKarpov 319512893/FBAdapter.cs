@@ -1,10 +1,8 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="MainWindow.xaml.cs" company="Holon Institute of Technology">
-//     Copyright (c) Holon Institute of Technology. All rights reserved.
+﻿// -----------------------------------------------------------------------
+// <copyright file="FBAdapter.cs" company="">
+// TODO: Update copyright text.
 // </copyright>
-// <author>319512893 - Vldimir Karpov</author>
-// <author>314440009 - Yulia Sinenko</author>
-//-----------------------------------------------------------------------
+// -----------------------------------------------------------------------
 
 namespace Infrastructure.Adapters.Facebook
 {
