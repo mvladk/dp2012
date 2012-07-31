@@ -79,6 +79,7 @@
             this.listBoxFriends.Name = "listBoxFriends";
             this.listBoxFriends.Size = new System.Drawing.Size(289, 212);
             this.listBoxFriends.TabIndex = 3;
+            this.listBoxFriends.SelectedIndexChanged += new System.EventHandler(this.listBoxFriends_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -97,6 +98,7 @@
             this.listBoxAlbums.Name = "listBoxAlbums";
             this.listBoxAlbums.Size = new System.Drawing.Size(289, 212);
             this.listBoxAlbums.TabIndex = 5;
+            this.listBoxAlbums.SelectedIndexChanged += new System.EventHandler(this.listBoxAlbums_SelectedIndexChanged);
             // 
             // listBoxPictures
             // 
@@ -106,6 +108,7 @@
             this.listBoxPictures.Name = "listBoxPictures";
             this.listBoxPictures.Size = new System.Drawing.Size(241, 628);
             this.listBoxPictures.TabIndex = 6;
+            this.listBoxPictures.SelectedIndexChanged += new System.EventHandler(this.listBoxPictures_SelectedIndexChanged);
             // 
             // imageFriend
             // 
@@ -141,6 +144,7 @@
             this.buttonExit.TabIndex = 9;
             this.buttonExit.Text = "Exit";
             this.buttonExit.UseVisualStyleBackColor = true;
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
             // buttonTaging
             // 
