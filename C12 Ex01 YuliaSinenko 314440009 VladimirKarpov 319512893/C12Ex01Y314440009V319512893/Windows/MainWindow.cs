@@ -15,9 +15,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Net;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 using Infrastructure.Adapters.Facebook;
+using System.IO;
+
 
 namespace C12Ex01Y314440009V319512893
 {
@@ -119,10 +122,11 @@ namespace C12Ex01Y314440009V319512893
                 listBoxPictures.Items.Clear();
                 listBoxTaggetFriends.Items.Clear();
                 //imageFriend.Source = null;
+                imageFriend.ImageLocation = null;
 
                 foreach (Photo albumFoto in m_Album.Photos)
                 {
-                    PictureBox albumsImg = new PictureBox();//TODO change value name 
+                    PictureBox albumsImg = new PictureBox(); //TODO change value name 
                     //albumsImg.Source = new BitmapImage(new Uri(albumFoto.URL, UriKind.Absolute));
                     albumsImg.LoadAsync(albumFoto.URL);
                     albumsImg.MaximumSize = new Size(100, 100);
@@ -168,11 +172,11 @@ namespace C12Ex01Y314440009V319512893
 
         private void displaySelectedAlbumsPhoto()
         {
-            if (listBoxPictures.SelectedItems.Count == 1 && listBoxPictures.SelectedItem is Image)
+            if (listBoxPictures.SelectedItems.Count == 1 && listBoxPictures.SelectedItem is PictureBox)
             {
-                Image selectedPhoto = listBoxPictures.SelectedItem as Image;
+                PictureBox selectedPhoto = listBoxPictures.SelectedItem as PictureBox;
 
-                //imageFriend. = selectedPhoto;
+                imageFriend.LoadAsync(selectedPhoto.ImageLocation);
                 //imageFriend.Source = selectedPhoto.Source;
                 //imageFriend.Stretch = Stretch.Uniform;
             }
@@ -202,8 +206,23 @@ namespace C12Ex01Y314440009V319512893
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
-            //Application.Current.Shutdown();
             Application.Exit();
+        }
+
+        private void buttonDowload_Click(object sender, EventArgs e)
+        {
+            string path = @"C:\tmp\";
+            string filename;
+
+            using (WebClient Client = new WebClient())
+            {
+                foreach (PictureBox SelectedItem in listBoxPictures.SelectedItems)
+                {
+                    Uri uri = new Uri(SelectedItem.ImageLocation);
+                    filename = Path.GetFileName(uri.LocalPath);
+                    Client.DownloadFile(SelectedItem.ImageLocation, path+filename);
+                }
+            }
         }
     }
 }

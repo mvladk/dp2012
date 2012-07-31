@@ -135,6 +135,7 @@
             this.buttonDowload.TabIndex = 9;
             this.buttonDowload.Text = "Dowload Selected";
             this.buttonDowload.UseVisualStyleBackColor = true;
+            this.buttonDowload.Click += new System.EventHandler(this.buttonDowload_Click);
             // 
             // buttonExit
             // 
