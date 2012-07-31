@@ -218,9 +218,12 @@ namespace C12Ex01Y314440009V319512893
             {
                 foreach (PictureBox SelectedItem in listBoxPictures.SelectedItems)
                 {
-                    Uri uri = new Uri(SelectedItem.ImageLocation);
-                    filename = Path.GetFileName(uri.LocalPath);
-                    Client.DownloadFile(SelectedItem.ImageLocation, path+filename);
+                    if (SelectedItem is PictureBox)
+                    {
+                        Uri uri = new Uri(SelectedItem.ImageLocation);
+                        filename = Path.GetFileName(uri.LocalPath);
+                        Client.DownloadFile(SelectedItem.ImageLocation, path + filename);
+                    }
                 }
             }
         }
