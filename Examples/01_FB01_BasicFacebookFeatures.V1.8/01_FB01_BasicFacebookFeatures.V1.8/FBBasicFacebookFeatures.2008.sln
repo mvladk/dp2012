@@ -1,7 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FBBasicFacebookFeatures", "FBBasicFacebookFeatures\FBBasicFacebookFeatures.2008.csproj", "{AF90A25E-B4FB-434C-9260-C02B56C2AA9D}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FBBasicFacebookFeatures.2008", "FBBasicFacebookFeatures\FBBasicFacebookFeatures.2008.csproj", "{AF90A25E-B4FB-434C-9260-C02B56C2AA9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

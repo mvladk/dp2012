@@ -52,6 +52,7 @@
             this.buttonLogin.TabIndex = 0;
             this.buttonLogin.Text = "Login";
             this.buttonLogin.UseVisualStyleBackColor = true;
+            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
             // image_smallPictureBox
             // 
@@ -168,7 +169,7 @@
             this.Controls.Add(this.image_smallPictureBox);
             this.Controls.Add(this.buttonLogin);
             this.Name = "MainWindow";
-            this.Text = "Form1";
+            this.Text = "Title";
             ((System.ComponentModel.ISupportInitialize)(this.image_smallPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageFriend)).EndInit();
             this.ResumeLayout(false);
