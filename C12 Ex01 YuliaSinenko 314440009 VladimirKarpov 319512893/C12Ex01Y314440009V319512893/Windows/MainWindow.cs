@@ -48,28 +48,27 @@ namespace C12Ex01Y314440009V319512893
             m_FBAdapter.Login();
             fetchUserInfo();
             fetchFriends();
-            
+
 
             //fetchEvents();
         }
 
         private void fetchUserInfo()
         {
-              m_FacebookUser.PictureBox = image_smallPictureBox;
+            m_FacebookUser.PictureBox = image_smallPictureBox;
+            m_FacebookUserFriend.PictureBox = imageFriend;
+
             if (m_FBAdapter.LoggedInUser.Statuses.Count > 0)
             {
-                //this.Title = m_FBAdapter.LoggedInUser.Statuses[0].Message;
                 this.Text = m_FBAdapter.LoggedInUser.Statuses[0].Message;
             }
 
             m_FacebookUser.PictureBox.LoadAsync(m_FBAdapter.LoggedInUser.PictureNormalURL);
-            //image_smallPictureBox.Source = new BitmapImage(new Uri(m_FBAdapter.LoggedInUser.PictureNormalURL, UriKind.Absolute));
-            //image_smallPictureBox.Stretch = Stretch.Uniform;
         }
 
         private void fetchFriends()
         {
-           listBoxFriends.DisplayMember = "Name";
+            listBoxFriends.DisplayMember = "Name";
             foreach (User friend in m_FBAdapter.LoggedInUser.Friends)
             {
                 listBoxFriends.Items.Add(friend);
@@ -81,21 +80,7 @@ namespace C12Ex01Y314440009V319512893
             if (listBoxFriends.SelectedItems.Count == 1)
             {
                 m_FacebookUserFriend.User = listBoxFriends.SelectedItem as User;
-                m_FacebookUserFriend.PictureBox = imageFriend;
-
-                if (m_FacebookUserFriend.User.PictureNormalURL != null)
-                {
-
-                    m_FacebookUserFriend.PictureBox.LoadAsync(m_FacebookUserFriend.User.PictureLargeURL);
-                    //image_smallPictureBox.Source = new BitmapImage(new Uri(m_FacebookUser.PictureNormalURL, UriKind.Absolute));
-                    //image_smallPictureBox.Stretch = Stretch.Uniform;
-                }
-                else
-                {
-                    m_FacebookUserFriend.PictureBox.LoadAsync(m_FBAdapter.LoggedInUser.PictureNormalURL);
-                    //image_smallPictureBox.Source = new BitmapImage(new Uri(m_FBAdapter.LoggedInUser.PictureNormalURL, UriKind.Absolute));
-                    //image_smallPictureBox.Stretch = Stretch.Uniform;
-                }
+                m_FacebookUserFriend.PictureBox.LoadAsync(m_FacebookUserFriend.User.PictureLargeURL);
             }
         }
 
@@ -106,7 +91,7 @@ namespace C12Ex01Y314440009V319512893
                 if (listBoxAlbums.Items.Count > 0)
                 {
                     listBoxAlbums.Items.Clear();
-                  //  listBoxPictures.Items.Clear();
+                    //  listBoxPictures.Items.Clear();
                     listBoxTaggetFriends.Items.Clear();
                     //imageFriend.Source = null;
                 }
@@ -127,25 +112,26 @@ namespace C12Ex01Y314440009V319512893
             if (listBoxAlbums.SelectedItems.Count == 1)
             {
 
-                if (listViewAlbomsPhoto.Images.Count > 0)
-                {
-                    //clearCurrentAlbumPhotos();
-                }
+                //if (listViewAlbomsPhoto.Images.Count > 0)
+                //{
+                //    //clearCurrentAlbumPhotos();
+                //}
 
-                Album albumChosen = comboBoxAlbums.SelectedItem as Album;
+                //Album albumChosen = comboBoxAlbums.SelectedItem as Album;
+                Album albumChosen = listBoxAlbums.SelectedItem as Album;
 
                 if (albumChosen.Photos.Count > 0)
                 {
                     buttonDownloadSelectedPhotos.Enabled = true;
-                    PhotosSelectionMode = ePhotosSelectionMode.SelectAll;
-                    ApplicationManager.Instance.FacebookDataFetcher.AlbumPhotoDownloadFinished += FacebookDataFetcher_AlbumThumbPhotoDownloadFinished;
-                    ApplicationManager.Instance.FacebookDataFetcher.FetchPresentationPhotosOfSpecificAlbumAsync(albumChosen);
+                    //PhotosSelectionMode = ePhotosSelectionMode.SelectAll;
+                    //ApplicationManager.Instance.FacebookDataFetcher.AlbumPhotoDownloadFinished += FacebookDataFetcher_AlbumThumbPhotoDownloadFinished;
+                    //ApplicationManager.Instance.FacebookDataFetcher.FetchPresentationPhotosOfSpecificAlbumAsync(albumChosen);
                 }
                 else
                 {
                     buttonDownloadSelectedPhotos.Enabled = false;
                 }
-               
+
 
                 //foreach (Photo albumFoto in m_Album.Photos)
                 //{
@@ -164,7 +150,9 @@ namespace C12Ex01Y314440009V319512893
         {
             if (listBoxAlbums.SelectedItems.Count == 1)
             {
-                Hashtable albumsTaggetFreans = new Hashtable();     
+                Hashtable albumsTaggetFreans = new Hashtable();
+                //foreach (Photo selectedAlbumsfoto in m_Album.Photos)
+                m_Album = listBoxAlbums.SelectedItem as Album;
                 foreach (Photo selectedAlbumsfoto in m_Album.Photos)
                 {
                     if (selectedAlbumsfoto != null && selectedAlbumsfoto.Tags != null)
