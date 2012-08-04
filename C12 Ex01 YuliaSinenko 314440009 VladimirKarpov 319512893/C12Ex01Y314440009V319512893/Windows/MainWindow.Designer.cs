@@ -34,11 +34,11 @@
             this.listBoxFriends = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.listBoxAlbums = new System.Windows.Forms.ListBox();
-            this.listBoxPictures = new System.Windows.Forms.ListBox();
             this.imageFriend = new System.Windows.Forms.PictureBox();
             this.listBoxTaggetFriends = new System.Windows.Forms.ListBox();
             this.buttonDowload = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
+            this.listViewAlbomsPhoto = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.image_smallPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageFriend)).BeginInit();
             this.SuspendLayout();
@@ -56,10 +56,10 @@
             // 
             // image_smallPictureBox
             // 
-            this.image_smallPictureBox.Location = new System.Drawing.Point(112, 5);
+            this.image_smallPictureBox.Location = new System.Drawing.Point(117, 11);
             this.image_smallPictureBox.Margin = new System.Windows.Forms.Padding(2);
             this.image_smallPictureBox.Name = "image_smallPictureBox";
-            this.image_smallPictureBox.Size = new System.Drawing.Size(114, 143);
+            this.image_smallPictureBox.Size = new System.Drawing.Size(110, 124);
             this.image_smallPictureBox.TabIndex = 1;
             this.image_smallPictureBox.TabStop = false;
             // 
@@ -103,32 +103,22 @@
             this.listBoxAlbums.TabIndex = 5;
             this.listBoxAlbums.SelectedIndexChanged += new System.EventHandler(this.listBoxAlbums_SelectedIndexChanged);
             // 
-            // listBoxPictures
-            // 
-            this.listBoxPictures.FormattingEnabled = true;
-            this.listBoxPictures.Location = new System.Drawing.Point(236, 6);
-            this.listBoxPictures.Margin = new System.Windows.Forms.Padding(2);
-            this.listBoxPictures.Name = "listBoxPictures";
-            this.listBoxPictures.Size = new System.Drawing.Size(182, 511);
-            this.listBoxPictures.TabIndex = 6;
-            this.listBoxPictures.SelectedIndexChanged += new System.EventHandler(this.listBoxPictures_SelectedIndexChanged);
-            // 
             // imageFriend
             // 
-            this.imageFriend.Location = new System.Drawing.Point(444, 12);
+            this.imageFriend.Location = new System.Drawing.Point(466, 12);
             this.imageFriend.Margin = new System.Windows.Forms.Padding(2);
             this.imageFriend.Name = "imageFriend";
-            this.imageFriend.Size = new System.Drawing.Size(422, 266);
+            this.imageFriend.Size = new System.Drawing.Size(390, 284);
             this.imageFriend.TabIndex = 7;
             this.imageFriend.TabStop = false;
             // 
             // listBoxTaggetFriends
             // 
             this.listBoxTaggetFriends.FormattingEnabled = true;
-            this.listBoxTaggetFriends.Location = new System.Drawing.Point(435, 415);
+            this.listBoxTaggetFriends.Location = new System.Drawing.Point(451, 410);
             this.listBoxTaggetFriends.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxTaggetFriends.Name = "listBoxTaggetFriends";
-            this.listBoxTaggetFriends.Size = new System.Drawing.Size(269, 108);
+            this.listBoxTaggetFriends.Size = new System.Drawing.Size(235, 108);
             this.listBoxTaggetFriends.TabIndex = 8;
             // 
             // buttonDowload
@@ -153,16 +143,25 @@
             this.buttonExit.UseVisualStyleBackColor = true;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
+            // listViewAlbomsPhoto
+            // 
+            this.listViewAlbomsPhoto.Location = new System.Drawing.Point(249, 11);
+            this.listViewAlbomsPhoto.Name = "listViewAlbomsPhoto";
+            this.listViewAlbomsPhoto.Size = new System.Drawing.Size(181, 507);
+            this.listViewAlbomsPhoto.TabIndex = 10;
+            this.listViewAlbomsPhoto.UseCompatibleStateImageBehavior = false;
+            this.listViewAlbomsPhoto.SelectedIndexChanged += new System.EventHandler(this.listViewAlbomsPhoto_SelectedIndexChanged);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(886, 532);
+            this.Controls.Add(this.listViewAlbomsPhoto);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonDowload);
             this.Controls.Add(this.listBoxTaggetFriends);
             this.Controls.Add(this.imageFriend);
-            this.Controls.Add(this.listBoxPictures);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listBoxAlbums);
             this.Controls.Add(this.label1);
@@ -187,11 +186,11 @@
         private System.Windows.Forms.ListBox listBoxFriends;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox listBoxAlbums;
-        private System.Windows.Forms.ListBox listBoxPictures;
         private System.Windows.Forms.PictureBox imageFriend;
         private System.Windows.Forms.ListBox listBoxTaggetFriends;
         private System.Windows.Forms.Button buttonDowload;
         private System.Windows.Forms.Button buttonExit;
+        private System.Windows.Forms.ListView listViewAlbomsPhoto;
     }
 }
 

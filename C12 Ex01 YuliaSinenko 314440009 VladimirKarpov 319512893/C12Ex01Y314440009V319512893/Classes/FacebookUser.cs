@@ -12,10 +12,19 @@ using System.Windows.Forms;
 
 namespace C12Ex01Y314440009V319512893
 {
-    class FacebookUser : User
+    class FacebookUser
     {
-        private FacebookUser m_FacebookUser;
         private PictureBox m_ProfilePicture;
+        private User m_User;
+        
+        public User User
+        {
+            get { return m_User; }
+            set { m_User = value;}
+        }
+        
+
+        
 
         public PictureBox PictureBox
         {

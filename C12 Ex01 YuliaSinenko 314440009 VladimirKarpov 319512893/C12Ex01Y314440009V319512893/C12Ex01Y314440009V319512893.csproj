@@ -52,7 +52,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\AlbumItemsEvent.cs" />
+    <Compile Include="Classes\AlbumsItem.cs" />
     <Compile Include="Classes\FacebookUser.cs" />
+    <Compile Include="Classes\TaggetFriendsList.cs" />
     <Compile Include="Windows\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
