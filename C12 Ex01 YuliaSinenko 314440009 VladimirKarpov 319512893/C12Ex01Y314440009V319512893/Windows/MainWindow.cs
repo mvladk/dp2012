@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -31,7 +32,9 @@ namespace C12Ex01Y314440009V319512893
     {
         FBAdapter m_FBAdapter;
         Album m_Album = new Album();
-        User m_SelectedFriend = new User();
+        FacebookUser m_FacebookUser = new FacebookUser();
+        FacebookUser m_FacebookUserFriend = new FacebookUser();
+
 
         public MainWindow()
         {
@@ -45,6 +48,8 @@ namespace C12Ex01Y314440009V319512893
             m_FBAdapter.Login();
             fetchUserInfo();
             fetchFriends();
+            m_FacebookUser.PictureBox = image_smallPictureBox;
+
             //fetchEvents();
         }
 
@@ -56,7 +61,7 @@ namespace C12Ex01Y314440009V319512893
                 this.Text = m_FBAdapter.LoggedInUser.Statuses[0].Message;
             }
 
-            image_smallPictureBox.LoadAsync(m_FBAdapter.LoggedInUser.PictureNormalURL);
+            m_ProfilePicture.PictureBox.LoadAsync(m_FBAdapter.LoggedInUser.PictureNormalURL);
             //image_smallPictureBox.Source = new BitmapImage(new Uri(m_FBAdapter.LoggedInUser.PictureNormalURL, UriKind.Absolute));
             //image_smallPictureBox.Stretch = Stretch.Uniform;
         }
@@ -74,12 +79,12 @@ namespace C12Ex01Y314440009V319512893
         {
             if (listBoxFriends.SelectedItems.Count == 1)
             {
-                m_SelectedFriend = listBoxFriends.SelectedItem as User;
+                m_FacebookUser = listBoxFriends.SelectedItem as User;
 
-                if (m_SelectedFriend.PictureNormalURL != null)
+                if (m_FacebookUser.PictureNormalURL != null)
                 {
-                    image_smallPictureBox.LoadAsync(m_SelectedFriend.PictureNormalURL);
-                    //image_smallPictureBox.Source = new BitmapImage(new Uri(m_SelectedFriend.PictureNormalURL, UriKind.Absolute));
+                    image_smallPictureBox.LoadAsync(m_FacebookUser.PictureNormalURL);
+                    //image_smallPictureBox.Source = new BitmapImage(new Uri(m_FacebookUser.PictureNormalURL, UriKind.Absolute));
                     //image_smallPictureBox.Stretch = Stretch.Uniform;
                 }
                 else
@@ -103,9 +108,9 @@ namespace C12Ex01Y314440009V319512893
                     //imageFriend.Source = null;
                 }
 
-                if (m_SelectedFriend.Albums.Count > 0)
+                if (m_FacebookUser.Albums.Count > 0)
                 {
-                    foreach (Album album in m_SelectedFriend.Albums)
+                    foreach (Album album in m_FacebookUser.Albums)
                     {
                         listBoxAlbums.DisplayMember = "Name";
                         listBoxAlbums.Items.Add(album);
@@ -124,26 +129,144 @@ namespace C12Ex01Y314440009V319512893
                 //imageFriend.Source = null;
                 imageFriend.ImageLocation = null;
 
+                listViewPic.View = View.Details;
+                listViewPic.LabelEdit = true;
+                listViewPic.AllowColumnReorder = true;
+                listViewPic.CheckBoxes = true;
+                listViewPic.FullRowSelect = true;
+                listViewPic.GridLines = true;
+                ListViewItem item1 = new ListViewItem("item1", 0);
+
+                item1.Checked = true;
+                item1.SubItems.Add("1");
+                item1.SubItems.Add("2");
+                item1.SubItems.Add("3");
+                ListViewItem item2 = new ListViewItem("item2", 1);
+                item2.SubItems.Add("4");
+                item2.SubItems.Add("5");
+                item2.SubItems.Add("6");
+                ListViewItem item3 = new ListViewItem("item3", 0);
+                item3.Checked = true;
+                item3.SubItems.Add("7");
+                item3.SubItems.Add("8");
+                item3.SubItems.Add("9");
+
+                listViewPic.Columns.Add("Item Column", -2, HorizontalAlignment.Left);
+                listViewPic.Columns.Add("Column 2", -2, HorizontalAlignment.Left);
+                listViewPic.Columns.Add("Column 3", -2, HorizontalAlignment.Left);
+                listViewPic.Columns.Add("Column 4", -2, HorizontalAlignment.Center);
+
+
+                listViewPic.Items.AddRange(new ListViewItem[] { item1, item2, item3 });
+
+                // Create two ImageList objects.
+                ImageList imageListSmall = new ImageList();
+                ImageList imageListLarge = new ImageList();
+
                 foreach (Photo albumFoto in m_Album.Photos)
                 {
                     PictureBox albumsImg = new PictureBox(); //TODO change value name 
                     //albumsImg.Source = new BitmapImage(new Uri(albumFoto.URL, UriKind.Absolute));
                     albumsImg.LoadAsync(albumFoto.URL);
-                    albumsImg.MaximumSize = new Size(100, 100);
+                    albumsImg.Size = new Size(100, 100);
+
+
+                    ///////////////////////////
+                    imageListSmall.Images.Add(albumsImg.Image);
+                    imageListLarge.Images.Add(albumsImg.Image);
+                    ///////////////////////////
+
+
                     //albumsImg.MaxWidth = 100;
                     //albumsImg.MaxHeight = 100;
                     //albumsImg.Margin = new Thickness(-10, 10, 0, 0);
-                    albumsImg.Margin = new System.Windows.Forms.Padding(-10, 10, 0, 0);
 
-                    CheckBox selectedPhotoCheckBox = new CheckBox();
-                    //selectedPhotoCheckBox.Margin = new Thickness(0,-15,0,0);
-                    selectedPhotoCheckBox.Margin = new System.Windows.Forms.Padding(0, -15, 0, 0);
-  
+
+                    //   imageListSmall.Images.Add(0,albumsImg);
+
+                    // albumsImg.Margin = new System.Windows.Forms.Padding(-10, 10, 0, 0);
+
+                    //CheckBox selectedPhotoCheckBox = new CheckBox();
+                    ////selectedPhotoCheckBox.Margin = new Thickness(0,-15,0,0);
+                    //selectedPhotoCheckBox.Margin = new System.Windows.Forms.Padding(0, -15, 0, 0);
                     listBoxPictures.Items.Add(albumsImg);
-                    listBoxPictures.Items.Add(selectedPhotoCheckBox);
+                    // listBoxPictures.Items.Add(selectedPhotoCheckBox);
                 }
+
+                listViewPic.LargeImageList = imageListLarge;
+                listViewPic.SmallImageList = imageListSmall;
             }
         }
+
+
+        ///////////////////////
+        //private void CreateMyListView()
+        //{
+        //    // Create a new ListView control.
+        //    ListView listView1 = new ListView();
+        //    listView1.Bounds = new Rectangle(new Point(10, 10), new Size(300, 200));
+
+        //    // Set the view to show details.
+        //    listView1.View = View.Details;
+        //    // Allow the user to edit item text.
+        //    listView1.LabelEdit = true;
+        //    // Allow the user to rearrange columns.
+        //    listView1.AllowColumnReorder = true;
+        //    // Display check boxes.
+        //    listView1.CheckBoxes = true;
+        //    // Select the item and subitems when selection is made.
+        //    listView1.FullRowSelect = true;
+        //    // Display grid lines.
+        //    listView1.GridLines = true;
+        //    // Sort the items in the list in ascending order.
+        //    listView1.Sorting = SortOrder.Ascending;
+
+        //    // Create three items and three sets of subitems for each item.
+        //    ListViewItem item1 = new ListViewItem("item1", 0);
+        //    // Place a check mark next to the item.
+        //    item1.Checked = true;
+        //    item1.SubItems.Add("1");
+        //    item1.SubItems.Add("2");
+        //    item1.SubItems.Add("3");
+        //    ListViewItem item2 = new ListViewItem("item2", 1);
+        //    item2.SubItems.Add("4");
+        //    item2.SubItems.Add("5");
+        //    item2.SubItems.Add("6");
+        //    ListViewItem item3 = new ListViewItem("item3", 0);
+        //    // Place a check mark next to the item.
+        //    item3.Checked = true;
+        //    item3.SubItems.Add("7");
+        //    item3.SubItems.Add("8");
+        //    item3.SubItems.Add("9");
+
+        //    // Create columns for the items and subitems.
+        //    // Width of -2 indicates auto-size.
+        //    listView1.Columns.Add("Item Column", -2, HorizontalAlignment.Left);
+        //    listView1.Columns.Add("Column 2", -2, HorizontalAlignment.Left);
+        //    listView1.Columns.Add("Column 3", -2, HorizontalAlignment.Left);
+        //    listView1.Columns.Add("Column 4", -2, HorizontalAlignment.Center);
+
+        //    //Add the items to the ListView.
+        //    listView1.Items.AddRange(new ListViewItem[] { item1, item2, item3 });
+
+        //    // Create two ImageList objects.
+        //    ImageList imageListSmall = new ImageList();
+        //    ImageList imageListLarge = new ImageList();
+
+        //    // Initialize the ImageList objects with bitmaps.
+        //    imageListSmall.Images.Add(Bitmap.FromFile("C:\\MySmallImage1.bmp"));
+        //    imageListSmall.Images.Add(Bitmap.FromFile("C:\\MySmallImage2.bmp"));
+        //    imageListLarge.Images.Add(Bitmap.FromFile("C:\\MyLargeImage1.bmp"));
+        //    imageListLarge.Images.Add(Bitmap.FromFile("C:\\MyLargeImage2.bmp"));
+
+        //    //Assign the ImageList objects to the ListView.
+        //    listView1.LargeImageList = imageListLarge;
+        //    listView1.SmallImageList = imageListSmall;
+
+        //    // Add the ListView to the control collection.
+        //    this.Controls.Add(listView1);
+        //}
+        //////////////////////////
 
         private void displaySelectedAlbumsTags()
         {
@@ -169,6 +292,8 @@ namespace C12Ex01Y314440009V319512893
                 }
             }
         }
+       
+
 
         private void displaySelectedAlbumsPhoto()
         {
