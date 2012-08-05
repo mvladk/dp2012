@@ -110,16 +110,13 @@ namespace C12Ex01Y314440009V319512893
 
         private void displaySelectedAlbumsPhotos()
         {
-            int photosCount = 0;
             if (listBoxAlbums.SelectedItems.Count == 1)
             {
                 Album albumChosen = listBoxAlbums.SelectedItem as Album;
                 foreach (Photo albumPhoto in albumChosen.Photos)
                 {
-                    AlbumsPhotosControler ab = new AlbumsPhotosControler();
-                    AlbumsPhotosPanel.Controls.Add(ab);
-                    ab.func(albumPhoto.URL, photosCount);
-                    photosCount++;
+                    AlbumsPhotosControler thumbnail = new AlbumsPhotosControler(albumPhoto.URL, AlbumsPhotosPanel.Controls.Count);
+                    AlbumsPhotosPanel.Controls.Add(thumbnail);
                 }
             }
         }

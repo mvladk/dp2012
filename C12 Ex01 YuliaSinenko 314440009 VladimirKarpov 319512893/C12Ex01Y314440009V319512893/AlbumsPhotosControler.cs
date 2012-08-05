@@ -12,15 +12,11 @@ namespace C12Ex01Y314440009V319512893
 {
     public partial class AlbumsPhotosControler : UserControl
     {
-        public AlbumsPhotosControler()
+        public AlbumsPhotosControler(string i_Url, int i_PhotosCount)
         {
             InitializeComponent();
-        }
-
-        public void func(string url, int photosCount)
-        {
-            this.pictureBoxAlbumsPhoto.LoadAsync(url);
-            this.Location = new Point(0, 100 * photosCount);
+            this.pictureBoxAlbumsPhoto.LoadAsync(i_Url);
+            this.Location = new Point(0, 100 * i_PhotosCount);
         }
     }
 }
