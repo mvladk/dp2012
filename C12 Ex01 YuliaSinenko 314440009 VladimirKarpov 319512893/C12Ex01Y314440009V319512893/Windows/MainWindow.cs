@@ -112,13 +112,25 @@ namespace C12Ex01Y314440009V319512893
         {
             if (listBoxAlbums.SelectedItems.Count == 1)
             {
+                AlbumsPhotosPanel.Controls.Clear();
                 Album albumChosen = listBoxAlbums.SelectedItem as Album;
                 foreach (Photo albumPhoto in albumChosen.Photos)
                 {
                     AlbumsPhotosControler thumbnail = new AlbumsPhotosControler(albumPhoto.URL, AlbumsPhotosPanel.Controls.Count);
+                    thumbnail.PictureBox.Click += new EventHandler(thumbnail_Click);
                     AlbumsPhotosPanel.Controls.Add(thumbnail);
                 }
             }
+        }
+
+        void thumbnail_Click(object sender, EventArgs e)
+        {
+            if (sender is PictureBox)
+            {
+                PictureBox tmpPicture = sender as PictureBox;
+                m_FacebookUserFriend.PictureBox.LoadAsync(tmpPicture.ImageLocation);
+            }
+            //throw new NotImplementedException();
         }
 
         private void displaySelectedAlbumsTags()

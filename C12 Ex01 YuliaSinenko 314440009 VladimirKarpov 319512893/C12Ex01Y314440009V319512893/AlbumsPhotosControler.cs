@@ -12,6 +12,11 @@ namespace C12Ex01Y314440009V319512893
 {
     public partial class AlbumsPhotosControler : UserControl
     {
+        public PictureBox PictureBox 
+        {
+            get { return pictureBoxAlbumsPhoto; }
+            private set { }
+        }
         public AlbumsPhotosControler(string i_Url, int i_PhotosCount)
         {
             InitializeComponent();

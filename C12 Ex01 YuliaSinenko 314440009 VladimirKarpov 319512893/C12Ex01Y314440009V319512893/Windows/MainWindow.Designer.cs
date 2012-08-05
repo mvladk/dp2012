@@ -45,10 +45,10 @@
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(9, 50);
-            this.buttonLogin.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonLogin.Location = new System.Drawing.Point(12, 62);
+            this.buttonLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(95, 37);
+            this.buttonLogin.Size = new System.Drawing.Size(127, 46);
             this.buttonLogin.TabIndex = 0;
             this.buttonLogin.Text = "Login";
             this.buttonLogin.UseVisualStyleBackColor = true;
@@ -56,77 +56,78 @@
             // 
             // image_smallPictureBox
             // 
-            this.image_smallPictureBox.Location = new System.Drawing.Point(117, 11);
-            this.image_smallPictureBox.Margin = new System.Windows.Forms.Padding(2);
+            this.image_smallPictureBox.Location = new System.Drawing.Point(156, 14);
+            this.image_smallPictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.image_smallPictureBox.Name = "image_smallPictureBox";
-            this.image_smallPictureBox.Size = new System.Drawing.Size(110, 124);
+            this.image_smallPictureBox.Size = new System.Drawing.Size(147, 153);
             this.image_smallPictureBox.TabIndex = 1;
             this.image_smallPictureBox.TabStop = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 136);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(13, 167);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 13);
+            this.label1.Size = new System.Drawing.Size(55, 17);
             this.label1.TabIndex = 2;
             this.label1.Text = "Friends";
             // 
             // listBoxFriends
             // 
             this.listBoxFriends.FormattingEnabled = true;
-            this.listBoxFriends.Location = new System.Drawing.Point(9, 153);
-            this.listBoxFriends.Margin = new System.Windows.Forms.Padding(2);
+            this.listBoxFriends.ItemHeight = 16;
+            this.listBoxFriends.Location = new System.Drawing.Point(12, 188);
+            this.listBoxFriends.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxFriends.Name = "listBoxFriends";
-            this.listBoxFriends.Size = new System.Drawing.Size(218, 173);
+            this.listBoxFriends.Size = new System.Drawing.Size(289, 212);
             this.listBoxFriends.TabIndex = 3;
             this.listBoxFriends.SelectedIndexChanged += new System.EventHandler(this.listBoxFriends_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 331);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(13, 407);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 13);
+            this.label2.Size = new System.Drawing.Size(54, 17);
             this.label2.TabIndex = 4;
             this.label2.Text = "Alboms";
             // 
             // listBoxAlbums
             // 
             this.listBoxAlbums.FormattingEnabled = true;
-            this.listBoxAlbums.Location = new System.Drawing.Point(9, 345);
-            this.listBoxAlbums.Margin = new System.Windows.Forms.Padding(2);
+            this.listBoxAlbums.ItemHeight = 16;
+            this.listBoxAlbums.Location = new System.Drawing.Point(12, 425);
+            this.listBoxAlbums.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxAlbums.Name = "listBoxAlbums";
-            this.listBoxAlbums.Size = new System.Drawing.Size(218, 173);
+            this.listBoxAlbums.Size = new System.Drawing.Size(289, 212);
             this.listBoxAlbums.TabIndex = 5;
             this.listBoxAlbums.SelectedIndexChanged += new System.EventHandler(this.listBoxAlbums_SelectedIndexChanged);
             // 
             // imageFriend
             // 
-            this.imageFriend.Location = new System.Drawing.Point(424, 12);
-            this.imageFriend.Margin = new System.Windows.Forms.Padding(2);
+            this.imageFriend.Location = new System.Drawing.Point(565, 15);
+            this.imageFriend.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.imageFriend.Name = "imageFriend";
-            this.imageFriend.Size = new System.Drawing.Size(432, 314);
+            this.imageFriend.Size = new System.Drawing.Size(576, 386);
             this.imageFriend.TabIndex = 7;
             this.imageFriend.TabStop = false;
             // 
             // listBoxTaggetFriends
             // 
             this.listBoxTaggetFriends.FormattingEnabled = true;
-            this.listBoxTaggetFriends.Location = new System.Drawing.Point(424, 382);
-            this.listBoxTaggetFriends.Margin = new System.Windows.Forms.Padding(2);
+            this.listBoxTaggetFriends.ItemHeight = 16;
+            this.listBoxTaggetFriends.Location = new System.Drawing.Point(565, 470);
+            this.listBoxTaggetFriends.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxTaggetFriends.Name = "listBoxTaggetFriends";
-            this.listBoxTaggetFriends.Size = new System.Drawing.Size(235, 134);
+            this.listBoxTaggetFriends.Size = new System.Drawing.Size(312, 164);
             this.listBoxTaggetFriends.TabIndex = 8;
             // 
             // buttonDownloadSelectedPhotos
             // 
-            this.buttonDownloadSelectedPhotos.Location = new System.Drawing.Point(688, 394);
-            this.buttonDownloadSelectedPhotos.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDownloadSelectedPhotos.Location = new System.Drawing.Point(917, 485);
+            this.buttonDownloadSelectedPhotos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonDownloadSelectedPhotos.Name = "buttonDownloadSelectedPhotos";
-            this.buttonDownloadSelectedPhotos.Size = new System.Drawing.Size(165, 32);
+            this.buttonDownloadSelectedPhotos.Size = new System.Drawing.Size(220, 39);
             this.buttonDownloadSelectedPhotos.TabIndex = 9;
             this.buttonDownloadSelectedPhotos.Text = "Dowload Selected";
             this.buttonDownloadSelectedPhotos.UseVisualStyleBackColor = true;
@@ -134,10 +135,10 @@
             // 
             // buttonExit
             // 
-            this.buttonExit.Location = new System.Drawing.Point(691, 475);
-            this.buttonExit.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonExit.Location = new System.Drawing.Point(921, 585);
+            this.buttonExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(165, 35);
+            this.buttonExit.Size = new System.Drawing.Size(220, 43);
             this.buttonExit.TabIndex = 9;
             this.buttonExit.Text = "Exit";
             this.buttonExit.UseVisualStyleBackColor = true;
@@ -146,16 +147,17 @@
             // AlbumsPhotosPanel
             // 
             this.AlbumsPhotosPanel.AutoScroll = true;
-            this.AlbumsPhotosPanel.Location = new System.Drawing.Point(249, 11);
+            this.AlbumsPhotosPanel.Location = new System.Drawing.Point(332, 14);
+            this.AlbumsPhotosPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AlbumsPhotosPanel.Name = "AlbumsPhotosPanel";
-            this.AlbumsPhotosPanel.Size = new System.Drawing.Size(148, 507);
+            this.AlbumsPhotosPanel.Size = new System.Drawing.Size(197, 624);
             this.AlbumsPhotosPanel.TabIndex = 11;
             // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(886, 532);
+            this.ClientSize = new System.Drawing.Size(1181, 655);
             this.Controls.Add(this.AlbumsPhotosPanel);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonDownloadSelectedPhotos);
@@ -167,7 +169,7 @@
             this.Controls.Add(this.listBoxFriends);
             this.Controls.Add(this.image_smallPictureBox);
             this.Controls.Add(this.buttonLogin);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainWindow";
             this.Text = "Title";
             ((System.ComponentModel.ISupportInitialize)(this.image_smallPictureBox)).EndInit();
