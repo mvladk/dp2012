@@ -1,4 +1,4 @@
-﻿//-----------------------------------------------------------------------
+﻿﻿//-----------------------------------------------------------------------
 // <copyright file="MainWindow.xaml.cs" company="Holon Institute of Technology">
 //     Copyright (c) Holon Institute of Technology. All rights reserved.
 // </copyright>
