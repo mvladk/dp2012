@@ -52,8 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\AlbumItemsEvent.cs" />
-    <Compile Include="Classes\AlbumsItem.cs" />
+    <Compile Include="AlbumsPhotosControler.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AlbumsPhotosControler.Designer.cs">
+      <DependentUpon>AlbumsPhotosControler.cs</DependentUpon>
+    </Compile>
     <Compile Include="Classes\FacebookUser.cs" />
     <Compile Include="Classes\TaggetFriendsList.cs" />
     <Compile Include="Windows\MainWindow.cs">
@@ -64,6 +68,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AlbumsPhotosControler.resx">
+      <DependentUpon>AlbumsPhotosControler.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

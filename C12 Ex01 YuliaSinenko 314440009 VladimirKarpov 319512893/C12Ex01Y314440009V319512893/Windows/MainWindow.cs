@@ -25,6 +25,7 @@ using System.IO;
 
 namespace C12Ex01Y314440009V319512893
 {
+
     /// <summary>
     /// Interaction logic for MainWindow
     /// </summary>
@@ -34,6 +35,8 @@ namespace C12Ex01Y314440009V319512893
         Album m_Album = new Album();
         FacebookUser m_FacebookUser = new FacebookUser();
         FacebookUser m_FacebookUserFriend = new FacebookUser();
+
+        //  public event AlbumPhotoDownloadFinishedEventHandler AlbumPhotoDownloadFinished;
 
 
         public MainWindow()
@@ -48,8 +51,6 @@ namespace C12Ex01Y314440009V319512893
             m_FBAdapter.Login();
             fetchUserInfo();
             fetchFriends();
-
-
             //fetchEvents();
         }
 
@@ -109,49 +110,26 @@ namespace C12Ex01Y314440009V319512893
 
         private void displaySelectedAlbumsPhotos()
         {
+            int photosCount = 0;
             if (listBoxAlbums.SelectedItems.Count == 1)
             {
-
-                //if (listViewAlbomsPhoto.Images.Count > 0)
-                //{
-                //    //clearCurrentAlbumPhotos();
-                //}
-
-                //Album albumChosen = comboBoxAlbums.SelectedItem as Album;
                 Album albumChosen = listBoxAlbums.SelectedItem as Album;
-
-                if (albumChosen.Photos.Count > 0)
+                foreach (Photo albumPhoto in albumChosen.Photos)
                 {
-                    buttonDownloadSelectedPhotos.Enabled = true;
-                    //PhotosSelectionMode = ePhotosSelectionMode.SelectAll;
-                    //ApplicationManager.Instance.FacebookDataFetcher.AlbumPhotoDownloadFinished += FacebookDataFetcher_AlbumThumbPhotoDownloadFinished;
-                    //ApplicationManager.Instance.FacebookDataFetcher.FetchPresentationPhotosOfSpecificAlbumAsync(albumChosen);
+                    AlbumsPhotosControler ab = new AlbumsPhotosControler();
+                    AlbumsPhotosPanel.Controls.Add(ab);
+                    ab.func(albumPhoto.URL, photosCount);
+                    photosCount++;
                 }
-                else
-                {
-                    buttonDownloadSelectedPhotos.Enabled = false;
-                }
-
-
-                //foreach (Photo albumFoto in m_Album.Photos)
-                //{
-                //    PictureBox albumsImg = new PictureBox(); //TODO change value name 
-                //    //albumsImg.Source = new BitmapImage(new Uri(albumFoto.URL, UriKind.Absolute));
-                //    albumsImg.LoadAsync(albumFoto.URL);
-                //    albumsImg.Size = new Size(100, 100);
-                //}
-
             }
         }
-
-
 
         private void displaySelectedAlbumsTags()
         {
             if (listBoxAlbums.SelectedItems.Count == 1)
             {
                 Hashtable albumsTaggetFreans = new Hashtable();
-                //foreach (Photo selectedAlbumsfoto in m_Album.Photos)
+
                 m_Album = listBoxAlbums.SelectedItem as Album;
                 foreach (Photo selectedAlbumsfoto in m_Album.Photos)
                 {

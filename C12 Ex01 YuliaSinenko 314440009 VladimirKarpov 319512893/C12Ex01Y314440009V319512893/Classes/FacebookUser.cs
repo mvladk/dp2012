@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using FacebookWrapper;
 using Facebook;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
@@ -23,9 +22,6 @@ namespace C12Ex01Y314440009V319512893
             set { m_User = value;}
         }
         
-
-        
-
         public PictureBox PictureBox
         {
             get { return m_ProfilePicture; }
