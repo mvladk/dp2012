@@ -123,16 +123,6 @@ namespace C12Ex01Y314440009V319512893
             }
         }
 
-        void thumbnail_Click(object sender, EventArgs e)
-        {
-            if (sender is PictureBox)
-            {
-                PictureBox tmpPicture = sender as PictureBox;
-                m_FacebookUserFriend.PictureBox.LoadAsync(tmpPicture.ImageLocation);
-            }
-            //throw new NotImplementedException();
-        }
-
         private void displaySelectedAlbumsTags()
         {
             if (listBoxAlbums.SelectedItems.Count == 1)
@@ -160,20 +150,6 @@ namespace C12Ex01Y314440009V319512893
             }
         }
 
-
-
-        //private void displaySelectedAlbumsPhoto()
-        //{
-        //    if (listBoxPictures.SelectedItems.Count == 1 && listBoxPictures.SelectedItem is PictureBox)
-        //    {
-        //        PictureBox selectedPhoto = listBoxPictures.SelectedItem as PictureBox;
-
-        //        imageFriend.LoadAsync(selectedPhoto.ImageLocation);
-        //        imageFriend.Source = selectedPhoto.Source;
-        //        imageFriend.Stretch = Stretch.Uniform;
-        //    }
-        //}
-
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             loginAndInit();
@@ -191,9 +167,14 @@ namespace C12Ex01Y314440009V319512893
             displaySelectedAlbumsTags();
         }
 
-        private void listBoxPictures_SelectedIndexChanged(object sender, EventArgs e)
+        void thumbnail_Click(object sender, EventArgs e)
         {
-            //displaySelectedAlbumsPhoto();
+            if (sender is PictureBox)
+            {
+                PictureBox tmpPicture = sender as PictureBox;
+                m_FacebookUserFriend.PictureBox.LoadAsync(tmpPicture.ImageLocation);
+            }
+            //throw new NotImplementedException();
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
@@ -203,8 +184,34 @@ namespace C12Ex01Y314440009V319512893
 
         private void buttonDowload_Click(object sender, EventArgs e)
         {
-            //string path = @"C:\tmp\";
-            //string filename;
+            string path;
+            string filename;
+
+            DialogResult folderBrowserDialogResult = folderBrowserDialogForDownload.ShowDialog();
+
+            if (folderBrowserDialogResult == System.Windows.Forms.DialogResult.OK)
+            {
+                using (WebClient Client = new WebClient())
+                {
+                    path = folderBrowserDialogForDownload.SelectedPath;
+                    progressBarPhotosDownload.Value = 0;
+                    progressBarPhotosDownload.Maximum = 0;
+                    foreach (AlbumsPhotosControler SelectedItem in AlbumsPhotosPanel.Controls)
+                    {
+                        if (SelectedItem is AlbumsPhotosControler)
+                        {
+                            if (SelectedItem.Is_Selected)
+                            {
+                                progressBarPhotosDownload.Maximum++;
+                                Uri uri = new Uri(SelectedItem.PictureBox.ImageLocation);
+                                filename = Path.GetFileName(uri.LocalPath);
+                                Client.DownloadFile(uri, path + "\\"+ filename);
+                                progressBarPhotosDownload.Value++;
+                            }
+                        }
+                    }
+                }
+            }
 
             //using (WebClient Client = new WebClient())
             //{

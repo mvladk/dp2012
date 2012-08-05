@@ -39,6 +39,8 @@
             this.buttonDownloadSelectedPhotos = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
             this.AlbumsPhotosPanel = new System.Windows.Forms.Panel();
+            this.folderBrowserDialogForDownload = new System.Windows.Forms.FolderBrowserDialog();
+            this.progressBarPhotosDownload = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.image_smallPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageFriend)).BeginInit();
             this.SuspendLayout();
@@ -148,16 +150,24 @@
             // 
             this.AlbumsPhotosPanel.AutoScroll = true;
             this.AlbumsPhotosPanel.Location = new System.Drawing.Point(332, 14);
-            this.AlbumsPhotosPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AlbumsPhotosPanel.Margin = new System.Windows.Forms.Padding(4);
             this.AlbumsPhotosPanel.Name = "AlbumsPhotosPanel";
             this.AlbumsPhotosPanel.Size = new System.Drawing.Size(197, 624);
             this.AlbumsPhotosPanel.TabIndex = 11;
+            // 
+            // progressBarPhotosDownload
+            // 
+            this.progressBarPhotosDownload.Location = new System.Drawing.Point(919, 470);
+            this.progressBarPhotosDownload.Name = "progressBarPhotosDownload";
+            this.progressBarPhotosDownload.Size = new System.Drawing.Size(218, 15);
+            this.progressBarPhotosDownload.TabIndex = 12;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1181, 655);
+            this.Controls.Add(this.progressBarPhotosDownload);
             this.Controls.Add(this.AlbumsPhotosPanel);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonDownloadSelectedPhotos);
@@ -192,6 +202,8 @@
         private System.Windows.Forms.Button buttonDownloadSelectedPhotos;
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.Panel AlbumsPhotosPanel;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogForDownload;
+        private System.Windows.Forms.ProgressBar progressBarPhotosDownload;
     }
 }
 
