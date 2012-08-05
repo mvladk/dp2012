@@ -43,7 +43,6 @@ namespace C12Ex01Y314440009V319512893
             this.pictureBoxAlbumsPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxAlbumsPhoto.TabIndex = 0;
             this.pictureBoxAlbumsPhoto.TabStop = false;
-            this.pictureBoxAlbumsPhoto.Click += new System.EventHandler(this.pictureBoxAlbumsPhoto_Click);
             // 
             // checkBoxAlbumsPhoto
             // 

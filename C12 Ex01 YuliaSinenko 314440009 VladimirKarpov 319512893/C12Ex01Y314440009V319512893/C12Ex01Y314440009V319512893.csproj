@@ -58,7 +58,6 @@
     <Compile Include="AlbumsPhotosControler.Designer.cs">
       <DependentUpon>AlbumsPhotosControler.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\AlbumsPotosPanel.cs" />
     <Compile Include="Classes\FacebookUser.cs" />
     <Compile Include="Classes\TaggetFriendsList.cs">
       <SubType>Component</SubType>
