@@ -174,7 +174,6 @@ namespace C12Ex01Y314440009V319512893
                 PictureBox tmpPicture = sender as PictureBox;
                 m_FacebookUserFriend.PictureBox.LoadAsync(tmpPicture.ImageLocation);
             }
-            //throw new NotImplementedException();
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
@@ -205,7 +204,7 @@ namespace C12Ex01Y314440009V319512893
                                 progressBarPhotosDownload.Maximum++;
                                 Uri uri = new Uri(SelectedItem.PictureBox.ImageLocation);
                                 filename = Path.GetFileName(uri.LocalPath);
-                                Client.DownloadFile(uri, path + "\\"+ filename);
+                                Client.DownloadFile(uri, path + "\\" + filename);
                                 progressBarPhotosDownload.Value++;
                             }
                         }

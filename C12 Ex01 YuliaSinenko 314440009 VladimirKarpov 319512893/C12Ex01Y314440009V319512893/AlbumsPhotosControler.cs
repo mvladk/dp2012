@@ -12,7 +12,7 @@ namespace C12Ex01Y314440009V319512893
 {
     public partial class AlbumsPhotosControler : UserControl
     {
-        public PictureBox PictureBox 
+        public PictureBox PictureBox
         {
             get { return pictureBoxAlbumsPhoto; }
             private set { }
@@ -29,7 +29,7 @@ namespace C12Ex01Y314440009V319512893
             InitializeComponent();
             this.pictureBoxAlbumsPhoto.LoadAsync(i_Url);
             this.pictureBoxAlbumsPhoto.Click += new EventHandler(pictureBoxAlbumsPhoto_Click);
-            
+
             this.Location = new Point(0, 100 * i_PhotosCount);
         }
 
