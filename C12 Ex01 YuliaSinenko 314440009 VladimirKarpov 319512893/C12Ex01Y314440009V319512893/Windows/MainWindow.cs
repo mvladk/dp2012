@@ -32,10 +32,9 @@ namespace C12Ex01Y314440009V319512893
     public partial class MainWindow : Form
     {
         FBAdapter m_FBAdapter;
-        Album m_Album = new Album();
+        Album m_AlbumChosen = new Album();
         FacebookUser m_FacebookUser = new FacebookUser();
-        FacebookUser m_FacebookUserFriend = new FacebookUser();
-
+        FacebookUser m_FacebookUserFriend = new FacebookUser(); 
         //  public event AlbumPhotoDownloadFinishedEventHandler AlbumPhotoDownloadFinished;
 
 
@@ -49,31 +48,13 @@ namespace C12Ex01Y314440009V319512893
         private void loginAndInit()
         {
             m_FBAdapter.Login();
-            fetchUserInfo();
-            fetchFriends();
+
+            m_FacebookUser.ProfilePictureBox = image_smallPictureBox;
+            m_FacebookUserFriend.ProfilePictureBox = imageFriend;
+
+            m_FacebookUser.FetchUserInfo();
+            m_FacebookUser.FetchFriends();
             //fetchEvents();
-        }
-
-        private void fetchUserInfo()
-        {
-            m_FacebookUser.PictureBox = image_smallPictureBox;
-            m_FacebookUserFriend.PictureBox = imageFriend;
-
-            if (m_FBAdapter.LoggedInUser.Statuses.Count > 0)
-            {
-                this.Text = m_FBAdapter.LoggedInUser.Statuses[0].Message;
-            }
-
-            m_FacebookUser.PictureBox.LoadAsync(m_FBAdapter.LoggedInUser.PictureNormalURL);
-        }
-
-        private void fetchFriends()
-        {
-            listBoxFriends.DisplayMember = "Name";
-            foreach (User friend in m_FBAdapter.LoggedInUser.Friends)
-            {
-                listBoxFriends.Items.Add(friend);
-            }
         }
 
         private void displaySelectedFriend()
@@ -81,7 +62,7 @@ namespace C12Ex01Y314440009V319512893
             if (listBoxFriends.SelectedItems.Count == 1)
             {
                 m_FacebookUserFriend.User = listBoxFriends.SelectedItem as User;
-                m_FacebookUserFriend.PictureBox.LoadAsync(m_FacebookUserFriend.User.PictureLargeURL);
+                m_FacebookUserFriend.ProfilePictureBox.LoadAsync(m_FacebookUserFriend.User.PictureLargeURL);
             }
         }
 
@@ -89,12 +70,11 @@ namespace C12Ex01Y314440009V319512893
         {
             if (listBoxFriends.SelectedItems.Count == 1)
             {
+                AlbumsPhotosPanel.Controls.Clear();
                 if (listBoxAlbums.Items.Count > 0)
                 {
                     listBoxAlbums.Items.Clear();
-                    //  listBoxPictures.Items.Clear();
                     listBoxTaggetFriends.Items.Clear();
-                    //imageFriend.Source = null;
                 }
 
                 if (m_FacebookUserFriend.User.Albums.Count > 0)
@@ -113,12 +93,15 @@ namespace C12Ex01Y314440009V319512893
             if (listBoxAlbums.SelectedItems.Count == 1)
             {
                 AlbumsPhotosPanel.Controls.Clear();
-                Album albumChosen = listBoxAlbums.SelectedItem as Album;
-                foreach (Photo albumPhoto in albumChosen.Photos)
+                if (m_AlbumChosen.Photos.Count > 0)
                 {
-                    AlbumsPhotosControler thumbnail = new AlbumsPhotosControler(albumPhoto.URL, AlbumsPhotosPanel.Controls.Count);
-                    thumbnail.PictureBox.Click += new EventHandler(thumbnail_Click);
-                    AlbumsPhotosPanel.Controls.Add(thumbnail);
+                    imageFriend.LoadAsync(m_AlbumChosen.Photos[0].URL);
+                    foreach (Photo albumPhoto in m_AlbumChosen.Photos)
+                    {
+                        AlbumsPhotosControler thumbnail = new AlbumsPhotosControler(albumPhoto.URL, AlbumsPhotosPanel.Controls.Count);
+                        thumbnail.PictureBox.Click += new EventHandler(thumbnail_Click);
+                        AlbumsPhotosPanel.Controls.Add(thumbnail);
+                    }
                 }
             }
         }
@@ -128,9 +111,10 @@ namespace C12Ex01Y314440009V319512893
             if (listBoxAlbums.SelectedItems.Count == 1)
             {
                 Hashtable albumsTaggetFreans = new Hashtable();
+                m_AlbumChosen = listBoxAlbums.SelectedItem as Album;
 
-                m_Album = listBoxAlbums.SelectedItem as Album;
-                foreach (Photo selectedAlbumsfoto in m_Album.Photos)
+                listBoxTaggetFriends.Items.Clear();
+                foreach (Photo selectedAlbumsfoto in m_AlbumChosen.Photos)
                 {
                     if (selectedAlbumsfoto != null && selectedAlbumsfoto.Tags != null)
                     {
@@ -172,10 +156,37 @@ namespace C12Ex01Y314440009V319512893
             if (sender is PictureBox)
             {
                 PictureBox tmpPicture = sender as PictureBox;
-                m_FacebookUserFriend.PictureBox.LoadAsync(tmpPicture.ImageLocation);
+                m_FacebookUserFriend.ProfilePictureBox.LoadAsync(tmpPicture.ImageLocation);
             }
         }
 
+        private void listBoxTaggetFriends_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBoxTaggetFriends.SelectedItems.Count == 1)
+            {
+                string taggetFriendName = listBoxTaggetFriends.SelectedItem.ToString();
+
+                imageFriend.LoadAsync(m_AlbumChosen.Photos[0].URL);
+     
+                AlbumsPhotosPanel.Controls.Clear();
+                foreach (Photo albumPhoto in m_AlbumChosen.Photos)
+                {
+                    if (albumPhoto.Tags != null && albumPhoto.Tags.Count > 0)
+                    {
+                        foreach (PhotoTag tagg in albumPhoto.Tags)
+                        {
+                            if (tagg.User.Name == taggetFriendName)
+                            {
+                                AlbumsPhotosControler thumbnail = new AlbumsPhotosControler(albumPhoto.URL, AlbumsPhotosPanel.Controls.Count);
+                                thumbnail.PictureBox.Click += new EventHandler(thumbnail_Click);
+                                AlbumsPhotosPanel.Controls.Add(thumbnail);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
         private void buttonExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
