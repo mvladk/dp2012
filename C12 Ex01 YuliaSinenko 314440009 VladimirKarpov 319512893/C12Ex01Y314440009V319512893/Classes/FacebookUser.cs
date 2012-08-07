@@ -43,20 +43,20 @@
 
         public void FetchUserInfo()
         {
-            if (m_FBAdapter.LoggedInUser.Statuses.Count > 0)
+            if (this.User.Statuses.Count > 0)
             {
-                this.Text = m_FBAdapter.LoggedInUser.Statuses[0].Message;
+                //this.Text = m_FBAdapter.LoggedInUser.Statuses[0].Message;
             }
 
-            m_FacebookUser.PictureBox.LoadAsync(m_FBAdapter.LoggedInUser.PictureNormalURL);
+            this.ProfilePictureBox.LoadAsync(this.User.PictureNormalURL);
         }
 
         public void FetchFriends()
         {
-            listBoxFriends.DisplayMember = "Name";
-            foreach (User friend in m_FBAdapter.LoggedInUser.Friends)
+            this.FriendsListBox.DisplayMember = "Name";
+            foreach (User friend in this.User.Friends)
             {
-                listBoxFriends.Items.Add(friend);
+                this.FriendsListBox.Items.Add(friend);
             }
         }
     }

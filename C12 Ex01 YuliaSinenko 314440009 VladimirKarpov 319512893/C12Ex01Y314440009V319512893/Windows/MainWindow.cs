@@ -41,39 +41,43 @@ namespace C12Ex01Y314440009V319512893
         public MainWindow()
         {
             InitializeComponent();
-            this.Text = "Facebook Photos Browser.  DP.H.B12.319512893.314440009";
+            this.Text = "Facebook Photos Browser.DP.H.B12.319512893.314440009";
             this.m_FBAdapter = new FBAdapter();
         }
 
         private void loginAndInit()
         {
             m_FBAdapter.Login();
-
+            m_FacebookUser.User = m_FBAdapter.LoggedInUser;
             m_FacebookUser.ProfilePictureBox = image_smallPictureBox;
+            m_FacebookUser.FriendsListBox = listBoxFriends;
+            m_FacebookUser.AlbumsListBox = listBoxAlbums;
+
             m_FacebookUserFriend.ProfilePictureBox = imageFriend;
 
             m_FacebookUser.FetchUserInfo();
+            this.Text = m_FacebookUser.User.Statuses[0].Message;
+            
             m_FacebookUser.FetchFriends();
-            //fetchEvents();
         }
 
         private void displaySelectedFriend()
         {
-            if (listBoxFriends.SelectedItems.Count == 1)
+            if (m_FacebookUser.FriendsListBox.SelectedItems.Count == 1)
             {
-                m_FacebookUserFriend.User = listBoxFriends.SelectedItem as User;
+                m_FacebookUserFriend.User = m_FacebookUser.FriendsListBox.SelectedItem as User;
                 m_FacebookUserFriend.ProfilePictureBox.LoadAsync(m_FacebookUserFriend.User.PictureLargeURL);
             }
         }
 
         private void displaySelectedFriendAlbums()
         {
-            if (listBoxFriends.SelectedItems.Count == 1)
+            if (m_FacebookUser.FriendsListBox.SelectedItems.Count == 1)
             {
                 AlbumsPhotosPanel.Controls.Clear();
-                if (listBoxAlbums.Items.Count > 0)
+                if (m_FacebookUser.AlbumsListBox.Items.Count > 0)
                 {
-                    listBoxAlbums.Items.Clear();
+                    m_FacebookUser.AlbumsListBox.Items.Clear();
                     listBoxTaggetFriends.Items.Clear();
                 }
 
@@ -81,8 +85,8 @@ namespace C12Ex01Y314440009V319512893
                 {
                     foreach (Album album in m_FacebookUserFriend.User.Albums)
                     {
-                        listBoxAlbums.DisplayMember = "Name";
-                        listBoxAlbums.Items.Add(album);
+                        m_FacebookUser.AlbumsListBox.DisplayMember = "Name";
+                        m_FacebookUser.AlbumsListBox.Items.Add(album);
                     }
                 }
             }
@@ -90,8 +94,9 @@ namespace C12Ex01Y314440009V319512893
 
         private void displaySelectedAlbumsPhotos()
         {
-            if (listBoxAlbums.SelectedItems.Count == 1)
+            if (m_FacebookUser.AlbumsListBox.SelectedItems.Count == 1)
             {
+                m_AlbumChosen = m_FacebookUser.AlbumsListBox.SelectedItem as Album;
                 AlbumsPhotosPanel.Controls.Clear();
                 if (m_AlbumChosen.Photos.Count > 0)
                 {
@@ -108,10 +113,10 @@ namespace C12Ex01Y314440009V319512893
 
         private void displaySelectedAlbumsTags()
         {
-            if (listBoxAlbums.SelectedItems.Count == 1)
+            if (m_FacebookUser.AlbumsListBox.SelectedItems.Count == 1)
             {
                 Hashtable albumsTaggetFreans = new Hashtable();
-                m_AlbumChosen = listBoxAlbums.SelectedItem as Album;
+                m_AlbumChosen = m_FacebookUser.AlbumsListBox.SelectedItem as Album;
 
                 listBoxTaggetFriends.Items.Clear();
                 foreach (Photo selectedAlbumsfoto in m_AlbumChosen.Photos)
