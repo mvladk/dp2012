@@ -59,9 +59,6 @@
       <DependentUpon>AlbumsPhotosControler.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\FacebookUser.cs" />
-    <Compile Include="Classes\TaggetFriendsList.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Windows\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -1,4 +1,8 @@
-﻿
+﻿// <copyright file="Program.cs" company="Holon Institute of Technology">
+//     Copyright (c) Holon Institute of Technology. All rights reserved.
+// </copyright>
+// <author>319512893 - Vldimir Karpov</author>
+// <author>314440009 - Yulia Sinenko</author>
 
 namespace C12Ex01Y314440009V319512893
 {
@@ -6,13 +10,14 @@ namespace C12Ex01Y314440009V319512893
     using System.Collections.Generic;
     using System.Linq;
     using System.Windows.Forms;
-    static class Program
+
+    public static class Program
     {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        public static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="MainWindow.xaml.cs" company="Holon Institute of Technology">
+// <copyright file="FBAdapter.cs" company="Holon Institute of Technology">
 //     Copyright (c) Holon Institute of Technology. All rights reserved.
 // </copyright>
 // <author>319512893 - Vldimir Karpov</author>
@@ -20,40 +20,55 @@ namespace Infrastructure.Adapters.Facebook
     /// </summary>
     public class FBAdapter : FacebookService
     {
-        private User m_LoggedInUser;
-        private LoginResult m_LoginResult;
+        /// <summary>
+        /// Current User
+        /// </summary>
+        private User m_loggedInUser;
 
-        public User LoggedInUser
-        {
-            get { return m_LoggedInUser; }
-            private set { }
-        }
+        /// <summary>
+        /// Login result
+        /// </summary>
+        private LoginResult m_loginResult;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FBAdapter"/> class.
+        /// </summary>
         public FBAdapter()
         {
         }
 
+        /// <summary>
+        /// Gets the name of the User. 
+        /// </summary>
+        public User LoggedInUser
+        {
+            get { return this.m_loggedInUser; }
+            private set { }
+        }
+
+        /// <summary>
+        /// Logges in to facebook API
+        /// </summary>
         public void Login()
         {
-            //LoginResult result = FacebookService.Login("229916837130733",
-            //    "user_about_me", "friends_about_me", "publish_stream", "user_events", "read_stream",
-            //    "user_status", // this is instead of the 'user_checkins' permission, as desricbed here: http://developers.facebook.com/bugs/170251059758531
-            //    "user_photo_video_tags", "friends_photo_video_tags", "user_photos", "friends_photos", "user_videos", "friends_videos"
-            //    , "offline_access"
-            //    );
+            ////LoginResult result = FacebookService.Login("229916837130733",
+            ////    "user_about_me", "friends_about_me", "publish_stream", "user_events", "read_stream",
+            ////    "user_status", // this is instead of the 'user_checkins' permission, as desricbed here: http://developers.facebook.com/bugs/170251059758531
+            ////    "user_photo_video_tags", "friends_photo_video_tags", "user_photos", "friends_photos", "user_videos", "friends_videos"
+            ////    , "offline_access"
+            ////    );
 
-            this.m_LoginResult = FBAdapter.Connect(@"AAADRG69nse0BADt5k0PRb8IxIEQRLZBVk1hro195rbpT5U8HyOkt2Y0sd9WUwIjZATbwzO8uUpfmUueLiSci0qCKXGi4ySGy1k1PLxcwZDZD");
+            this.m_loginResult = FBAdapter.Connect(@"AAADRG69nse0BADt5k0PRb8IxIEQRLZBVk1hro195rbpT5U8HyOkt2Y0sd9WUwIjZATbwzO8uUpfmUueLiSci0qCKXGi4ySGy1k1PLxcwZDZD");
 
-            if (string.IsNullOrEmpty(this.m_LoginResult.ErrorMessage))
+            if (string.IsNullOrEmpty(this.m_loginResult.ErrorMessage))
             {
-                m_LoggedInUser = this.m_LoginResult.LoggedInUser;
+                this.m_loggedInUser = this.m_loginResult.LoggedInUser;
                 FacebookService.s_CollectionLimit = 100;
             }
             else
             {
-                throw(new Exception(this.m_LoginResult.ErrorMessage));
+                throw new Exception(this.m_loginResult.ErrorMessage);
             }
-
         }
     }
 }
