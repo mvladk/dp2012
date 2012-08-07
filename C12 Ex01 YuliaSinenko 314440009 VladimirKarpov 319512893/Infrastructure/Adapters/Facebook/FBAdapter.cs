@@ -47,6 +47,7 @@ namespace Infrastructure.Adapters.Facebook
             if (string.IsNullOrEmpty(this.m_LoginResult.ErrorMessage))
             {
                 m_LoggedInUser = this.m_LoginResult.LoggedInUser;
+                FacebookService.s_CollectionLimit = 100;
             }
             else
             {
