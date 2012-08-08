@@ -51,14 +51,23 @@ namespace Infrastructure.Adapters.Facebook
         /// </summary>
         public void Login()
         {
-            ////LoginResult result = FacebookService.Login("229916837130733",
-            ////    "user_about_me", "friends_about_me", "publish_stream", "user_events", "read_stream",
-            ////    "user_status", // this is instead of the 'user_checkins' permission, as desricbed here: http://developers.facebook.com/bugs/170251059758531
-            ////    "user_photo_video_tags", "friends_photo_video_tags", "user_photos", "friends_photos", "user_videos", "friends_videos"
-            ////    , "offline_access"
-            ////    );
+            this.m_loginResult = FacebookService.Login(
+                "229916837130733",
+                "user_about_me",
+                "friends_about_me", 
+                "publish_stream", 
+                "user_events", 
+                "read_stream",
+                "user_status", // this is instead of the 'user_checkins' permission, as desricbed here: http://developers.facebook.com/bugs/170251059758531
+                "user_photo_video_tags",
+                "friends_photo_video_tags", 
+                "user_photos", 
+                "friends_photos", 
+                "user_videos", 
+                "friends_videos",
+                "offline_access");
 
-            this.m_loginResult = FBAdapter.Connect(@"AAADRG69nse0BADt5k0PRb8IxIEQRLZBVk1hro195rbpT5U8HyOkt2Y0sd9WUwIjZATbwzO8uUpfmUueLiSci0qCKXGi4ySGy1k1PLxcwZDZD");
+            //// this.m_loginResult = FBAdapter.Connect(@"AAADRG69nse0BADt5k0PRb8IxIEQRLZBVk1hro195rbpT5U8HyOkt2Y0sd9WUwIjZATbwzO8uUpfmUueLiSci0qCKXGi4ySGy1k1PLxcwZDZD");
 
             if (string.IsNullOrEmpty(this.m_loginResult.ErrorMessage))
             {

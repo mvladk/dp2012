@@ -31,15 +31,15 @@ namespace C12Ex01Y314440009V319512893
         {
             this.buttonLogin = new System.Windows.Forms.Button();
             this.image_smallPictureBox = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelFriendsList = new System.Windows.Forms.Label();
             this.listBoxFriends = new System.Windows.Forms.ListBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelAlbumsList = new System.Windows.Forms.Label();
             this.listBoxAlbums = new System.Windows.Forms.ListBox();
             this.imageFriend = new System.Windows.Forms.PictureBox();
             this.listBoxTaggetFriends = new System.Windows.Forms.ListBox();
             this.buttonDownloadSelectedPhotos = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
-            this.AlbumsPhotosPanel = new System.Windows.Forms.Panel();
+            this.albumsPhotosPanel = new System.Windows.Forms.Panel();
             this.folderBrowserDialogForDownload = new System.Windows.Forms.FolderBrowserDialog();
             this.progressBarPhotosDownload = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.image_smallPictureBox)).BeginInit();
@@ -66,14 +66,14 @@ namespace C12Ex01Y314440009V319512893
             this.image_smallPictureBox.TabIndex = 1;
             this.image_smallPictureBox.TabStop = false;
             // 
-            // label1
+            // labelFriendsList
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 167);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 17);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Friends";
+            this.labelFriendsList.AutoSize = true;
+            this.labelFriendsList.Location = new System.Drawing.Point(29, 167);
+            this.labelFriendsList.Name = "labelFriendsList";
+            this.labelFriendsList.Size = new System.Drawing.Size(55, 17);
+            this.labelFriendsList.TabIndex = 2;
+            this.labelFriendsList.Text = "Friends";
             // 
             // listBoxFriends
             // 
@@ -85,14 +85,14 @@ namespace C12Ex01Y314440009V319512893
             this.listBoxFriends.Size = new System.Drawing.Size(289, 212);
             this.listBoxFriends.TabIndex = 3;
             // 
-            // label2
+            // labelAlbumsList
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(29, 407);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 17);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Albums";
+            this.labelAlbumsList.AutoSize = true;
+            this.labelAlbumsList.Location = new System.Drawing.Point(29, 407);
+            this.labelAlbumsList.Name = "labelAlbumsList";
+            this.labelAlbumsList.Size = new System.Drawing.Size(54, 17);
+            this.labelAlbumsList.TabIndex = 4;
+            this.labelAlbumsList.Text = "Albums";
             // 
             // listBoxAlbums
             // 
@@ -103,7 +103,6 @@ namespace C12Ex01Y314440009V319512893
             this.listBoxAlbums.Name = "listBoxAlbums";
             this.listBoxAlbums.Size = new System.Drawing.Size(289, 212);
             this.listBoxAlbums.TabIndex = 5;
-            //this.listBoxAlbums.SelectedIndexChanged += new System.EventHandler(this.listBoxAlbums_SelectedIndexChanged);
             // 
             // imageFriend
             // 
@@ -124,7 +123,6 @@ namespace C12Ex01Y314440009V319512893
             this.listBoxTaggetFriends.Name = "listBoxTaggetFriends";
             this.listBoxTaggetFriends.Size = new System.Drawing.Size(312, 180);
             this.listBoxTaggetFriends.TabIndex = 8;
-            //this.listBoxTaggetFriends.SelectedIndexChanged += new System.EventHandler(this.listBoxTaggetFriends_SelectedIndexChanged);
             // 
             // buttonDownloadSelectedPhotos
             // 
@@ -135,7 +133,6 @@ namespace C12Ex01Y314440009V319512893
             this.buttonDownloadSelectedPhotos.TabIndex = 9;
             this.buttonDownloadSelectedPhotos.Text = "Dowload Selected";
             this.buttonDownloadSelectedPhotos.UseVisualStyleBackColor = true;
-            //this.buttonDownloadSelectedPhotos.Click += new System.EventHandler(this.buttonDowload_Click);
             // 
             // buttonExit
             // 
@@ -148,14 +145,14 @@ namespace C12Ex01Y314440009V319512893
             this.buttonExit.UseVisualStyleBackColor = true;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
-            // AlbumsPhotosPanel
+            // albumsPhotosPanel
             // 
-            this.AlbumsPhotosPanel.AutoScroll = true;
-            this.AlbumsPhotosPanel.Location = new System.Drawing.Point(356, 11);
-            this.AlbumsPhotosPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.AlbumsPhotosPanel.Name = "AlbumsPhotosPanel";
-            this.AlbumsPhotosPanel.Size = new System.Drawing.Size(171, 622);
-            this.AlbumsPhotosPanel.TabIndex = 11;
+            this.albumsPhotosPanel.AutoScroll = true;
+            this.albumsPhotosPanel.Location = new System.Drawing.Point(356, 11);
+            this.albumsPhotosPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.albumsPhotosPanel.Name = "albumsPhotosPanel";
+            this.albumsPhotosPanel.Size = new System.Drawing.Size(171, 622);
+            this.albumsPhotosPanel.TabIndex = 11;
             // 
             // progressBarPhotosDownload
             // 
@@ -171,14 +168,14 @@ namespace C12Ex01Y314440009V319512893
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1181, 655);
             this.Controls.Add(this.progressBarPhotosDownload);
-            this.Controls.Add(this.AlbumsPhotosPanel);
+            this.Controls.Add(this.albumsPhotosPanel);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonDownloadSelectedPhotos);
             this.Controls.Add(this.listBoxTaggetFriends);
             this.Controls.Add(this.imageFriend);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.labelAlbumsList);
             this.Controls.Add(this.listBoxAlbums);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelFriendsList);
             this.Controls.Add(this.listBoxFriends);
             this.Controls.Add(this.image_smallPictureBox);
             this.Controls.Add(this.buttonLogin);
@@ -196,15 +193,15 @@ namespace C12Ex01Y314440009V319512893
 
         private System.Windows.Forms.Button buttonLogin;
         private System.Windows.Forms.PictureBox image_smallPictureBox;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelFriendsList;
         private System.Windows.Forms.ListBox listBoxFriends;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelAlbumsList;
         private System.Windows.Forms.ListBox listBoxAlbums;
         private System.Windows.Forms.PictureBox imageFriend;
         private System.Windows.Forms.ListBox listBoxTaggetFriends;
         private System.Windows.Forms.Button buttonDownloadSelectedPhotos;
         private System.Windows.Forms.Button buttonExit;
-        private System.Windows.Forms.Panel AlbumsPhotosPanel;
+        private System.Windows.Forms.Panel albumsPhotosPanel;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogForDownload;
         private System.Windows.Forms.ProgressBar progressBarPhotosDownload;
     }

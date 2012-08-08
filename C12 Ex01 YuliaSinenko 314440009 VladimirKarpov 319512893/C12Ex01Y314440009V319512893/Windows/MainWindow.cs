@@ -61,7 +61,7 @@ namespace C12Ex01Y314440009V319512893
             this.m_FacebookAlbum.User = this.m_FacebookUserFriend;
             this.m_FacebookAlbum.User.User = this.m_FacebookUser.User;
             this.m_FacebookAlbum.AlbumPictureBox = this.imageFriend;
-            this.m_FacebookAlbum.AlbumsPhotosPanel = this.AlbumsPhotosPanel;
+            this.m_FacebookAlbum.AlbumsPhotosPanel = this.albumsPhotosPanel;
             this.m_FacebookAlbum.AlbumsTaggetUsers = this.listBoxTaggetFriends;
             this.m_FacebookAlbum.FolderBrowserDialog = this.folderBrowserDialogForDownload;
             this.m_FacebookAlbum.ProgressBar = this.progressBarPhotosDownload;
