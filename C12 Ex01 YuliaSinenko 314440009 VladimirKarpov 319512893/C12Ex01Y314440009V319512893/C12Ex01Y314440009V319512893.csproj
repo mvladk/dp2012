@@ -58,6 +58,7 @@
     <Compile Include="AlbumsPhotosControler.Designer.cs">
       <DependentUpon>AlbumsPhotosControler.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\FacebookAlbum.cs" />
     <Compile Include="Classes\FacebookUser.cs" />
     <Compile Include="Windows\MainWindow.cs">
       <SubType>Form</SubType>

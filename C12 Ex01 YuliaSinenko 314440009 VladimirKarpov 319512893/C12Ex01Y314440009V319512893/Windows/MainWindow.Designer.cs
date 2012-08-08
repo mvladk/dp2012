@@ -103,7 +103,7 @@ namespace C12Ex01Y314440009V319512893
             this.listBoxAlbums.Name = "listBoxAlbums";
             this.listBoxAlbums.Size = new System.Drawing.Size(289, 212);
             this.listBoxAlbums.TabIndex = 5;
-            this.listBoxAlbums.SelectedIndexChanged += new System.EventHandler(this.listBoxAlbums_SelectedIndexChanged);
+            //this.listBoxAlbums.SelectedIndexChanged += new System.EventHandler(this.listBoxAlbums_SelectedIndexChanged);
             // 
             // imageFriend
             // 
@@ -124,7 +124,7 @@ namespace C12Ex01Y314440009V319512893
             this.listBoxTaggetFriends.Name = "listBoxTaggetFriends";
             this.listBoxTaggetFriends.Size = new System.Drawing.Size(312, 180);
             this.listBoxTaggetFriends.TabIndex = 8;
-            this.listBoxTaggetFriends.SelectedIndexChanged += new System.EventHandler(this.listBoxTaggetFriends_SelectedIndexChanged);
+            //this.listBoxTaggetFriends.SelectedIndexChanged += new System.EventHandler(this.listBoxTaggetFriends_SelectedIndexChanged);
             // 
             // buttonDownloadSelectedPhotos
             // 
@@ -135,7 +135,7 @@ namespace C12Ex01Y314440009V319512893
             this.buttonDownloadSelectedPhotos.TabIndex = 9;
             this.buttonDownloadSelectedPhotos.Text = "Dowload Selected";
             this.buttonDownloadSelectedPhotos.UseVisualStyleBackColor = true;
-            this.buttonDownloadSelectedPhotos.Click += new System.EventHandler(this.buttonDowload_Click);
+            //this.buttonDownloadSelectedPhotos.Click += new System.EventHandler(this.buttonDowload_Click);
             // 
             // buttonExit
             // 
