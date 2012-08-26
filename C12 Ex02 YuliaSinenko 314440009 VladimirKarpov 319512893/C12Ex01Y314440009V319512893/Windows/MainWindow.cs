@@ -30,7 +30,7 @@ namespace C12Ex02Y314440009V319512893
         private FBAdapter m_FBAdapter;
         private FacebookUser m_FacebookUser = new FacebookUser();
         private FacebookUser m_FacebookUserFriend = new FacebookUser();
-        private FacebookAlbum m_FacebookAlbum = new FacebookAlbum();
+        private FacebookAlbum m_FacebookAlbum = FacebookAlbum.Instance;
 
         public MainWindow()
         {

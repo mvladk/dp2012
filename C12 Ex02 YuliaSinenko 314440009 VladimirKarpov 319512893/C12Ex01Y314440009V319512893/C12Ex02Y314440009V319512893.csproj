@@ -75,6 +75,7 @@
     </Compile>
     <Compile Include="Classes\FacebookAlbum.cs" />
     <Compile Include="Classes\FacebookUser.cs" />
+    <Compile Include="Singleton.cs" />
     <Compile Include="Windows\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
