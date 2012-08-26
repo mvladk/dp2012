@@ -24,6 +24,10 @@ namespace C12Ex02Y314440009V319512893
     /// </summary>
     public class FacebookAlbum
     {
+        public FacebookAlbum Instance
+        {
+            get { return Singleton<FacebookAlbum>.Instance; }
+        }
 
         private Album m_Album;
         private FacebookUser m_User;
