@@ -142,7 +142,7 @@ namespace C12Ex02Y314440009V319512893
                         {
                             foreach (PhotoTag tagg in selectedAlbumsfoto.Tags)
                             {
-                                if (!albumsTaggetFreans.ContainsKey(tagg.User.Name))
+                                if (null != tagg.User.Name && !albumsTaggetFreans.ContainsKey(tagg.User.Name))
                                 {
                                     albumsTaggetFreans.Add(tagg.User.Name, selectedAlbumsfoto);
                                     this.AlbumsTaggetUsers.Items.Add(tagg.User.Name);
