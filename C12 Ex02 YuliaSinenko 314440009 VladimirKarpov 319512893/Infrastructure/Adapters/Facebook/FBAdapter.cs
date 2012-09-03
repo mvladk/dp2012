@@ -72,7 +72,7 @@ namespace Infrastructure.Adapters.Facebook
             if (string.IsNullOrEmpty(this.m_loginResult.ErrorMessage))
             {
                 this.m_loggedInUser = this.m_loginResult.LoggedInUser;
-                FacebookService.s_CollectionLimit = 100;
+                FacebookService.s_CollectionLimit = 10;
             }
             else
             {

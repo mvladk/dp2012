@@ -50,7 +50,7 @@ namespace C12Ex02Y314440009V319512893
             // buttonLogin
             // 
             this.buttonLogin.Location = new System.Drawing.Point(21, 50);
-            this.buttonLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonLogin.Margin = new System.Windows.Forms.Padding(2);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(95, 37);
             this.buttonLogin.TabIndex = 0;
@@ -61,7 +61,7 @@ namespace C12Ex02Y314440009V319512893
             // image_smallPictureBox
             // 
             this.image_smallPictureBox.Location = new System.Drawing.Point(129, 11);
-            this.image_smallPictureBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.image_smallPictureBox.Margin = new System.Windows.Forms.Padding(2);
             this.image_smallPictureBox.Name = "image_smallPictureBox";
             this.image_smallPictureBox.Size = new System.Drawing.Size(110, 124);
             this.image_smallPictureBox.TabIndex = 1;
@@ -81,7 +81,7 @@ namespace C12Ex02Y314440009V319512893
             // 
             this.listBoxFriends.FormattingEnabled = true;
             this.listBoxFriends.Location = new System.Drawing.Point(21, 153);
-            this.listBoxFriends.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBoxFriends.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxFriends.Name = "listBoxFriends";
             this.listBoxFriends.Size = new System.Drawing.Size(218, 173);
             this.listBoxFriends.TabIndex = 3;
@@ -100,7 +100,7 @@ namespace C12Ex02Y314440009V319512893
             // 
             this.listBoxAlbums.FormattingEnabled = true;
             this.listBoxAlbums.Location = new System.Drawing.Point(21, 345);
-            this.listBoxAlbums.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBoxAlbums.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxAlbums.Name = "listBoxAlbums";
             this.listBoxAlbums.Size = new System.Drawing.Size(218, 173);
             this.listBoxAlbums.TabIndex = 5;
@@ -108,7 +108,7 @@ namespace C12Ex02Y314440009V319512893
             // imageFriend
             // 
             this.imageFriend.Location = new System.Drawing.Point(424, 11);
-            this.imageFriend.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.imageFriend.Margin = new System.Windows.Forms.Padding(2);
             this.imageFriend.Name = "imageFriend";
             this.imageFriend.Size = new System.Drawing.Size(432, 314);
             this.imageFriend.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -119,15 +119,16 @@ namespace C12Ex02Y314440009V319512893
             // 
             this.listBoxTaggetFriends.FormattingEnabled = true;
             this.listBoxTaggetFriends.Location = new System.Drawing.Point(424, 371);
-            this.listBoxTaggetFriends.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBoxTaggetFriends.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxTaggetFriends.Name = "listBoxTaggetFriends";
+            this.listBoxTaggetFriends.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.listBoxTaggetFriends.Size = new System.Drawing.Size(235, 147);
             this.listBoxTaggetFriends.TabIndex = 8;
             // 
             // buttonDownloadSelectedPhotos
             // 
             this.buttonDownloadSelectedPhotos.Location = new System.Drawing.Point(675, 371);
-            this.buttonDownloadSelectedPhotos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonDownloadSelectedPhotos.Margin = new System.Windows.Forms.Padding(2);
             this.buttonDownloadSelectedPhotos.Name = "buttonDownloadSelectedPhotos";
             this.buttonDownloadSelectedPhotos.Size = new System.Drawing.Size(165, 32);
             this.buttonDownloadSelectedPhotos.TabIndex = 9;
@@ -137,7 +138,7 @@ namespace C12Ex02Y314440009V319512893
             // buttonExit
             // 
             this.buttonExit.Location = new System.Drawing.Point(675, 479);
-            this.buttonExit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonExit.Margin = new System.Windows.Forms.Padding(2);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(165, 35);
             this.buttonExit.TabIndex = 9;
@@ -156,7 +157,7 @@ namespace C12Ex02Y314440009V319512893
             // progressBarPhotosDownload
             // 
             this.progressBarPhotosDownload.Location = new System.Drawing.Point(675, 407);
-            this.progressBarPhotosDownload.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.progressBarPhotosDownload.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarPhotosDownload.Name = "progressBarPhotosDownload";
             this.progressBarPhotosDownload.Size = new System.Drawing.Size(164, 12);
             this.progressBarPhotosDownload.TabIndex = 12;
@@ -188,7 +189,7 @@ namespace C12Ex02Y314440009V319512893
             this.Controls.Add(this.listBoxFriends);
             this.Controls.Add(this.image_smallPictureBox);
             this.Controls.Add(this.buttonLogin);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainWindow";
             this.Text = "Title";
             ((System.ComponentModel.ISupportInitialize)(this.image_smallPictureBox)).EndInit();

@@ -208,7 +208,7 @@ namespace C12Ex02Y314440009V319512893
         {
             if (sender is PictureBox)
             {
-                PictureBox tmpPicture = sender as PictureBox;
+                PictureBoxProxy tmpPicture = sender as PictureBoxProxy;
                 this.AlbumPictureBox.LoadAsync(tmpPicture.ImageLocation);
             }
         }

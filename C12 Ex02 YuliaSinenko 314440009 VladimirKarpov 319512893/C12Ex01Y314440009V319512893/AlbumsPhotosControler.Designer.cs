@@ -32,7 +32,7 @@ namespace C12Ex02Y314440009V319512893
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBoxAlbumsPhoto = new System.Windows.Forms.PictureBox();
+            this.pictureBoxAlbumsPhoto = new PictureBoxProxy();
             this.checkBoxAlbumsPhoto = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAlbumsPhoto)).BeginInit();
             this.SuspendLayout();
@@ -69,7 +69,7 @@ namespace C12Ex02Y314440009V319512893
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBoxAlbumsPhoto;
+        private PictureBoxProxy pictureBoxAlbumsPhoto;
         private System.Windows.Forms.CheckBox checkBoxAlbumsPhoto;
     }
 }
