@@ -17,7 +17,7 @@ namespace C12Ex02Y314440009V319512893
         void LoadAsync(string url);
     }
 
-    class PictureBoxProxy : PictureBox, IPictureBox
+    class PictureBoxProxy : PictureBox , IPictureBox
     {
         public static Dictionary<String, Image> m_AlbumsPhotosCollection = new Dictionary<String, Image>();
 
@@ -35,7 +35,7 @@ namespace C12Ex02Y314440009V319512893
             get { return m_AlbumsPhotosCollection; }
             set { m_AlbumsPhotosCollection = value; }
         }
-
+        
         public void LoadAsync(string i_Url)
         {
 
@@ -52,5 +52,6 @@ namespace C12Ex02Y314440009V319512893
                 this.ImageLocation = m_AlbumPicture.ImageLocation;
             }
         }
+        
     }
 }

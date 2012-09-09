@@ -11,6 +11,7 @@ namespace C12Ex02Y314440009V319512893
     using System.Text;
     using System.Windows.Forms;
     using System.Windows.Forms.Design;
+    using FacebookWrapper.ObjectModel;
 
     public partial class AlbumsPhotosControler : UserControl, IComponent
     {
@@ -38,6 +39,11 @@ namespace C12Ex02Y314440009V319512893
         void pictureBoxAlbumsPhoto_Click(object sender, EventArgs e)
         {
             //this.checkBoxAlbumsPhoto.Checked = !this.checkBoxAlbumsPhoto.Checked;
+        }
+
+        public void displaySelectedPhotoTags(Photo i_photo)
+        {
+            throw new NotImplementedException();
         }
     }
 }
