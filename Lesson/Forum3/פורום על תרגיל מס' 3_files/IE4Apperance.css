@@ -1,0 +1,657 @@
+A:link
+{
+    COLOR: #003399
+}
+A:link
+{
+    COLOR: blue
+}
+A:visited
+{
+    COLOR: blue
+}
+A:hover
+{
+    COLOR: red
+}
+A:active
+{
+    COLOR: firebrick
+}
+P
+{
+    PAGE-BREAK-AFTER: always
+}
+BODY
+{
+    FONT-SIZE: 12px;
+    COLOR: black;
+    FONT-FAMILY: Arial;
+    BACKGROUND-COLOR: whitesmoke
+}
+.Side
+{
+    BACKGROUND-COLOR: #e9f1fb
+}
+.Header
+{
+    PADDING-RIGHT: 5px;
+    PADDING-LEFT: 5px;
+    FONT-SIZE: 14px;
+    COLOR: #ffffff;
+    BACKGROUND-COLOR: #70a7ac
+}
+.Header_Rec
+{
+    WIDTH: 20px;
+    BACKGROUND-COLOR: #f6d94d
+}
+.Sorted_Table_Header_ON
+{
+    FONT-WEIGHT: bold;
+    COLOR: #a03346;
+    BACKGROUND-COLOR: #7292d4;
+    TEXT-DECORATION: underline
+}
+.Sorted_Table_Header_OFF
+{
+    FONT-WEIGHT: bold;
+    COLOR: white;
+    BACKGROUND-COLOR: #7292d4;
+    TEXT-DECORATION: underline
+}
+.Regular_Table_Header
+{
+    FONT-WEIGHT: bold;
+    COLOR: white;
+    BACKGROUND-COLOR: #7292d4
+}
+.Table_Content_Main
+{
+    BACKGROUND-COLOR: #d7def8
+}
+.Table_Content_Secondary
+{
+    BACKGROUND-COLOR: #e3e8fd
+}
+.Search_Title_ON
+{
+    FONT-WEIGHT: bold;
+    COLOR: #585858;
+    BACKGROUND-COLOR: #e6e6e6
+}
+.Search_Title_OFF
+{
+    FONT-WEIGHT: bold;
+    COLOR: #a51414;
+    BACKGROUND-COLOR: #e6e6e6
+}
+.kishur
+{
+    CURSOR: hand;
+    COLOR: blue;
+    TEXT-DECORATION: underline
+}
+.Sub_Header
+{
+    PADDING-RIGHT: 5px;
+    PADDING-LEFT: 5px;
+    COLOR: black;
+    BACKGROUND-COLOR: #d0cef3
+}
+.Sub_Header_Rec
+{
+    WIDTH: 20px;
+    BACKGROUND-COLOR: #f6d94d
+}
+TD
+{
+    FONT-SIZE: 12px;
+    FONT-FAMILY: Arial
+}
+.Sorted_Table_Header
+{
+    FONT-WEIGHT: bold;
+    COLOR: #ffffff;
+    BACKGROUND-COLOR: #7292d4
+}
+.Search_Title
+{
+    BACKGROUND-COLOR: #e6e6e6
+}
+SELECT
+{
+    FONT-SIZE: 12px;
+    FONT-FAMILY: Arial
+}
+INPUT
+{
+    FONT-SIZE: 12px;
+    FONT-FAMILY: Arial
+}
+.Header_Border
+{
+    BORDER-RIGHT: whitesmoke thin solid;
+    BORDER-TOP: whitesmoke thin solid;
+    BORDER-LEFT: whitesmoke thin solid;
+    BORDER-BOTTOM: whitesmoke thin solid
+}
+.AdminNavPreferences
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 9pt;
+    BACKGROUND: #a2c9d0;
+    CURSOR: hand;
+    COLOR: #045487;
+    FONT-FAMILY: Arial
+}
+.AdminNavSelectPreferences
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 9pt;
+    BACKGROUND: #5599be;
+    CURSOR: hand;
+    COLOR: #ffffff;
+    FONT-FAMILY: Arial
+}
+.Selected_subject
+{
+    FONT-WEIGHT: bold;
+    COLOR: white
+}
+.firebrick
+{
+    COLOR: firebrick
+}
+.Table_Content_MainB
+{
+    BACKGROUND-COLOR: #bac6f8
+}
+.Table_Content_MainC
+{
+    BACKGROUND-COLOR: #e3edf7
+}
+TEXTAREA
+{
+    FONT-SIZE: 12px;
+    COLOR: black;
+    FONT-FAMILY: Arial
+}
+.mainPage
+{
+    BACKGROUND-COLOR: whitesmoke
+}
+.buttons
+{
+    BORDER-RIGHT: #8619f4 1px solid;
+    PADDING-RIGHT: 2px;
+    BORDER-TOP: #8619f4 1px solid;
+    PADDING-LEFT: 2px;
+    FONT-SIZE: 12px;
+    VERTICAL-ALIGN: middle;
+    BORDER-LEFT: #8619f4 1px solid;
+    CURSOR: hand;
+    COLOR: #8619f4;
+    BORDER-BOTTOM: #8619f4 1px solid;
+    FONT-FAMILY: Arial;
+    LETTER-SPACING: normal;
+    HEIGHT: 18px;
+    BACKGROUND-COLOR: #f3f0ce
+}
+.textbox
+{
+    BORDER-RIGHT: #787878 1px solid;
+    BORDER-TOP: #787878 1px solid;
+    VERTICAL-ALIGN: middle;
+    BORDER-LEFT: #787878 1px solid;
+    BORDER-BOTTOM: #787878 1px solid;
+    BACKGROUND-COLOR: #ffffff
+}
+.Buttons_With_Img
+{
+    BORDER-RIGHT: #5f76bc 1px solid;
+    PADDING-RIGHT: 2px;
+    BORDER-TOP: #5f76bc 1px solid;
+    PADDING-LEFT: 2px;
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 12px;
+    VERTICAL-ALIGN: bottom;
+    BORDER-LEFT: 0px;
+    CURSOR: hand;
+    COLOR: #564da6;
+    BORDER-BOTTOM: #5f76bc 1px solid;
+    FONT-FAMILY: Arial;
+    LETTER-SPACING: normal;
+    HEIGHT: 18px;
+    BACKGROUND-COLOR: #f6ffc0;
+    TEXT-DECORATION: none
+}
+.img
+{
+    BORDER-RIGHT: 0px;
+    BORDER-TOP: #5f76bc 1px solid;
+    VERTICAL-ALIGN: bottom;
+    BORDER-LEFT: #5f76bc 1px solid;
+    CURSOR: hand;
+    BORDER-BOTTOM: #5f76bc 1px solid;
+    HEIGHT: 16px;
+    BACKGROUND-COLOR: #f6ffc0
+}
+.Link_Buttons
+{
+    BORDER-RIGHT: #5f76bc 1px solid;
+    PADDING-RIGHT: 2px;
+    BORDER-TOP: #5f76bc 1px solid;
+    PADDING-LEFT: 2px;
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 12px;
+    BACKGROUND-IMAGE: none;
+    VERTICAL-ALIGN: bottom;
+    BORDER-LEFT: #5f76bc 1px solid;
+    CURSOR: hand;
+    COLOR: #564da6;
+    BORDER-BOTTOM: #5f76bc 1px solid;
+    BACKGROUND-REPEAT: repeat;
+    FONT-FAMILY: Arial;
+    LETTER-SPACING: normal;
+    HEIGHT: 18px;
+    BACKGROUND-COLOR: #f6ffc0;
+    TEXT-DECORATION: none
+}
+.Remark
+{
+    FONT-SIZE: 11px;
+    FONT-FAMILY: Arial
+}
+.MastField
+{
+    FONT-SIZE: 12px;
+    COLOR: red;
+    FONT-FAMILY: Arial
+}
+.RemarkGray
+{
+    FONT-SIZE: 12px;
+    COLOR: gray;
+    FONT-FAMILY: Arial
+}
+.ButtonsLowZone
+{
+    BACKGROUND-COLOR: #184c7b
+}
+.ReadNSignSide
+{
+    BACKGROUND-COLOR: #ffe38b
+}
+.invisible
+{
+    DISPLAY: none;
+    VISIBILITY: hidden;
+    POSITION: absolute
+}
+.wait
+{
+    BORDER-RIGHT: 0px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: 0px;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    MARGIN: 0px;
+    BORDER-LEFT: 0px;
+    WIDTH: 100%;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: 0px;
+    POSITION: relative;
+    TOP: 0px;
+    HEIGHT: 100%;
+    TEXT-ALIGN: center
+}
+.TestTime
+{
+    BORDER-RIGHT: darkblue 1px solid;
+    BORDER-TOP: darkblue 1px solid;
+    BORDER-LEFT: darkblue 1px solid;
+    BORDER-BOTTOM: darkblue 1px solid;
+    BACKGROUND-COLOR: #deebff
+}
+A.SelectedElementText:link
+{
+    FONT-SIZE: 12px;
+    COLOR: #f95f0b;
+    FONT-FAMILY: Arial;
+    TEXT-DECORATION: none
+}
+A.SelectedElementText:hover
+{
+    FONT-SIZE: 12px;
+    COLOR: #f95f0b;
+    FONT-FAMILY: Arial;
+    TEXT-DECORATION: underline
+}
+.RegularElementText
+{
+    FONT-SIZE: 12px;
+    COLOR: #315678;
+    FONT-FAMILY: Arial;
+    TEXT-DECORATION: none
+}
+A.LinkableElementText
+{
+    FONT-SIZE: 12px;
+    COLOR: blue;
+    FONT-FAMILY: Arial;
+    TEXT-DECORATION: none
+}
+A.LinkableElementText:hover
+{
+    FONT-SIZE: 12px;
+    COLOR: blue;
+    FONT-FAMILY: Arial;
+    TEXT-DECORATION: underline
+}
+.DisableLinkableElementText
+{
+    FONT-SIZE: 12px;
+    COLOR: black;
+    FONT-FAMILY: Arial;
+    TEXT-DECORATION: none
+}
+.RegularElement0
+{
+    FONT-WEIGHT: bold;
+    BACKGROUND-COLOR: #c6dbef
+}
+.RegularElement1
+{
+    BACKGROUND-COLOR: #e5ecf3
+}
+.RegularElement2
+{
+    BACKGROUND-COLOR: #f3f8fc
+}
+.ContentListHeader
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 16px;
+    COLOR: white;
+    BACKGROUND-COLOR: #315678
+}
+.ContentListTable
+{
+    BORDER-RIGHT: #315678 1px solid;
+    BORDER-TOP: #315678 0px solid;
+    BORDER-LEFT: #315678 1px solid;
+    BORDER-BOTTOM: #315678 1px solid
+}
+.Buttons_With_Img2
+{
+    BORDER-RIGHT: 0px;
+    PADDING-RIGHT: 2px;
+    BORDER-TOP: #5f76bc 1px solid;
+    PADDING-LEFT: 2px;
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 12px;
+    VERTICAL-ALIGN: bottom;
+    BORDER-LEFT: #5f76bc 1px solid;
+    CURSOR: hand;
+    COLOR: #564da6;
+    BORDER-BOTTOM: #5f76bc 1px solid;
+    FONT-FAMILY: Arial;
+    LETTER-SPACING: normal;
+    HEIGHT: 18px;
+    BACKGROUND-COLOR: #f6ffc0;
+    TEXT-DECORATION: none
+}
+.img2
+{
+    BORDER-RIGHT: #5f76bc 1px solid;
+    BORDER-TOP: #5f76bc 1px solid;
+    VERTICAL-ALIGN: bottom;
+    BORDER-LEFT: 0px;
+    CURSOR: hand;
+    BORDER-BOTTOM: #5f76bc 1px solid;
+    HEIGHT: 16px;
+    BACKGROUND-COLOR: #f6ffc0
+}
+.buttons_With_Img_Disable
+{
+    BORDER-RIGHT: #5f76bc 1px solid;
+    PADDING-RIGHT: 2px;
+    BORDER-TOP: #5f76bc 1px solid;
+    PADDING-LEFT: 2px;
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 12px;
+    VERTICAL-ALIGN: bottom;
+    BORDER-LEFT: 0px;
+    CURSOR: hand;
+    COLOR: #564da6;
+    BORDER-BOTTOM: #5f76bc 1px solid;
+    FONT-FAMILY: Arial;
+    LETTER-SPACING: normal;
+    HEIGHT: 18px;
+    BACKGROUND-COLOR: #bdc0ac;
+    TEXT-DECORATION: none
+}
+.img_Disable
+{
+    BORDER-RIGHT: 0px;
+    BORDER-TOP: #5f76bc 1px solid;
+    VERTICAL-ALIGN: bottom;
+    BORDER-LEFT: #5f76bc 1px solid;
+    CURSOR: hand;
+    BORDER-BOTTOM: #5f76bc 1px solid;
+    HEIGHT: 16px;
+    BACKGROUND-COLOR: #bdc0ac
+}
+.PF_Header
+{
+    PADDING-RIGHT: 5px;
+    PADDING-LEFT: 5px;
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 14px;
+    COLOR: #093071
+}
+.PF_HeaderB
+{
+    PADDING-RIGHT: 5px;
+    PADDING-LEFT: 5px;
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 14px;
+    BACKGROUND-ATTACHMENT: scroll;
+    BACKGROUND-IMAGE: url(/images/PersonalFiletop-back.jpg);
+    COLOR: #093071
+}
+.PF_Header_Rec
+{
+    BACKGROUND-IMAGE: none;
+    WIDTH: 20px;
+    BACKGROUND-COLOR: #093071
+}
+.PF_Header_Sub
+{
+    PADDING-RIGHT: 5px;
+    PADDING-LEFT: 5px;
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 14px;
+    BACKGROUND-IMAGE: url(/images/SubHeaderImg.gif);
+    COLOR: #093071
+}
+.PF_Header_Sub_Rec
+{
+    WIDTH: 20px;
+    BACKGROUND-COLOR: #8a9cba
+}
+.PF_Header_Sub_Content
+{
+    BACKGROUND-COLOR: #e3edf7
+}
+.PF_Header_Content
+{
+    COLOR: #e3edf7
+}
+.PF_Header_Content_Line
+{
+    FONT-WEIGHT: bold;
+    COLOR: #e3edf7;
+    TEXT-DECORATION: underline
+}
+.PF_AdminNavPreferences
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 9pt;
+    BACKGROUND: #d0e1f1;
+    CURSOR: hand;
+    COLOR: #093071;
+    FONT-FAMILY: Arial
+}
+.PF_AdminNavSelectPreferences
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 9pt;
+    BACKGROUND: #8db3d7;
+    CURSOR: hand;
+    COLOR: #ffffff;
+    FONT-FAMILY: Arial
+}
+.PF_PropertyName
+{
+    FONT-WEIGHT: bold;
+    BACKGROUND: #adccea
+}
+.PF_PropertyValue
+{
+    FONT-WEIGHT: normal;
+    BACKGROUND: #c5ddf4
+}
+.ResponseGuidence
+{
+    BACKGROUND-COLOR: #e7e7e7
+}
+.iframeDimensions
+{
+    WIDTH: 675px;
+    HEIGHT: 300px
+}
+.ItemStyle
+{
+    WIDTH: 180px
+}
+.ItemPagesBar
+{
+    PADDING-RIGHT: 5px;
+    PADDING-LEFT: 5px;
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 14px;
+    BACKGROUND-ATTACHMENT: scroll;
+    MARGIN-LEFT: 1px;
+    BACKGROUND-COLOR: #dfe7f1
+}
+.ItemPageTD
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 13px;
+    BORDER-LEFT: white 1px solid;
+    COLOR: #093071;
+    FONT-FAMILY: Arial
+}
+.ItemPageLastTD
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 13px;
+    FONT-FAMILY: Arial
+}
+.ItemPagesTable
+{
+    BORDER-TOP: white 2px solid
+}
+A.PageLink
+{
+    COLOR: #093071;
+    TEXT-DECORATION: none
+}
+A.PageLink:hover
+{
+    COLOR: #093071;
+    TEXT-DECORATION: underline
+}
+A.PageLink:visited
+{
+    COLOR: #093071
+}
+.ItemPageSelectedTD
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 13px;
+    BACKGROUND-IMAGE: url(/images/SelectedPageBG.gif);
+    BORDER-LEFT: white 1px solid;
+    COLOR: #093071;
+    FONT-FAMILY: Arial
+}
+.iframeDimensions600
+{
+    WIDTH: 550px;
+    HEIGHT: 300px
+}
+
+.Option_Label
+{
+    BORDER-RIGHT: #5f76bc 1px solid;
+    PADDING-RIGHT: 2px;
+    BORDER-TOP: #5f76bc 1px solid;
+    PADDING-LEFT: 2px;
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 12px;
+    BACKGROUND-IMAGE: none;
+    VERTICAL-ALIGN: bottom;
+    BORDER-LEFT: #5f76bc 1px solid;
+    COLOR: Navy;
+    BORDER-BOTTOM: #5f76bc 1px solid;
+    BACKGROUND-REPEAT: repeat;
+    FONT-FAMILY: Arial;
+    LETTER-SPACING: normal;
+    HEIGHT: 18px;
+    BACKGROUND-COLOR: #DEE2E3;
+    TEXT-DECORATION: none
+}
+
+.ItemApprovalLink
+{
+text-decoration: underline;
+color: Blue;
+cursor:hand;
+}
+
+A.ItemApprovalLink: hover
+{
+ text-decoration: underline;
+ cursor:hand; 
+ color: Blue;
+}
+
+A.ItemApprovalLink: link
+{
+ text-decoration: underline;
+ cursor:hand; 
+ color: Blue;
+}
+
+A.ItemApprovalLink: visited
+{
+ text-decoration: underline;
+ cursor:hand; 
+ color: Blue;
+}
+
+A.ItemApprovalLink: active
+{
+ text-decoration: underline;
+ cursor:hand; 
+ color: Blue;
+}
+
+A.ItemApprovalLink
+{
+ text-decoration: underline;
+ cursor:hand; 
+ color: Blue;
+}

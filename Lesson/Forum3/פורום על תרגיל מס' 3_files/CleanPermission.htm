@@ -1,0 +1,69 @@
+
+<!-- saved from url=(0184)http://hl.hit.ac.il/bareket/CleanPermission.asp?random=15198&sid=47554&iid=107543&sentfrom=ExerciseMenu.asp&vcCourseGuid=F83011475F2E754491B481B987817383&vcCourseID=55119&headertype=19 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
+
+<title></title>
+
+
+	<script language="javascript" src="common.js"></script>
+	<script language="javascript">
+
+	function Clean()
+	{
+	
+	var Path
+	Path="/upload/55119/library/47549/47554/I107543,/upload/55119/library/47549/47554/I107543/attachments";
+	var count =0
+	try{
+		if(document.all['FullWinItem'].value==1)
+		{
+		if(parent.opener.parent.parent.parent.frames['vcTop'].document.all['Full'].value=="" || parent.opener.parent.parent.parent.frames['vcTop'].document.all['Full'].value=='/upload/55119/library/47549/47554/I107543,/upload/55119/library/47549/47554/I107543/attachments')
+				{
+				parent.opener.parent.parent.parent.frames['vcTop'].document.all['Full'].value='/upload/55119/library/47549/47554/I107543,/upload/55119/library/47549/47554/I107543/attachments'
+				}
+				else
+				{
+				parent.opener.parent.parent.parent.frames['vcTop'].document.all['Full'].value=parent.opener.parent.parent.parent.frames['vcTop'].document.all['Full'].value+',/upload/55119/library/47549/47554/I107543,/upload/55119/library/47549/47554/I107543/attachments'
+				}
+		
+		document.all['FullWinItem'].value=0;
+		return;
+		}
+	}catch(e){}
+	try{
+		if(parent.opener.parent.parent.parent.frames['vcTop'].document.all['Full'].value!=""){
+		Path=Path+','+parent.opener.parent.parent.parent.frames['vcTop'].document.all['Full'].value;
+		}
+	}catch(e){}
+	try{parent.opener.parent.parent.parent.frames['vcTop'].document.all['Full'].value=""}catch(e){}
+	
+		try{parent.parent.parent.frames['ClearC'].window.location.href='CleanCookie.asp?path='+Path+'&Clean=yes'}catch(e){count++}
+		try{parent.window.opener.parent.parent.parent.frames['ClearC'].window.location.href ='CleanCookie.asp?path='+Path+'&Clean=yes'}catch(e){count++}
+		try{parent.opener.parent.parent.parent.parent.parent.opener.parent.parent.parent.frames['ClearC'].window.location.href ='CleanCookie.asp?path='+Path+'&Clean=yes'}catch(e){count++}
+	
+	    if (count == 1 || count > 2)
+	    {
+		    try{
+		    CurrentPage = 'CleanCookieXmlHttp.asp'
+		    Data = 'path='+ Path 
+		    sendXmlPost( CurrentPage, Data, null )//('CleanCookie.asp?path='+Path+'&Clean=yes', "")
+		    }catch(e){}
+	    }
+	    try
+	    {
+	        ClearLogPage='CleanCookieXmlHttp.asp'
+	        ClearLogPageData="random=15198&sid=47554&iid=107543&sentfrom=ExerciseMenu.asp&vcCourseGuid=F83011475F2E754491B481B987817383&vcCourseID=55119&headertype=19&ClearLogItem=yes"
+	        sendXmlPost( ClearLogPage, ClearLogPageData, null )
+	    } 
+	    catch(e){}  
+	}
+	</script>
+	</head>
+	<body onbeforeunload="Clean()">
+	<form name="FullWinItems" action="">
+	<input type="hidden" name="FullWinItem" value="0">
+	</form>
+	
+
+	
+<div style="display: none; " id="hiddenlpsubmitdiv"></div><script>try{for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){ var lastpass_f = document.forms[lastpass_iter]; if(typeof(lastpass_f.lpsubmitorig2)=="undefined"){ lastpass_f.lpsubmitorig2 = lastpass_f.submit; lastpass_f.submit = function(){ var form=this; var customEvent = document.createEvent("Event"); customEvent.initEvent("lpCustomEvent", true, true); var d = document.getElementById("hiddenlpsubmitdiv"); for(var i = 0; i < document.forms.length; i++){ if(document.forms[i]==form){ d.innerText=i; } } d.dispatchEvent(customEvent); form.lpsubmitorig2(); } } }}catch(e){}</script></body></html>

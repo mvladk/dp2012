@@ -1,0 +1,248 @@
+
+<!-- saved from url=(0237)http://hl.hit.ac.il/schoolink2000/forums/Add_Attach.asp?AddLinkBoard=no&page=1&searchType=&substring=&vcCourseGUID=F83011475F2E754491B481B987817383&vcCourseID=55119&id=107543&openForum=&FromItem=ExerciseMenu.asp&Sentfrom=ExerciseMenu.asp -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
+	<link rel="STYLESHEET" href="http://hl.hit.ac.il/upload/misc/CssFiles/stylesff.css">
+	<script language="javascript" src="getFrames.js"></script>
+	<script language="javascript" src="common.js"></script>
+	<script language="javascript">
+	
+
+	function trim(str)
+	{
+	var result = new String(str);
+	while (result.charAt(result.length - 1) == ' ')
+		result = result.substring(0, result.length - 1);
+	while (result.charAt(0) == ' ')
+		result = result.substring(1, result.length);
+	return result
+	}
+	
+	function check()
+	{
+		
+		fileName=trim(iframeUpload.FormUplaodFile.fileUpload.value)
+		
+				
+		if(trim(parent.document.frmMessage.subject.value)=="")
+		{
+			alert("יש להקליד כותרת");
+			return false;
+		}
+				
+		
+		parent.frames.edwin.savetext();
+		if(trim(parent.document.frmMessage.body.value)=="")
+		{
+			alert("יש להקליד את תוכן ההודעה")
+			return false;
+		}
+		
+		//if(document.frmMessage.fName.value!="")
+		if(fileName!="")
+		{
+			alert("יש ללחוץ על כפתור ההוספה לצורך הוספת קישור")
+			return false;
+		}
+		
+		document.all['imgSubmit'].disabled = true;
+		return true;
+	}
+	
+	function IsLegalFileType(FileName)
+    {
+	    var FileType=FileName.substr(FileName.lastIndexOf("."),FileName.length);
+	    var TypesAllowed = ".csv,.doc,.txt,.mht,.mhtml,.rtf,.htm,.html,.doc,.ppt,.xls,.pps,.mdb,.docx,.pptx,.ppsx,.xlsx,.mdbx,.pdf,.asf,.gif,.jpg,.JPG,.mov,.mpg,.mpeg,.avi,.wav,.rm,.mp3,.bmp,.tif,.png,.swf,.zip,.rar,.c,.cpp,.h,.dsw,.ncb,.opt,.plg,.dsp,.vb,.mov,.fla,.sav,.spo,.spv,.sps,.xlsm,.mpp,.doe"
+	     if(TypesAllowed=="1")
+	    {
+	        return true
+	    }
+	    var arrTypes=TypesAllowed.split(",")
+	    success=false
+	    for(i=0;i<arrTypes.length;i++)
+	    {
+		    if(FileType.toLowerCase()==arrTypes[i].toLowerCase())
+		    {
+			    success=true
+			    break;
+		    }
+	    }	
+	    return success;
+    }
+	
+	function SendAttach()
+	{
+	    var IsLegatFile = true;
+		if(window.ActiveXObject)
+			fileName=trim(iframeUpload.FormUplaodFile.fileUpload.value)
+		else
+			fileName=trim(window.frames["iframeUpload"].document.forms["FormUplaodFile"].elements["fileUpload"].value)
+		//if(document.all['fName'].value=="")
+		if(fileName=="")
+		{
+			alert("יש לצרף קובץ");
+			IsLegatFile = false;
+		}
+		if(!IsLegalFileType(fileName))
+		{
+		    alert("סוג הקובץ אינו חוקי")
+		    IsLegatFile = false;
+		}
+		
+		if (IsLegatFile == true)	
+		{
+		    document.getElementById("trAttachFileAlert").style.display = "inline";
+	        document.frmMessage.Attach.value='Addattach';
+	        saveFile();
+		}
+		
+	}
+	
+	function Delete(strPath)
+	{
+		
+		if(confirm("? האם אתה בטוח"))
+		{	
+		document.all['ToDel'].value=unescape(strPath)
+		
+		vcCourseGuid=parent.document.all["vcCourseGUID"].value
+		vcCourseID=parent.document.all["vcCourseID"].value
+		id=parent.document.all["ID"].value
+		searchType=parent.document.all["searchType"].value
+		substring=parent.document.all["substring"].value
+		reply=parent.document.all["reply"].value
+		TempSubject=trim(parent.document.all["subject"].value)
+		TempBody=trim(parent.document.all["body"].value)
+		openForum=""
+		
+		var Url="Del_Attach.asp?ToDel="+escape(document.all['ToDel'].value)
+		var ResultDeletion=sendXml(Url,null)
+		
+		urlToComeBack="/schoolink2000/forums/add_Attach.asp?vcCourseGUID="+ vcCourseGuid+ "&vcCourseID="+ vcCourseID+ "&id=" + id + "&searchType=" + searchType + "&substring=" +substring+ "&openForum="+openForum+"&Temp=yes&Subject="+TempSubject
+		document.location.href=urlToComeBack
+		//parent.frames.edwin.savetext();
+		//parent.document.forms[0].submit();
+		
+		}
+	}
+	function saveFile()
+	{
+		vcCourseGuid=parent.document.all["vcCourseGUID"].value
+		vcCourseID=parent.document.all["vcCourseID"].value
+		id=parent.document.all["ID"].value
+		searchType=parent.document.all["searchType"].value
+		substring=parent.document.all["substring"].value
+		reply=parent.document.all["reply"].value
+		TempSubject=trim(parent.document.all["subject"].value)
+		TempBody=trim(parent.document.all["body"].value)
+		//TempMail=trim(document.all["emailNotification"].value)
+		try{
+		if(parent.document.all["emailNotification"]!=null)
+		{
+			if(parent.document.all["emailNotification"].checked)
+				TempMail="on"
+			else
+				TempMail=""	
+		}
+		else
+			TempMail=""		
+		}catch(e)
+		{
+			TempMail=""
+		}
+		
+		if(TempBody.toLowerCase().indexOf("</style>")>-1)
+			TempBody=TempBody.substr(TempBody.toLowerCase().indexOf("</style>")+8,TempBody.length)
+			
+		openForum=""
+		
+		//urlToComeBack="/schoolink2000/forums/add_Attach.asp?vcCourseGUID="+ vcCourseGuid+ "&vcCourseID="+ vcCourseID + "&id=" + id + "&searchType=" + searchType + "&substring=" +substring + "&openForum="+openForum+"&Temp=yes&Subject="+TempSubject+"&body="+TempBody+"&emailNotification="+TempMail+"&SentFrom=ExerciseMenu.asp&FromItem=ExerciseMenu.asp&reply="+reply+"&SaveSession=1"
+		urlToComeBack="/schoolink2000/forums/add_Attach.asp?vcCourseGUID="+ vcCourseGuid+ "&vcCourseID="+ vcCourseID+ "&id=" + id + "&searchType=" + searchType + "&substring=" +substring+ "&openForum="+openForum+"&Temp=yes&Subject="+TempSubject
+		iframeUpload.submitForm("D%3A%5CHighLearn%5Cdata%5CUpload%5Ccampus%5C55119%5Clibrary%5C47549%2F47554%5CI107543%5Cattachments%5C921E87803FB94E718FC9A5DFF7316EB6", escape(urlToComeBack),0)
+		
+	}
+	
+	function sendXml( page, message ) 
+	{
+		if(window.ActiveXObject)
+			var xmlhttp = new ActiveXObject( 'Microsoft.XMLHTTP' );
+		else
+			var xmlhttp = new XMLHttpRequest();
+		
+		xmlhttp.open( 'GET', page, false );
+		if( message == null || message == '' ) message = '<root></root>';
+		xmlhttp.send( message );
+		return xmlhttp.responseText;
+	}
+	
+	</script>
+	<style type="text/css">
+	    html, body {
+            height: 100%;
+            overflow: hidden;
+            margin:0px;
+           }
+	</style>
+</head>
+
+<body dir="RTL" scroll="no">
+
+		<form onsubmit="return check()" action="http://hl.hit.ac.il/schoolink2000/forums/add_message_action.asp?FromLinkBoard=yes&openForum=&FromItem=ExerciseMenu.asp&SentFrom=ExerciseMenu.asp" method="post" id="frmMessage" name="frmMessage">
+		
+		
+<table cellspacing="10" width="90%" border="0">
+	
+
+		<input type="hidden" name="ID" value="107543">
+		<input type="hidden" name="reply" value="">
+
+		<input type="hidden" name="vcCourseGUID" value="F83011475F2E754491B481B987817383">
+		<input type="hidden" name="vcCourseID" value="55119">
+		<input type="hidden" name="searchType" value="">
+		<input type="hidden" name="substring" value="">
+		<input type="hidden" name="SentFrom" value="ExerciseMenu.asp">
+
+		<input type="hidden" name="Attach" value="">
+		<input type="hidden" name="ToDel" value="">
+		<input type="hidden" name="Rename" value="">
+		<input type="hidden" name="FromItem" value="ExerciseMenu.asp">
+	
+	<tbody><tr>
+	    
+		<td style="width:10%;white-space:nowrap">
+			קובץ מצורף:
+		</td>
+		<td style="width:60%" align="right">
+			<!--
+			<input TYPE="file" class="textbox" NAME="fName" VALUE="">
+			-->
+			
+			<iframe frameborder="0" src="uploadFilesIframe.htm" value="" id="iframeUpload" name="iframeUpload" style="height:22px;width:100%"></iframe>
+			
+		</td>	
+		<td style="width:40%">	
+			<!--
+			<span class="Link_Buttons" onclick="javascript:if(SendAttach()){document.frmMessage.Attach.value='Addattach';frames.edwin.savetext();document.forms[0].submit()}">הוסף את הקובץ</span>
+			-->
+			<!--<span class="Link_Buttons" onclick="javascript:if(SendAttach()){document.frmMessage.Attach.value='Addattach';saveFile()}">הוסף את הקובץ</span>-->
+			<span class="Link_Buttons" onclick="SendAttach()">הוסף את הקובץ</span>
+			
+		</td>
+	</tr>
+	<tr id="trAttachFileAlert" style="display:none">
+	    <td colspan="3">שים לב, הפעולה עשויה לקחת מספר דקות</td>
+	</tr>
+
+		
+	<!--new-->
+	</tbody></table>
+	
+	
+
+
+
+
+
+
+
+
+</form><div style="display: none; " id="hiddenlpsubmitdiv"></div><script>try{for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){ var lastpass_f = document.forms[lastpass_iter]; if(typeof(lastpass_f.lpsubmitorig2)=="undefined"){ lastpass_f.lpsubmitorig2 = lastpass_f.submit; lastpass_f.submit = function(){ var form=this; var customEvent = document.createEvent("Event"); customEvent.initEvent("lpCustomEvent", true, true); var d = document.getElementById("hiddenlpsubmitdiv"); for(var i = 0; i < document.forms.length; i++){ if(document.forms[i]==form){ d.innerText=i; } } d.dispatchEvent(customEvent); form.lpsubmitorig2(); } } }}catch(e){}</script></body></html>

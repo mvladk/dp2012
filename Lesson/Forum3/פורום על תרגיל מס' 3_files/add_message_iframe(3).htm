@@ -1,0 +1,389 @@
+
+<!-- saved from url=(0247)http://hl.hit.ac.il/schoolink2000/forums/add_message_iframe.asp?AddLinkBoard=no&page=1&searchType=&substring=&vcCourseGUID=F83011475F2E754491B481B987817383&vcCourseID=55119&id=107543&FromItem=ExerciseMenu.asp&SentFrom=ExerciseMenu.asp&reply=181100 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
+	<link rel="STYLESHEET" href="http://hl.hit.ac.il/upload/misc/CssFiles/stylesff.css">
+	<script language="javascript" src="getFrames.js"></script>
+	<script language="javascript" src="common.js"></script>
+	<script language="javascript">
+	
+	
+	function trim(str)
+	{
+	var result = new String(str);
+	while (result.charAt(result.length - 1) == ' ')
+		result = result.substring(0, result.length - 1);
+	while (result.charAt(0) == ' ')
+		result = result.substring(1, result.length);
+	return result
+	}
+	
+	function check()
+	{
+	
+	    
+		if(isE)
+			fileName=trim(iframeAttach.iframeUpload.FormUplaodFile.fileUpload.value)
+		else
+			fileName=trim(window.frames["iframeAttach"].frames["iframeUpload"].document.forms["FormUplaodFile"].elements["fileUpload"].value)
+		
+		if(trim(document.frmMessage.subject.value)=="")
+		{
+		    var MsgID="181100"
+		    if(MsgID=="")
+		        MsgID="0"
+		     
+		     var SubjectForum
+		     
+		     if(MsgID=="0") //new message 
+		        SubjectForum=parent.document.getElementById("InstMsg")
+		     else
+		        SubjectForum=parent.document.getElementById("InstRep_"+MsgID)
+		     
+		    
+		     
+		     document.frmMessage.subject.value=SubjectForum.value   
+		     
+		     if(document.frmMessage.subject.value=="פרסם הודעה חדשה מיידית..." || document.frmMessage.subject.value=="פרסם תגובה מיידית...")
+		     {
+		        document.frmMessage.subject.value=""
+		        alert("יש להקליד כותרת");
+		        if(MsgID=="0") //new message 
+		            parent.document.getElementById("InstMsg").focus();
+		        else
+		            parent.document.getElementById("InstRep_"+MsgID).focus();
+		        
+			    return false;
+		     }
+		     
+		    //alert(MsgID)
+		   // return false
+			//alert("יש להקליד כותרת");
+			//return false;
+		}
+		
+	    if(isE)
+	    {
+		    frames.edwin.savetext();
+		    
+		
+		    if(trim(document.frmMessage.body.value)=="")
+		    {
+			    alert("יש להקליד את תוכן ההודעה")
+			    return false;
+		    }
+		}
+		else
+		{
+		      
+		    if(trim(document.getElementById("msgContent").value) == "")
+		    {    
+		        alert("יש להקליד את תוכן ההודעה")
+			    return false;
+			}
+		}
+		
+		if(fileName!="")
+		{
+			alert("יש ללחוץ על כפתור ההוספה לצורך הוספת קישור")
+			return false;
+		}
+		
+		document.all['imgSubmit'].disabled = true;
+		
+		
+		return true;
+	}
+	
+	
+	function SendAttach()
+	{
+		fileName=trim(iframeUpload.FormUplaodFile.fileUpload.value)
+		//if(document.all['fName'].value=="")
+		if(fileName=="")
+		{
+			alert("יש לצרף קובץ");
+			return false;
+		}
+		return true;	
+		
+		
+	}
+	
+	function Delete(strPath)
+	{
+		if(confirm("? האם אתה בטוח"))
+		{	
+		document.all['ToDel'].value=unescape(strPath)
+		frames.edwin.savetext();
+		document.forms[0].submit();
+		}
+	}
+	function saveFile()
+	{
+		vcCourseGuid=document.all["vcCourseGUID"].value
+		vcCourseID=document.all["vcCourseID"].value
+		id=document.all["ID"].value
+		searchType=document.all["searchType"].value
+		substring=document.all["substring"].value
+		reply=document.all["reply"].value
+		TempSubject=trim(document.all["subject"].value)
+		TempBody=trim(document.all["body"].value)
+		//TempMail=trim(document.all["emailNotification"].value)
+		try{
+		if(document.all["emailNotification"]!=null)
+		{
+			if(document.all["emailNotification"].checked)
+				TempMail="on"
+			else
+				TempMail=""	
+		}
+		else
+			TempMail=""		
+		}catch(e)
+		{
+			TempMail=""
+		}
+		
+		if(TempBody.toLowerCase().indexOf("</style>")>-1)
+			TempBody=TempBody.substr(TempBody.toLowerCase().indexOf("</style>")+8,TempBody.length)
+			
+		openForum=""
+		
+		urlToComeBack="/schoolink2000/forums/add_message.asp?vcCourseGUID="+ vcCourseGuid+ "&vcCourseID="+ vcCourseID + "&id=" + id + "&searchType=" + searchType + "&substring=" +substring + "&openForum="+openForum+"&Temp=yes&Subject="+TempSubject+"&body="+TempBody+"&emailNotification="+TempMail+"&SentFrom=ExerciseMenu.asp&FromItem=ExerciseMenu.asp&reply="+reply+"&SaveSession=1"
+		iframeUpload.submitForm("D%3A%5CHighLearn%5Cdata%5CUpload%5Ccampus%5C55119%5Clibrary%5C47549%2F47554%5CI107543%5Cattachments%5C921E87803FB94E718FC9A5DFF7316EB6", escape(urlToComeBack),0)
+		
+	}
+	function previewMessage()
+	{
+		if(isE)
+		{
+			frames.edwin.savetext();
+			
+			var textToSave = document.forms[0].body.value
+		}
+		else
+		{
+		    var textToSave = document.forms[0].msgContent.value
+		}
+		//else
+			//window.frames["edwin"].savetext();
+			
+		
+		var page="/bareket/SetCookies.asp"
+		var request="PreviewM=1&body="+escape(textToSave)
+		var result = sendXmlPost( page, request, null )
+		//textToSave = textToSave.substring(textToSave.indexOf("</Style>") + 8)
+		window.open('preview_message.asp?header='+document.forms[0].subject.value+'&forumHeader=%F4%E5%F8%E5%ED+%F2%EC+%FA%F8%E2%E9%EC+%EE%F1%27+3&forumDescription=&sender=%F7%F8%F4%E5%E1+%E5%EC%E3%E9%EE%E9%F8&vcCourseGUID=F83011475F2E754491B481B987817383&vcCourseID=55119&id=107543&SentFrom=ExerciseMenu.asp', '', 'width=500, height=250, resizable=yes, scrollbars=yes')
+	}
+	function OpenPersonalFile(userID)
+	{
+			var courseID = "55119"
+			//var param = '/PersonalFile/PersonalFile.asp?StudentID=' + userID + '&vcCourseID=' + courseID;
+			var param = '/HighLearnNet/PersonalFiles/PersonalFile.aspx?StudentID=' + userID + '&vcCourseID=' + courseID;
+			window.open(param,'PersonalFile','top=50,left=50,width='+0.9*(screen.width)+',height='+0.8*(screen.height)+',resizable=no')
+	}
+	function ChangeDir(newDir)
+	{
+	    document.getElementById("msgContent").dir = newDir;
+	}
+	</script>
+</head>
+
+<body dir="RTL">
+
+<center>
+
+<table cellspacing="0" width="100%" border="0">
+	
+		<form onsubmit="return check()" action="http://hl.hit.ac.il/schoolink2000/forums/add_message_action_iframe.asp?FromLinkBoard=yes&openForum=&FromItem=ExerciseMenu.asp&SentFrom=ExerciseMenu.asp" method="post" id="frmMessage" name="frmMessage"></form>
+		
+
+		<input type="hidden" name="ID" value="107543">
+		<input type="hidden" name="reply" value="181100">
+
+		<input type="hidden" name="vcCourseGUID" value="F83011475F2E754491B481B987817383">
+		<input type="hidden" name="vcCourseID" value="55119">
+		<input type="hidden" name="searchType" value="">
+		<input type="hidden" name="substring" value="">
+		<input type="hidden" name="SentFrom" value="ExerciseMenu.asp">
+
+		<input type="hidden" name="Attach" value="">
+		<input type="hidden" name="ToDel" value="">
+		<input type="hidden" name="Rename" value="">
+		<input type="hidden" name="FromItem" value="ExerciseMenu.asp">
+	<tbody><tr style="display:none">
+		<td colspan="3">
+			<table border="0" cellspacing="0" cellpadding="3" width="100%">
+				<!--- Subject: --->
+				<tbody><tr style="display:none">
+					<td class="PF_Header_Rec" width="3%">
+						<!--נושא-->
+					</td>
+					<td class="PF_HeaderB">
+						פורום על תרגיל מס' 3
+						
+					</td>
+				</tr>
+
+
+				
+
+					<!--- Description: --->
+					<tr height="1" style="display:none"> </tr>
+					<tr class="Title_Forum" style="display:none">
+						<td width="3%">
+							<!--תאור-->
+						</td>
+						<td>
+								
+<br>	<span class="property-value"><font color="#565151" size="2">כאן ניתן לפרסם שאלות בנוגע לתרגיל מס' 3.<br>נא לא לפרסם תשובות לשאלות של אחרים ולא לפרסם שאלות שמציעות פתרון.</font></span>
+<br>
+<br>
+<br>
+						</td>
+					</tr>
+
+				
+
+			</tbody></table>
+		</td>
+	</tr>
+	
+	
+			
+			<tr style="display:none">
+			<td colspan="3">
+			ההודעה שהנך מגיב/ה עליה:
+			<table border="0" cellpadding="2" width="100%">
+					<!-- Title -->
+					<tbody><tr class="Table_Content_Secondary">
+						<!--						<td WIDTH="10%" BGCOLOR="#D7DFF5">							כותרת						</td>						-->
+						<td width="60%">
+							<img border="0" src="nothing.gif" height="5" width="3">
+							<img border="0" src="HatzRbigon.gif">
+							
+							
+							
+							
+							שלום גיא, יש בעיה בפייסבוק
+							
+						</td>
+						
+						
+						<!-- Sender -->
+						<td width="10%" nowrap="">
+							מאת
+						</td>
+						<td width="17%" nowrap="">
+							<a class="linkstyle" onclick="OpenPersonalFile(43063)" href="http://hl.hit.ac.il/schoolink2000/forums/add_message_iframe.asp?AddLinkBoard=no&page=1&searchType=&substring=&vcCourseGUID=F83011475F2E754491B481B987817383&vcCourseID=55119&id=107543&FromItem=ExerciseMenu.asp&SentFrom=ExerciseMenu.asp&reply=181100#">קוצמן אילן</a>
+						</td>
+						<td nowrap="">
+							<font size="-2">
+							09/09/2012
+							&nbsp; 
+							17:51
+							</font>
+						</td>
+
+					</tr>
+				</tbody></table>
+			</td>
+			</tr>
+			<tr style="display:none">
+			<td colspan="3">
+			
+				<table border="0" cellspacing="2" cellpadding="3" width="90%">
+					<tbody><tr>
+						<td>
+							גם כשאני מנסה להזין את הסיסמא בדפדפן כדי להתחבר לפייסבוק של דגיז פטר
+<br>הפייסבוק מודיע לי שהסיסמא לא נכונה ושאני מנסה יותר מדי.
+<br>ואני מזין את הסיסמא הנכונה.
+<br>יכול להיות שהחליפו את הסיסמא? 
+						</td>
+					</tr>
+					
+				</tbody></table>
+			</td>
+		</tr>
+	
+		
+
+		
+
+	
+
+	<!-- title -->
+	<tr style="display:none">
+		<td width="20%">
+			כותרת ההודעה:
+		</td>
+		<td>
+			<input type="text" class="textbox" maxlength="64" size="64" name="subject" value="">
+		</td>
+		<td></td>
+	</tr>
+
+	<!-- message body -->
+	<tr>
+		<td>
+			<textarea id="PageStyle" name="PageStyle" style="display:none"></textarea>
+			<textarea id="body" name="body" wrap="virtual" rows="6" cols="55" style="display:none">			
+			</textarea>
+			
+			<table border="0">
+			<tbody><tr style="border:none" dir="LTR">
+			    <td><img title="משמאל לימין" src="dirLTR.gif" width="22px" height="20px" alt="" onclick="ChangeDir(&#39;LTR&#39;)">
+			    <img title="מימין לשמאל" src="dirRTL.gif" width="22px" height="20px" alt="" onclick="ChangeDir(&#39;RTL&#39;)"></td>
+			</tr>
+			<tr>
+			    <td>
+			    <textarea dir="RTL" class="textbox" id="msgContent" name="msgContent" cols="100" rows="10"></textarea>
+			    </td>
+			</tr>
+			</tbody></table>
+			
+		</td>
+	</tr>
+
+	
+
+		<!-- email notification -->
+		<tr>
+			<td colspan="3">
+				<input type="checkbox" name="emailNotification">
+				שלח לי הודעה על כל תגובה שאני מקבל
+			</td>
+		</tr>
+
+	
+	
+	</tbody></table>
+</center>
+	
+	<iframe id="iframeAttach" name="iframeAttach" src="Add_Attach(3).htm" width="75%" height="150px" frameborder="0"></iframe>
+
+	<table border="0" cellspacing="0" width="100%">
+	<tbody><tr class="ButtonsLowZone">
+			<td align="left" width="95%" dir="rtl">
+			<nobr><span style="visibility:hidden" class="Buttons_with_img" onclick="previewMessage()">הצג</span><img class="img" style="visibility:hidden" src="showCss.gif" width="16" height="16" onclick="previewMessage()"></nobr>
+		</td>
+		<td align="left" dir="rtl">
+			<nobr><span class="Buttons_with_img" id="imgSubmit" name="imgSubmit" onclick="javascript:if(check()){document.forms[0].Rename.value=&#39;rename&#39;;document.forms[0].submit();}">שלח</span><img class="img" src="sendCss.gif" onclick="javascript:if(check()){document.forms[0].submit();}" width="16" height="16"></nobr>
+		
+		</td>
+		
+		
+	</tr>
+	
+</tbody></table>
+
+
+
+
+
+
+
+	
+
+
+<div style="display: none; " id="hiddenlpsubmitdiv"></div><script>try{for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){ var lastpass_f = document.forms[lastpass_iter]; if(typeof(lastpass_f.lpsubmitorig2)=="undefined"){ lastpass_f.lpsubmitorig2 = lastpass_f.submit; lastpass_f.submit = function(){ var form=this; var customEvent = document.createEvent("Event"); customEvent.initEvent("lpCustomEvent", true, true); var d = document.getElementById("hiddenlpsubmitdiv"); for(var i = 0; i < document.forms.length; i++){ if(document.forms[i]==form){ d.innerText=i; } } d.dispatchEvent(customEvent); form.lpsubmitorig2(); } } }}catch(e){}</script></body></html>

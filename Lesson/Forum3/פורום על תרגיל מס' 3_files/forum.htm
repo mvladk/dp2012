@@ -1,0 +1,1163 @@
+
+<!-- saved from url=(0207)http://hl.hit.ac.il/schoolink2000/forums/forum.asp?vcCourseName=&vcCourseGUID=F83011475F2E754491B481B987817383&vcCourseID=55119&id=107543&AddLinkBoard=no&sentfrom=ExerciseMenu.asp&vcCourseType=3&relatedItem= -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
+	<link rel="STYLESHEET" href="http://hl.hit.ac.il/upload/misc/CssFiles/stylesff.css">
+	<script language="javascript" src="common.js"></script>
+	<script language="javascript" src="getFrames.js"></script>
+	<script src="prototype-1.4.0.js"></script>
+	<script language="javascript">
+	
+	 NotReadMessages = function(forumId,courseID,vcCourseGUID)
+	 {
+	    this._forumId = forumId;
+	    this._courseID = courseID;
+	    this._vcCourseGUID = vcCourseGUID
+	    this._notReadedMsgArr = new Array();
+	    this._arrayLen = 0;
+	 }
+	 
+	 NotReadMessages.prototype=
+	 {
+	    addMsgId: function(id)
+	    {
+	       this._notReadedMsgArr[this._arrayLen] = id;
+	       this._arrayLen+=1;
+	    },
+	    
+	    removeMsgId: function(id)
+	    {
+	        var arrTmp = new Array();
+	        var count = 0;
+	        for(var i=0;i<this._arrayLen;i++)
+	        {
+	            if( this._notReadedMsgArr[i]!=id)
+	            {
+	                arrTmp[count] = this._notReadedMsgArr[i];
+	                count++;
+	            }
+	        }
+	        this._notReadedMsgArr = arrTmp;
+	        this._arrayLen = count;
+	    },
+	    
+	    toStringArray:function()
+	    {
+	        var retVal = "";
+	        for(var i=0;i<this._arrayLen;i++)
+	        {
+	            if(i > 0)
+	             retVal+=",";
+	            retVal += this._notReadedMsgArr[i];
+	        }
+	        return retVal
+	    },
+	    
+	    updateMessages: function()
+	    { 
+	         if(this._arrayLen > 0)
+	         {
+	             var url="InstMsg_action.asp"
+	             var pars="id="+this._forumId+"&vcCourseID="+this._courseID+"&vcCourseGUID="+this._vcCourseGUID+"&MessagesList="+escape(this._notReadedMsgArr)
+	             var myAjax=new Ajax.Request(
+		         url,
+			     {
+				    method:'post',
+				    parameters:pars,
+				    onComplete:function(result)
+				    { 
+				       reloadForumsList();
+				    }
+			     }
+		       )
+		     }
+	    }
+	 } 
+	
+	var NotReadMessagesObj = new NotReadMessages(107543,55119,0xF83011475F2E754491B481B987817383);
+	var ImMsg=0;
+
+	var ht
+		       
+	function OpenPersonalFile(userID)
+	{
+		var courseID = "55119"
+	    //var param = '/PersonalFile/PersonalFile.asp?StudentID=' + userID + '&vcCourseID=' + courseID;
+	    //var param = '/HighLearnNet/PersonalFiles/PersonalFile.asp?StudentID=' + userID + '&vcCourseID=' + courseID;
+	    var param = '/HighLearnNet/PersonalFiles/PersonalFile.aspx?StudentID=' + userID + '&vcCourseID=' + courseID;
+		window.open(param,'PersonalFile','top=50,left=50,width='+0.9*(screen.width)+',height='+0.8*(screen.height)+',resizable=no')
+	}
+	function check()
+	{
+		//var Sub=trim(document.all['substring'].value);
+		var Sub=trim(document.getElementById("substring").value)
+			
+			for(var i=0;i<Sub.length;i++)
+			{
+				if(Sub.charAt(i)!="'" && Sub.charAt(i)!='"')
+					return true;
+			}
+		
+		alert("הקלדת ערך לא חוקי");
+		return false;
+	}
+	
+	
+	function addMessage()
+	{
+		var a = document.all['addMsg']
+		
+		//a.href = 'add_message.asp?page=1&searchType=&substring=&vcCourseGUID=F83011475F2E754491B481B987817383&vcCourseName=&vcCourseID=55119&id=107543'
+			
+				document.location.href='add_message.asp?AddLinkBoard=no&page=1&searchType=&substring=&vcCourseGUID=F83011475F2E754491B481B987817383&vcCourseID=55119&id=107543&openForum=&FromItem=ExerciseMenu.asp&Sentfrom=ExerciseMenu.asp'	
+			
+	}
+	function openW (str)
+	{
+		
+		var values = window.open(str, "", "width=500, height=400, resizable=yes,top=80,left=150");
+	
+	}
+	function deleteMessage(strMessages)
+	{
+		if (!confirm('? האם אתה בטוח'))
+			return;
+
+		var p = strMessages.indexOf('|');
+
+		if (p > -1)
+			if (!confirm('?האם למחוק גם את התגובות להודעה'))
+				strMessages = strMessages.substring(0, p);
+		
+	
+		
+				location = 'del_message.asp?AddLinkBoard=no&messages=' + strMessages + '&id=107543&vcCourseGUID=F83011475F2E754491B481B987817383&vcCourseID=55119' + '&searchType=&substring=&FromItem=ExerciseMenu.asp'
+			
+	}
+	
+	function window_onbeforeunload()
+	{  
+	    /*set status messages as read*/
+	    NotReadMessagesObj.updateMessages();
+		var nw;
+		nw= parent.frames['hidden']
+		if (nw != null)
+			nw.location = 'del_html2.asp?loginID=32020&vcCourseID=55119'
+	
+	}
+	
+	function CopyPasteItem() 
+	{
+		
+		ItemUrl="http://hl.hit.ac.il/schoolink2000/forums/forum.asp?AddLinkBoard=no&vcCourseGuid=F83011475F2E754491B481B987817383&vcCourseID=55119&id=107543"
+		
+		
+		//insert the string into the clipboard
+		
+		window.clipboardData.setData("Text",ItemUrl);
+
+		
+		
+		
+	//insert the item to the ClipboardItems table in the DB
+	
+	var vcTop = parent.parent.parent.parent.frames["vcTop"]
+	
+		if (vcTop)
+		{
+			
+			vcTop.frames.MyClipboard.location.href="/Bareket/ClipboardSave.asp?vcCourseGUID=F83011475F2E754491B481B987817383&random=13418&iid=107543&ComeFrom=community&type=forum&name=פורום על תרגיל מס&#39; 3&vcCourseID=55119"
+			
+		}
+	}
+	function ResetForum()
+	{
+	
+			location = 'ResetViewedObjects.asp?AddLinkBoard=no&searchType=&substring=&vcCourseGuid=F83011475F2E754491B481B987817383&vcCourseID=55119&id=107543&Reset=forum&userID=32020&FromItem=ExerciseMenu.asp'
+		
+	}
+	
+	function OpenForum()
+	{  
+	    if (document.form1 != null)
+	    {
+		    if (document.form1.openForum.value == 'yes')
+		    {
+			    form1.openForum.value = 'no';
+			    //form2.openForum.value = 'no';
+     		  //  reloadForumsList();
+		    }
+		    else
+		    {
+			    form1.openForum.value = 'yes';
+			    //form2.openForum.value = 'yes';
+		    }
+    		
+		    
+				    window.document.location="forum.asp?AddLinkBoard=no&substring=&searchType=&page=1&id=107543&vcCourseGuid=F83011475F2E754491B481B987817383&vcCourseID=55119&sentfrom=ExerciseMenu.asp&openForum="+form1.openForum.value;
+			    
+		    
+	    }
+	}	
+	
+	
+	function updateMenu()
+	{ 
+		if (parent.frames['vcCommMenu'])
+		{
+			var numNew = parent.frames['vcCommMenu'].document.all['newCount_107543']
+			if (numNew != null)
+			{
+				if ('4' == '0')
+					numNew.innerHTML = '<small></small>'
+				else
+					numNew.innerHTML = '<small>(4)</small>'
+			}
+		}
+	}
+	
+	function CleanCookie()
+	{
+		try{
+			//parent.parent.opener.parent.parent.parent.frames['ClearC'].location.href="/eClass/ConnectToClean.asp?FromCleanCourse=yes"
+			parent.parent.parent.parent.frames['ClearC'].document.location.href="/Bareket/CleanCookie.asp?path=/upload/0/library//I0"
+			}
+			catch(e){}
+	}
+	function AddMsgLinkB(msgID,Loc,msgName)
+	{
+		//ItemUrl="http://hl.hit.ac.il/schoolink2000/forums/forum.asp?AddLinkBoard=no&vcCourseGuid=F83011475F2E754491B481B987817383&vcCourseID=55119&id=107543"
+		ItemUrl="http://hl.hit.ac.il/schoolink2000/forums/message.asp?AddLinkBoard=no&page=1&searchType=&substring=&location="+Loc+"&vcCourseGuid=F83011475F2E754491B481B987817383&vcCourseID=55119&id=107543&msgId="+msgID+"&msgTime=444&openForum="
+		window.clipboardData.setData("Text",ItemUrl);
+		var vcTop = parent.parent.parent.parent.frames["vcTop"]
+		if (vcTop){
+				
+				vcTop.frames.MyClipboard.location.href="/Bareket/ClipboardSave.asp?vcCourseGUID=F83011475F2E754491B481B987817383&random=11579&iid=107543&ComeFrom=community&type=message&name="+msgName+"&page=1&searchType=&substring=&location="+Loc+"&vcCourseID=55119&msgTime=11&msgID="+msgID+"&openForum="
+		}
+	}
+	
+	function OpenRssWin()
+	{
+		window.open('/HighLearnNet/RSS/Rss_WebForm.aspx?type=3&qs_lang=972&vcCourseGUID=F83011475F2E754491B481B987817383&vcCourseID=55119&id=107543','','','top=50,left=100,width=800,height=600')
+	}
+	
+	function ToggleMessage(MsgID,classContent)
+	{
+		var TrCloseMsg;
+		var TDCloseMsg;
+		var newSpan=document.getElementById("New_"+MsgID)
+		if(newSpan!=null)
+		    newSpan.style.display="none";
+		
+		
+			TrCloseMsg=document.getElementById("MsgTR_"+MsgID)
+			TDCloseMsg=document.getElementById("MsgTD_"+MsgID)
+			if(TrCloseMsg.style.display=="block" || TrCloseMsg.style.display== "")
+			{
+				
+				TrCloseMsg.style.display="none"
+				
+			}
+			else
+			{
+				if(TDCloseMsg.innerHTML=="")
+				{	
+					var MsgOrder=TDCloseMsg.pos
+					var Url='GetMessageBody.asp?page=1&LeStatus=1&searchType=&substring=&vcCourseGUID=F83011475F2E754491B481B987817383&vcCourseID=55119&id=107543&openForum=&FromItem=ExerciseMenu.asp&Sentfrom=ExerciseMenu.asp&MsgOrder='+MsgOrder+'&MsgID='+MsgID
+					var ResultHTML=sendXml(Url,null)
+					TDCloseMsg.innerHTML=ResultHTML //xmlhttprequest-fill in message data
+					TDCloseMsg.className = classContent;
+					//reloadForumsList();
+				}
+				
+				if(isE)	
+					TrCloseMsg.style.display="block"
+				else
+					TrCloseMsg.style.display=""
+			}
+		
+		
+	}
+	
+	function reloadForumsList()
+	{
+	    if(typeof(parent.parent)!='undefined' &&  parent.parent!=null
+	      && typeof(parent.parent.frames)!='undefined' && parent.parent.frames!=null
+	      && typeof(parent.parent.frames["vcCommMenu"]) != 'undefined' && parent.parent.frames["vcCommMenu"]!=null)
+	    {
+	         parent.parent.frames["vcCommMenu"].location.href = parent.parent.frames["vcCommMenu"].location.href;
+	    }
+	}
+	    
+	 function SendInstMsg(elem)
+	 {   
+        if(IsClickable(elem))
+        {
+	        var InstMsg=$F("InstMsg")
+            if(InstMsg=="" || InstMsg=="פרסם הודעה חדשה מיידית...") 
+                return
+            
+            var url="InstMsg_action.asp"
+            var pars="id=107543&vcCourseID=55119&vcCourseGUID=F83011475F2E754491B481B987817383&Subject="+escape(InstMsg)
+            var myAjax=new Ajax.Request(
+		    url,
+			    {
+				    method:'post',
+				    parameters:pars,
+				    onComplete:showResponse
+			    }
+		    )
+		}
+        
+     }
+     
+     function IsClickable(elem)
+     {
+        var isClickable = true;
+	    if(typeof(elem) != 'undefined')
+	    {
+	        var className= elem.className;
+	        isClickable = className.indexOf('Disable') == -1;
+	    }
+	    return isClickable;
+     }
+     function SendInstRep(elem,replyID)
+     { 
+        if(IsClickable(elem))
+        {
+            var ReplyTxtObj=elem.parentNode.parentNode.parentNode.children[0].children[0]
+            if(ReplyTxtObj!=null)
+            {
+                var ReplyTxt=ReplyTxtObj.value;
+                if(ReplyTxt=="פרסם תגובה מיידית...") 
+                    return
+                    
+                var url="InstMsg_action.asp"
+               var pars="id=107543&vcCourseID=55119&vcCourseGUID=F83011475F2E754491B481B987817383&Subject="+escape(ReplyTxt)+"&reply="+replyID
+               var myAjax=new Ajax.Request(
+		        url,
+			        {
+				        method:'post',
+				        parameters:pars,
+				        onComplete:showResponse
+			        }
+		        )
+            }
+        }
+        
+     }
+    function showResponse(originalRequest)
+	{
+			var Result=originalRequest.responseText
+			document.location.href=document.location.href
+     }
+	
+	function ClearText(elem,IsRep)
+	{
+	    if(IsRep=="0")
+	        ImMsg=1;
+	        
+	    elem.value=""
+	    elem.style.color="#000000"
+	}
+	function PutText(elem,IsRep)
+	{
+	    if(IsRep=="0")
+	        ImMsg=0;
+	        
+	    if(trim(elem.value)=="")
+	    {
+	        if(IsRep=="0")
+	            elem.value="פרסם הודעה חדשה מיידית..."
+	        else
+	            elem.value="פרסם תגובה מיידית..."
+	            
+	        elem.style.color="gray"
+	    }
+	}
+	
+	function OnTitleTextChanged(textObj,imgId1,imgId2,MsgID)
+	{ 
+	    textTitle1  = "פרסם הודעה חדשה מיידית"; 
+	    textTitle2  = "פרסם תגובה מיידית"
+	    var iEditor=document.getElementById("EditMsgTR_"+MsgID);
+	    var enabled = iEditor.style.display == "none";
+	    if(enabled)
+	       enabled = (textObj.value != "" && textObj.value.indexOf(textTitle1) == -1 && textObj.value.indexOf(textTitle2) == -1);
+	    if(!enabled)
+	    {
+	        document.getElementById(imgId1).className="buttons_With_Img_Disable";
+     		document.getElementById(imgId2).className="img_Disable";
+	    }
+	    else
+	    {
+	         document.getElementById(imgId1).className="Buttons_With_Img";
+     		 document.getElementById(imgId2).className="img";
+	    }
+	}
+	
+	function EditorMsg(MsgID,imgId1,imgId2)
+	{ 
+       textTitle1  = "פרסם הודעה חדשה מיידית"; 
+       textTitle2  = "פרסם תגובה מיידית"
+
+	   var iEditor=document.getElementById("EditMsgTR_"+MsgID)
+	    if(iEditor!=null)
+	    {
+	        if(iEditor.style.display!="block")
+	        { 
+     		    document.getElementById(imgId1).className="buttons_With_Img_Disable";
+     		    document.getElementById(imgId2).className="img_Disable";
+     		    
+	            iEditor.style.display="block";
+	            if(MsgID=="0") //new message
+	            {
+	                if(document.getElementById("InstMsg").value.indexOf(textTitle1)!=-1)
+		                document.getElementById("InstMsg").focus()
+		        }
+		        else
+		        {
+		            if(document.getElementById("InstRep_"+MsgID).value.indexOf(textTitle2)!=-1)
+		                document.getElementById("InstRep_"+MsgID).focus()
+		        }
+		     
+	        } 
+	        else
+	        {
+	            var enabled = true;
+	            if(MsgID=="0")
+	               title = document.getElementById("InstMsg").value;
+	            else
+	               title = document.getElementById("InstRep_"+MsgID).value;
+	             enabled = (title != "" && title.indexOf(textTitle1) == -1 && title.indexOf(textTitle2) == -1)
+   		        document.getElementById(imgId1).className= enabled ? "Buttons_With_Img" : "buttons_With_Img_Disable";
+   		        document.getElementById(imgId2).className= enabled ? "img" : "img_Disable";
+	            iEditor.style.display="none";
+	            document.body.focus(); 
+	        }
+	    }
+	}
+	function CheckData(e)
+	{
+	   if(e.keyCode=="13")
+	   {  
+	      if(ImMsg=="1")
+	      {
+	         SendInstMsg();
+	         ImMsg = "-1";
+	      }
+	   }
+	}
+	
+	/*function ClickMsg(elem)
+	{
+	    var endBrother=elem.nextSibling;
+	    
+      while(endBrother.nodeType!=1){
+        endBrother = endBrother.nextSibling;
+      }
+      if(endBrother.src+''=="undefined")
+        endBrother.onclick()
+      else
+       ClickMsg(endBrother)
+	}
+	*/
+	
+	updateMenu()
+	//-->
+	</script>
+<style type="text/css">
+.topFieldset {
+    position:relative;
+    padding-top:20px;
+    border:solid 1px #7C9DBD;
+    padding-bottom:0px; 
+    padding-top:0px; 
+    width:95%
+}
+.topLegend {
+    position:absolute;
+    top:-10px;
+}
+</style>
+
+</head>
+
+<body dir="RTL" onbeforeunload="window_onbeforeunload();CleanCookie()" onkeypress="CheckData(event)">
+<a name="anchor"></a>
+
+
+<form action="http://hl.hit.ac.il/schoolink2000/forums/forum.asp" method="get" id="form1" name="form1">
+
+<table border="0" cellspacing="0" cellpadding="3" width="95%">
+	<!--- Subject: --->
+	<tbody><tr>
+		<td class="PF_Header_Rec" width="3%"></td>
+		<td class="PF_HeaderB" width="97%">
+			פורום על תרגיל מס' 3
+				<font class="New_Forum" color1="MediumBlue" face="Arial">&nbsp;(4)</font>
+			
+		</td>
+	</tr>
+
+</tbody></table>
+	
+
+		<!--- Description: --->
+		<br>
+			    <fieldset class="topFieldset">
+			        <legend class="topLegend"><b>תיאור הפורום</b></legend>
+			        <div style="margin:1px; padding:3px;" class="Title_Forum">
+				    	
+	<span class="property-value"><font color="#565151" size="2">כאן ניתן לפרסם שאלות בנוגע לתרגיל מס' 3.<br>נא לא לפרסם תשובות לשאלות של אחרים ולא לפרסם שאלות שמציעות פתרון.</font></span>
+
+
+
+				    </div>
+				</fieldset>
+
+	
+
+
+<div style="height:3px"></div>
+
+ <fieldset style="border:solid 1px #7C9DBD; width:95%; padding-top:3px">
+ <center>
+
+
+  <table width="99.5%" class="ButtonsLowZone" cellspacing="0" border="0">
+
+
+	<tbody><tr class="ButtonsLowZone">
+		<td width="80%">
+		<table>
+		<tbody><tr>
+		    <td><input size="40" type="text" class="textbox" name="substring" id="substring" value=""></td>
+		    <td>
+		        <select id="searchType" name="searchType">
+		            <option value="message" selected="">חפש בנושא ובגוף ההודעה</option>
+		            <option value="name">חפש בשם השולח</option>
+		        </select>
+		    </td>
+		    <td dir="rtl">
+				<nobr><span class="Buttons_with_img" onclick="if(check())document.form1.submit()">חפש</span><img class="img" src="searchCss.gif" width="16" height="16" onclick="if(check())document.form1.submit()"></nobr>
+			</td>
+		</tr>
+		</tbody></table>
+		</td><td>
+		<table align="right">
+		<tbody><tr>
+		<td nowrap="" align="right" style="visibility:hidden">
+			
+				<!--<a ID="addMsg" onClick="addMessage()">-->
+			
+					<span id="addMsg" class="Link_buttons" onclick="addMessage()" title="הוסף הודעה חדשה לקבוצת הדיון">
+					הוסף הודעה
+					<!--<img STYLE="cursor:hand" BORDER="0" SRC="/schoolink2000/images/972/NewMessage.gif" VSPACE="2" HSPACE="2" ALT="הוסף הודעה חדשה לקבוצת הדיון">-->
+					</span>
+				
+				<!--</a>-->
+			
+			
+	
+	
+		</td>
+		<td nowrap="" align="left">
+		
+			<span class="Link_Buttons" onclick="OpenForum()">
+			הצג פירוט
+			</span>
+		
+		</td>
+		<!-- <td align="left"> -->
+		
+		<td nowrap="" align="left">
+			<!--<a HREF="#" onClick="ResetForum()"><img BORDER="0" SRC="/schoolink2000/images/972/NewIndications.gif"></a>-->
+			<span class="Link_Buttons" onclick="ResetForum()" title="נקה סימוני חדש">
+			נקה סימון "חדש"
+			</span>
+		
+		</td>
+		
+		
+		
+		<!-- </td> -->
+		<td nowrap="" align="left">
+			
+			<!--<a HREF="#anchor" onclick="openW('html_file.asp?vcCourseGUID=F83011475F2E754491B481B987817383&amp;vcCourseName=&amp;vcCourseID=55119&amp;id=107543'); return false;"><img BORDER="0" SRC="/schoolink2000/images/972/html.gif" VSPACE="2" HSPACE="2" ALT="שמור את תוכן קבוצת הדיון כקובץ HTML"></a>-->
+			<span class="Link_Buttons" title="שמור את קבוצת הדיון כקובץ HTML" onclick="openW(&#39;html_file.asp?vcCourseGUID=F83011475F2E754491B481B987817383&amp;vcCourseID=55119&amp;id=107543&amp;SentFrom=ExerciseMenu.asp&#39;); return false;">
+			שמור כHTML
+			</span>
+			
+			
+		</td>
+		<td nowrap="" align="left">
+			
+		</td>
+		
+		<!-------------------------------------------------->
+		
+		
+		</tr>
+		</tbody></table>
+		</td>
+		<!------------- Enable/Disable RSS : -------------->
+	
+		<td align="left" width="25">	
+		
+							<img style="cursor:pointer" src="rss_but.png" width="18" onclick="OpenRssWin()" alt="RSS" align="left">		
+								
+		</td>
+		<!------------------------------------------------->
+	</tr>
+</tbody></table>
+
+
+
+
+
+
+
+<input type="hidden" name="id" value="107543">
+		<input type="hidden" name="vcCourseGUID" value="F83011475F2E754491B481B987817383">
+		<!--<input TYPE="hidden" NAME="vcCourseName" VALUE="">-->
+		<input type="hidden" name="vcCourseID" value="55119">
+		<input type="hidden" name="openForum" id="openForum" value="">
+		<input type="hidden" name="sentfrom" value="ExerciseMenu.asp">	
+		
+	
+            <table width="100%" cellpadding="3" cellspacing="0" border="0">
+                <tbody><tr>
+                        <td width="80%"><input type="text" id="InstMsg" name="InstMsg" maxlength="800" style="width:100%;color:Gray" value="פרסם הודעה חדשה מיידית..." onfocus="ClearText(this,0)" onblur="PutText(this,0)" onkeyup="OnTitleTextChanged(this,&#39;imgSubmit&#39;,&#39;imgSubmit2&#39;,0);" onchange="OnTitleTextChanged(this,&#39;imgSubmit&#39;,&#39;imgSubmit2&#39;,0);"></td>
+                        <td align="left" dir="rtl">
+			            <nobr><span class="buttons_With_Img_Disable" id="imgSubmit" name="imgSubmit" onclick="SendInstMsg(this)">שלח</span><img class="img_Disable" id="imgSubmit2" src="sendCss.gif" onclick="SendInstMsg(this)" width="16" height="16"></nobr>
+			            <span class="Link_Buttons" id="imgEditor" name="imgSubmit" onclick="EditorMsg(0,&#39;imgSubmit&#39;,&#39;imgSubmit2&#39;)">עורך מתקדם</span>
+            		
+		            </td>
+                </tr>
+                
+            </tbody></table>
+            
+
+
+ <table border="0" cellspacing="0" cellpadding="2" width="99.5%">
+
+
+
+
+	<tbody><tr style="display:none">
+	
+			<td width="80%" class="Sorted_Table_Header">
+				
+				<a href="http://hl.hit.ac.il/schoolink2000/forums/forum.asp?vcCourseGUID=F83011475F2E754491B481B987817383&vcCourseID=55119&id=107543&sort=1&substring=&searchType=&openForum=&sentfrom=ExerciseMenu.asp" class="Sorted_Table_Header_ON">הודעות</a>&nbsp;<img border="0" src="SortDESC.gif" <="" td="">
+<!--&lt;/form&gt;-->
+
+
+
+
+		</td><td width="10%" align="center" class="Sorted_Table_Header">
+			<a class="Sorted_Table_Header_OFF" href="http://hl.hit.ac.il/schoolink2000/forums/forum.asp?vcCourseGUID=F83011475F2E754491B481B987817383&vcCourseID=55119&id=107543&sort=2&substring=&searchType=&openForum=&sentfrom=ExerciseMenu.asp">תאריך</a>&nbsp;
+		</td>
+		<td width="10%" align="center" class="Sorted_Table_Header">
+			<a>מחיקה</a>
+		</td>
+
+		<!--		<td BGCOLOR="#FFFFFF" WIDTH="10%">		</td>		-->
+	</tr>
+
+<tr id="EditMsgTR_0" style="display:none">
+    <td>
+        
+            <iframe style="width:1000px" height="500px" scrolling="no" src="add_message_iframe(4).htm" frameborder="0" allowfullscreen="1"></iframe>
+        
+        
+    </td>
+</tr>
+
+	
+	<tr class="Table_Content_Main">
+			<td style="border-bottom:solid 2px white">
+			    <table cellpadding="0" cellspacing="0" width="100%">
+			        <tbody><tr>
+			            <td>
+			                <img border="0" src="nothing.gif" height="5" width="0">
+				        <img border="0" style="cursor:pointer" onclick="ToggleMessage(&#39;180856&#39;,&#39;Table_Content_Main&#39;)" src="HatzBon.gif" alt="הודעה">
+
+				        
+        				</td>
+        				<td width="85%">
+				        
+						        <!--<a class="linkstyle" href="#" onclick="ToggleMessage('<=messages(m)("msgID")>')" HREFold="message.asp?AddLinkBoard=no&amp;page=<=intCurrentPage>&amp;searchType=<=searchType>&amp;substring=<=escape(subString)>&amp;location=<= m >&amp;vcCourseGUID=<= vcCourseGUID >&amp;vcCourseID=<= vcCourseID >&amp;id=<= Server.urlEncode(forumID) >&amp;msgTime=<= Server.urlEncode(messages(m)("msgTime")) >&amp;msgId=<= Server.urlEncode(messages(m)("msgID")) >&amp;openForum=<= openForum >&amp;FromItem=<=FromItem>&amp;SentFrom=<=SentFrom>"><= showText(messages(m)("subject")) ></a>-->
+						        <span style="cursor: pointer; text-decoration: none; color: black; " onmouseover="javascript:this.style.textDecoration=&#39;underline&#39;" onmouseout="javascript:this.style.textDecoration=&#39;none&#39;" onclick="ToggleMessage(&#39;180856&#39;,&#39;Table_Content_Main&#39;)">הודעת שורש. נא לפרסם שאלות כמענה להודעה זו כדי שאקבל חיווי למייל.</span>
+					        
+				        <font size="-1">
+					        &nbsp;<small><span style="cursor:pointer;text-decoration:none;color:gray">רונן גיא</span></small>
+				        </font>
+        				
+        	
+				        
+					        <span id="New_180856" style="display: none; ">
+					            <font color="#ff0000">
+					            &nbsp;
+					            חדש
+					            </font>
+				        </span>
+				        
+			         </td>
+			         <td style="display:inline; margin-left:5px; margin-right:5px; padding-left:5px; padding-right:5px" align="left">
+			                
+				                <small>
+				                <!--20/8///0 -->
+				                14:36&nbsp;&nbsp;30/08/2012
+				                </small>        
+			         </td>
+			          </tr>
+			          
+	                    <tr id="MsgTR_180856" style="">
+	                    <td></td>
+			                    <td align="left" id="MsgTD_180856" pos="1" style="width:85%" colspan="2" class="Table_Content_Main">
+<table border="0" cellspacing="0" cellpadding="1" width="100%">
+
+ 
+ <tbody><tr>
+		<td colspan="2">							
+			
+			<table width="100%" cellpadding="1" cellspacing="0" border="0">
+			    <tbody><tr>
+			        <td width="85%"><p>זוהי הודעת שורש.</p> <p>נא לפרסם שאלות כמענה להודעה זו כדי שאקבל חיווי למייל.</p> <p>גיא.</p></td>
+			        
+		            
+			        
+			    </tr>
+			</tbody></table>
+			 
+			<br><br>
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+			    <tbody><tr>
+			        <td colspan="3">
+			        
+			            <table width="100%" cellpadding="3" cellspacing="0" border="0">
+                            <tbody><tr>
+                                    <td width="80%"><input type="text" id="InstRep_180856" name="InstRep" maxlength="800" style="width:100%;color:Gray" value="פרסם תגובה מיידית..." onfocus="ClearText(this,1)" onblur="PutText(this,1)"></td>
+                                    <td align="left" dir="rtl">
+			                        <nobr><span class="Buttons_with_img" id="imgSubmitBtn" name="imgSubmit" onclick="SendInstRep(this,180856)">שלח</span><img class="img" id="imgSubmitBtn1" src="sendCss.gif" onclick="SendInstRep(this,180856)" width="16" height="16"></nobr>
+                        		    <span class="Link_Buttons" id="Span2" name="imgSubmit" onclick="EditorMsg(180856,&#39;imgSubmitBtn&#39;,&#39;imgSubmitBtn1&#39;)">עורך מתקדם</span>
+		                        </td>
+                            </tr>
+                
+                        </tbody></table>
+                     
+			        </td>
+			    </tr>
+			    <tr>
+			        <td colspan="3">&nbsp;</td>
+			    </tr>
+				<tr style="display:none">
+					
+						<td><span id="addMsgRep" class="Link_buttons" onclick="document.location.href=&#39;add_message.asp?AddLinkBoard=no&amp;page=1&amp;searchType=&amp;substring=&amp;vcCourseGUID=F83011475F2E754491B481B987817383&amp;vcCourseID=55119&amp;id=107543&amp;FromItem=ExerciseMenu.asp&amp;SentFrom=ExerciseMenu.asp&amp;reply=180856&#39;">הוסף תגובה</span>
+					
+				</td></tr>
+			</tbody></table>
+		</td>
+</tr>
+</tbody></table>
+<table width="100%" cellpadding="0" cellspacing="0" id="EditMsgTR_180856" style="display:none">
+    <tbody><tr>
+        <td>
+        
+         <iframe style="width:1000px" height="500px" scrolling="no" src="add_message_iframe.htm" frameborder="0" allowfullscreen="1"></iframe>	
+         
+        </td>
+    </tr>
+</tbody></table>
+</td>
+	                    </tr>
+	                  
+	                 
+			     </tbody></table>
+			    
+				
+			</td>
+			
+			
+			
+			<!--<td WIDTH="10%" align="center">-->
+		
+		
+		
+			<!--</td>-->
+	</tr>
+	
+	
+	
+	
+	     <script type="text/javascript">
+	        NotReadMessagesObj.addMsgId('180952')
+	     </script>
+	  
+	
+	<tr class="Table_Content_Secondary">
+			<td style="border-bottom:solid 2px white">
+			    <table cellpadding="0" cellspacing="0" width="100%">
+			        <tbody><tr>
+			            <td>
+			                <img border="0" src="nothing.gif" height="5" width="15">
+				        <img border="0" style="cursor:pointer" onclick="ToggleMessage(&#39;180952&#39;,&#39;Table_Content_Secondary&#39;)" src="EmptyResponse.png" alt="תגובה להודעה">
+
+				        
+        				</td>
+        				<td width="85%">
+				        
+						        <!--<a class="linkstyle" href="#" onclick="ToggleMessage('<=messages(m)("msgID")>')" HREFold="message.asp?AddLinkBoard=no&amp;page=<=intCurrentPage>&amp;searchType=<=searchType>&amp;substring=<=escape(subString)>&amp;location=<= m >&amp;vcCourseGUID=<= vcCourseGUID >&amp;vcCourseID=<= vcCourseID >&amp;id=<= Server.urlEncode(forumID) >&amp;msgTime=<= Server.urlEncode(messages(m)("msgTime")) >&amp;msgId=<= Server.urlEncode(messages(m)("msgID")) >&amp;openForum=<= openForum >&amp;FromItem=<=FromItem>&amp;SentFrom=<=SentFrom>"><= showText(messages(m)("subject")) ></a>-->
+						        <span style="cursor: pointer; text-decoration: none; color: black; " onmouseover="javascript:this.style.textDecoration=&#39;underline&#39;" onmouseout="javascript:this.style.textDecoration=&#39;none&#39;" onclick="ToggleMessage(&#39;180952&#39;,&#39;Table_Content_Secondary&#39;)">שלום גיא. תוכל לעלות לאתר את דוגמאת הקוד מהשיעור הקודם על thread ?</span>
+					        
+        				 &nbsp;(לת)&nbsp;
+        				 
+				        <font size="-1">
+					        &nbsp;<small><span style="cursor:pointer;text-decoration:none;color:gray">חורש טל</span></small>
+				        </font>
+        				
+        	
+				        
+					        <span id="New_180952" style="display: none; ">
+					            <font color="#ff0000">
+					            &nbsp;
+					            חדש
+					            </font>
+				        </span>
+				        
+			         </td>
+			         <td style="display:inline; margin-left:5px; margin-right:5px; padding-left:5px; padding-right:5px" align="left">
+			                
+				                <small>
+				                <!--20/9///0 -->
+				                16:52&nbsp;&nbsp;03/09/2012
+				                </small>        
+			         </td>
+			          </tr>
+			          
+	                    <tr id="MsgTR_180952" style="">
+	                    <td></td>
+			                    <td align="left" id="MsgTD_180952" pos="2" style="width:85%" colspan="2" class="Table_Content_Secondary">
+<table border="0" cellspacing="0" cellpadding="1" width="100%">
+
+ 
+ <tbody><tr>
+		<td colspan="2">							
+			
+			<table width="100%" cellpadding="1" cellspacing="0" border="0">
+			    <tbody><tr>
+			        <td width="85%"></td>
+			        
+		            
+			        
+			    </tr>
+			</tbody></table>
+			 
+			<br><br>
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+			    <tbody><tr>
+			        <td colspan="3">
+			        
+			            <table width="100%" cellpadding="3" cellspacing="0" border="0">
+                            <tbody><tr>
+                                    <td width="80%"><input type="text" id="InstRep_180952" name="InstRep" maxlength="800" style="width:100%;color:Gray" value="פרסם תגובה מיידית..." onfocus="ClearText(this,1)" onblur="PutText(this,1)"></td>
+                                    <td align="left" dir="rtl">
+			                        <nobr><span class="Buttons_with_img" id="imgSubmitBtn" name="imgSubmit" onclick="SendInstRep(this,180952)">שלח</span><img class="img" id="imgSubmitBtn1" src="sendCss.gif" onclick="SendInstRep(this,180952)" width="16" height="16"></nobr>
+                        		    <span class="Link_Buttons" id="Span2" name="imgSubmit" onclick="EditorMsg(180952,&#39;imgSubmitBtn&#39;,&#39;imgSubmitBtn1&#39;)">עורך מתקדם</span>
+		                        </td>
+                            </tr>
+                
+                        </tbody></table>
+                     
+			        </td>
+			    </tr>
+			    <tr>
+			        <td colspan="3">&nbsp;</td>
+			    </tr>
+				<tr style="display:none">
+					
+						<td><span id="addMsgRep" class="Link_buttons" onclick="document.location.href=&#39;add_message.asp?AddLinkBoard=no&amp;page=1&amp;searchType=&amp;substring=&amp;vcCourseGUID=F83011475F2E754491B481B987817383&amp;vcCourseID=55119&amp;id=107543&amp;FromItem=ExerciseMenu.asp&amp;SentFrom=ExerciseMenu.asp&amp;reply=180952&#39;">הוסף תגובה</span>
+					
+				</td></tr>
+			</tbody></table>
+		</td>
+</tr>
+</tbody></table>
+<table width="100%" cellpadding="0" cellspacing="0" id="EditMsgTR_180952" style="display:none">
+    <tbody><tr>
+        <td>
+        
+         <iframe style="width:1000px" height="500px" scrolling="no" src="add_message_iframe(1).htm" frameborder="0" allowfullscreen="1"></iframe>	
+         
+        </td>
+    </tr>
+</tbody></table>
+</td>
+	                    </tr>
+	                  
+	                 
+			     </tbody></table>
+			    
+				
+			</td>
+			
+			
+			
+			<!--<td WIDTH="10%" align="center">-->
+		
+		
+		
+			<!--</td>-->
+	</tr>
+	
+	
+	
+	
+	
+	<tr class="Table_Content_Secondary">
+			<td style="border-bottom:solid 2px white">
+			    <table cellpadding="0" cellspacing="0" width="100%">
+			        <tbody><tr>
+			            <td>
+			                <img border="0" src="nothing.gif" height="5" width="30">
+				        <img border="0" style="cursor:pointer" onclick="ToggleMessage(&#39;181020&#39;,&#39;Table_Content_Secondary&#39;)" src="HatzBbigon.gif" alt="תגובה להודעה">
+
+				        
+        				</td>
+        				<td width="85%">
+				        
+						        <!--<a class="linkstyle" href="#" onclick="ToggleMessage('<=messages(m)("msgID")>')" HREFold="message.asp?AddLinkBoard=no&amp;page=<=intCurrentPage>&amp;searchType=<=searchType>&amp;substring=<=escape(subString)>&amp;location=<= m >&amp;vcCourseGUID=<= vcCourseGUID >&amp;vcCourseID=<= vcCourseID >&amp;id=<= Server.urlEncode(forumID) >&amp;msgTime=<= Server.urlEncode(messages(m)("msgTime")) >&amp;msgId=<= Server.urlEncode(messages(m)("msgID")) >&amp;openForum=<= openForum >&amp;FromItem=<=FromItem>&amp;SentFrom=<=SentFrom>"><= showText(messages(m)("subject")) ></a>-->
+						        <span style="cursor: pointer; text-decoration: none; color: black; " onmouseover="javascript:this.style.textDecoration=&#39;underline&#39;" onmouseout="javascript:this.style.textDecoration=&#39;none&#39;" onclick="ToggleMessage(&#39;181020&#39;,&#39;Table_Content_Secondary&#39;)">&gt;&gt;&gt; תשובה</span>
+					        
+				        <font size="-1">
+					        &nbsp;<small><span style="cursor:pointer;text-decoration:none;color:gray">רונן גיא</span></small>
+				        </font>
+        				
+        	
+				        
+					        <span id="New_181020" style="display: none; ">
+					            <font color="#ff0000">
+					            &nbsp;
+					            חדש
+					            </font>
+				        </span>
+				        
+			         </td>
+			         <td style="display:inline; margin-left:5px; margin-right:5px; padding-left:5px; padding-right:5px" align="left">
+			                
+				                <small>
+				                <!--20/9///0 -->
+				                15:46&nbsp;&nbsp;06/09/2012
+				                </small>        
+			         </td>
+			          </tr>
+			          
+	                    <tr id="MsgTR_181020" style="">
+	                    <td></td>
+			                    <td align="left" id="MsgTD_181020" pos="3" style="width:85%" colspan="2" class="Table_Content_Secondary">
+<table border="0" cellspacing="0" cellpadding="1" width="100%">
+
+ 
+ <tbody><tr>
+		<td colspan="2">							
+			
+			<table width="100%" cellpadding="1" cellspacing="0" border="0">
+			    <tbody><tr>
+			        <td width="85%">כדי להפעיל פונקציה ב- thread נפרד:
+<br>;()new Thread(theMethodName).Start
+<br>
+<br>כדי לפנות לרכיב UI ב- thread שלו:
+<br>;((()listBox.Invoke(new Action(() =&gt; someOperation</td>
+			        
+		            
+			        
+			    </tr>
+			</tbody></table>
+			 
+			<br><br>
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+			    <tbody><tr>
+			        <td colspan="3">
+			        
+			            <table width="100%" cellpadding="3" cellspacing="0" border="0">
+                            <tbody><tr>
+                                    <td width="80%"><input type="text" id="InstRep_181020" name="InstRep" maxlength="800" style="width:100%;color:Gray" value="פרסם תגובה מיידית..." onfocus="ClearText(this,1)" onblur="PutText(this,1)"></td>
+                                    <td align="left" dir="rtl">
+			                        <nobr><span class="Buttons_with_img" id="imgSubmitBtn" name="imgSubmit" onclick="SendInstRep(this,181020)">שלח</span><img class="img" id="imgSubmitBtn1" src="sendCss.gif" onclick="SendInstRep(this,181020)" width="16" height="16"></nobr>
+                        		    <span class="Link_Buttons" id="Span2" name="imgSubmit" onclick="EditorMsg(181020,&#39;imgSubmitBtn&#39;,&#39;imgSubmitBtn1&#39;)">עורך מתקדם</span>
+		                        </td>
+                            </tr>
+                
+                        </tbody></table>
+                     
+			        </td>
+			    </tr>
+			    <tr>
+			        <td colspan="3">&nbsp;</td>
+			    </tr>
+				<tr style="display:none">
+					
+						<td><span id="addMsgRep" class="Link_buttons" onclick="document.location.href=&#39;add_message.asp?AddLinkBoard=no&amp;page=1&amp;searchType=&amp;substring=&amp;vcCourseGUID=F83011475F2E754491B481B987817383&amp;vcCourseID=55119&amp;id=107543&amp;FromItem=ExerciseMenu.asp&amp;SentFrom=ExerciseMenu.asp&amp;reply=181020&#39;">הוסף תגובה</span>
+					
+				</td></tr>
+			</tbody></table>
+		</td>
+</tr>
+</tbody></table>
+<table width="100%" cellpadding="0" cellspacing="0" id="EditMsgTR_181020" style="display:none">
+    <tbody><tr>
+        <td>
+        
+         <iframe style="width:1000px" height="500px" scrolling="no" src="add_message_iframe(2).htm" frameborder="0" allowfullscreen="1"></iframe>	
+         
+        </td>
+    </tr>
+</tbody></table>
+</td>
+	                    </tr>
+	                  
+	                 
+			     </tbody></table>
+			    
+				
+			</td>
+			
+			
+			
+			<!--<td WIDTH="10%" align="center">-->
+		
+		
+		
+			<!--</td>-->
+	</tr>
+	
+	
+	
+	
+	
+	<tr class="Table_Content_Secondary">
+			<td style="border-bottom:solid 2px white">
+			    <table cellpadding="0" cellspacing="0" width="100%">
+			        <tbody><tr>
+			            <td>
+			                <img border="0" src="nothing.gif" height="5" width="15">
+				        <img border="0" style="cursor:pointer" onclick="ToggleMessage(&#39;181100&#39;,&#39;Table_Content_Secondary&#39;)" src="HatzBbigon.gif" alt="תגובה להודעה">
+
+				        
+        				</td>
+        				<td width="85%">
+				        
+						        <!--<a class="linkstyle" href="#" onclick="ToggleMessage('<=messages(m)("msgID")>')" HREFold="message.asp?AddLinkBoard=no&amp;page=<=intCurrentPage>&amp;searchType=<=searchType>&amp;substring=<=escape(subString)>&amp;location=<= m >&amp;vcCourseGUID=<= vcCourseGUID >&amp;vcCourseID=<= vcCourseID >&amp;id=<= Server.urlEncode(forumID) >&amp;msgTime=<= Server.urlEncode(messages(m)("msgTime")) >&amp;msgId=<= Server.urlEncode(messages(m)("msgID")) >&amp;openForum=<= openForum >&amp;FromItem=<=FromItem>&amp;SentFrom=<=SentFrom>"><= showText(messages(m)("subject")) ></a>-->
+						        <span style="cursor: pointer; text-decoration: none; color: black; " onmouseover="javascript:this.style.textDecoration=&#39;underline&#39;" onmouseout="javascript:this.style.textDecoration=&#39;none&#39;" onclick="ToggleMessage(&#39;181100&#39;,&#39;Table_Content_Secondary&#39;)">שלום גיא, יש בעיה בפייסבוק</span>
+					        
+				        <font size="-1">
+					        &nbsp;<small><span style="cursor:pointer;text-decoration:none;color:gray">קוצמן אילן</span></small>
+				        </font>
+        				
+        	
+				        
+					        <span id="New_181100" style="display: none; ">
+					            <font color="#ff0000">
+					            &nbsp;
+					            חדש
+					            </font>
+				        </span>
+				        
+			         </td>
+			         <td style="display:inline; margin-left:5px; margin-right:5px; padding-left:5px; padding-right:5px" align="left">
+			                
+				                <small>
+				                <!--20/9///0 -->
+				                17:51&nbsp;&nbsp;09/09/2012
+				                </small>        
+			         </td>
+			          </tr>
+			          
+	                    <tr id="MsgTR_181100" style="">
+	                    <td></td>
+			                    <td align="left" id="MsgTD_181100" pos="4" style="width:85%" colspan="2" class="Table_Content_Secondary">
+<table border="0" cellspacing="0" cellpadding="1" width="100%">
+
+ 
+ <tbody><tr>
+		<td colspan="2">							
+			
+			<table width="100%" cellpadding="1" cellspacing="0" border="0">
+			    <tbody><tr>
+			        <td width="85%">גם כשאני מנסה להזין את הסיסמא בדפדפן כדי להתחבר לפייסבוק של דגיז פטר
+<br>הפייסבוק מודיע לי שהסיסמא לא נכונה ושאני מנסה יותר מדי.
+<br>ואני מזין את הסיסמא הנכונה.
+<br>יכול להיות שהחליפו את הסיסמא? </td>
+			        
+		            
+			        
+			    </tr>
+			</tbody></table>
+			 
+			<br><br>
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+			    <tbody><tr>
+			        <td colspan="3">
+			        
+			            <table width="100%" cellpadding="3" cellspacing="0" border="0">
+                            <tbody><tr>
+                                    <td width="80%"><input type="text" id="InstRep_181100" name="InstRep" maxlength="800" style="width:100%;color:Gray" value="פרסם תגובה מיידית..." onfocus="ClearText(this,1)" onblur="PutText(this,1)"></td>
+                                    <td align="left" dir="rtl">
+			                        <nobr><span class="Buttons_with_img" id="imgSubmitBtn" name="imgSubmit" onclick="SendInstRep(this,181100)">שלח</span><img class="img" id="imgSubmitBtn1" src="sendCss.gif" onclick="SendInstRep(this,181100)" width="16" height="16"></nobr>
+                        		    <span class="Link_Buttons" id="Span2" name="imgSubmit" onclick="EditorMsg(181100,&#39;imgSubmitBtn&#39;,&#39;imgSubmitBtn1&#39;)">עורך מתקדם</span>
+		                        </td>
+                            </tr>
+                
+                        </tbody></table>
+                     
+			        </td>
+			    </tr>
+			    <tr>
+			        <td colspan="3">&nbsp;</td>
+			    </tr>
+				<tr style="display:none">
+					
+						<td><span id="addMsgRep" class="Link_buttons" onclick="document.location.href=&#39;add_message.asp?AddLinkBoard=no&amp;page=1&amp;searchType=&amp;substring=&amp;vcCourseGUID=F83011475F2E754491B481B987817383&amp;vcCourseID=55119&amp;id=107543&amp;FromItem=ExerciseMenu.asp&amp;SentFrom=ExerciseMenu.asp&amp;reply=181100&#39;">הוסף תגובה</span>
+					
+				</td></tr>
+			</tbody></table>
+		</td>
+</tr>
+</tbody></table>
+<table width="100%" cellpadding="0" cellspacing="0" id="EditMsgTR_181100" style="display:none">
+    <tbody><tr>
+        <td>
+        
+         <iframe style="width:1000px" height="500px" scrolling="no" src="add_message_iframe(3).htm" frameborder="0" allowfullscreen="1"></iframe>	
+         
+        </td>
+    </tr>
+</tbody></table>
+</td>
+	                    </tr>
+	                  
+	                 
+			     </tbody></table>
+			    
+				
+			</td>
+			
+			
+			
+			<!--<td WIDTH="10%" align="center">-->
+		
+		
+		
+			<!--</td>-->
+	</tr>
+	
+	
+	
+	
+</tbody></table>
+</center>
+</fieldset>
+</form>
+
+
+<div style="display: none; " id="hiddenlpsubmitdiv"></div><script>try{for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){ var lastpass_f = document.forms[lastpass_iter]; if(typeof(lastpass_f.lpsubmitorig2)=="undefined"){ lastpass_f.lpsubmitorig2 = lastpass_f.submit; lastpass_f.submit = function(){ var form=this; var customEvent = document.createEvent("Event"); customEvent.initEvent("lpCustomEvent", true, true); var d = document.getElementById("hiddenlpsubmitdiv"); for(var i = 0; i < document.forms.length; i++){ if(document.forms[i]==form){ d.innerText=i; } } d.dispatchEvent(customEvent); form.lpsubmitorig2(); } } }}catch(e){}</script></body></html>

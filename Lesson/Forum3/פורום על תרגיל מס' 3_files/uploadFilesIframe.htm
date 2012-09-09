@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0058)http://hl.hit.ac.il/Highlearnnet/kb/uploadFilesIframe.aspx -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>UploadFilesIframe</title>
+		<meta name="GENERATOR" content="Microsoft Visual Studio .NET 7.1">
+		<meta name="CODE_LANGUAGE" content="C#">
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<link rel="stylesheet" href="http://hl.hit.ac.il/upload/misc/CssFiles/stylesff.css">
+		 <style type="text/css">
+	    html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+	    </style>
+		
+		<!-- LINK href="/css/styles.css" type="text/css" rel="stylesheet" -->
+		<script src="prototype-1.4.0.js"></script>
+		<link href="IE4Apperance.css" type="text/css" rel="stylesheet">
+		<script src="common.js" language="javascript"></script>
+		<script language="javascript">
+   		function SaveInDB()
+		{
+			FormUplaodFile.action="UploadFilesIframe.aspx?Command=saveInDB"
+			FormUplaodFile.submit()
+		}
+		
+		///////////////////////////////////////////////////////////////////////////////////
+		// Check whether a file can be saved - if it doesn't already exists, return true.
+		// If it does exist, it's up to the user whether to overwrite it or not.
+		///////////////////////////////////////////////////////////////////////////////////
+		function CanFileBeSaved(path)
+		{		  
+		    FileName=getFileName(document.getElementById("fileUpload").value)
+		    path=path+"\\"+FileName
+		    var url="UploadFilesIframe.aspx?Command=CheckFileExists&Path="+path
+			result=sendXml(url, null );
+			if(result != "0")
+			{
+			    var strAlert="?קובץ עם שם זהה קיים בתיקייה והמשך הפעולה יגרום לדריסתו. האם להמשיך"
+		        return confirm(strAlert);
+			}			
+			return true;			
+		}
+		
+		function getFileName(path)
+		{
+		    point=path.lastIndexOf("\\")
+		    point=point+1
+		    FileName=path.substr(point,path.length)
+		    return FileName
+		    
+		}
+	
+		function submitForm(pathToSaveFile,UrlToComeBack,FileReName)
+		{
+			//pathToSaveFile --> The Path In which you want to save the file in without the filename
+			//UrlToComeBack --> the page you want to return to , if you don't want to refresh send 0
+			//FileName-->If you want to change the file name when saving,if not send 0
+			
+			if (CanFileBeSaved(pathToSaveFile) == false)
+			    return;
+			if(UrlToComeBack!=0)
+			    UrlToComeBack = UrlToComeBack.replace(/\+/g, "$*$");
+			if(CheckLegalType()=="True")
+		    {
+	            FormUplaodFile.action = "UploadFilesIframe.aspx?PathSavingFile=" + pathToSaveFile + "&Command=saveFile&UrlToComeBack=" + UrlToComeBack + "&FileReName=" + FileReName;
+		        FormUplaodFile.submit();
+		        return true
+		    }
+		    else
+		    {
+		        alert('סוג הקובץ אינו חוקי');
+		        return false;
+		    }			
+		}
+		
+		function CheckLegalType()
+		{
+		    fileName=escape(document.getElementById("fileUpload").value)
+		    page="UploadFilesIframe.aspx?Command=CheckType&FileName="+fileName
+		    result=sendXml( page, null );
+		    return result
+		}
+		function CheckLegalType_Old()
+		{
+		    fileName=escape(document.getElementById("fileUpload").value)
+		    url="UploadFilesIframe.aspx"
+		    pars="Command=CheckType&FileName="+fileName
+		    var myAjax=new Ajax.Request(
+					url,
+						{
+							method:'get',
+							parameters:pars,
+							onComplete:IsLegal
+						}
+					)
+		}
+		function IsLegal(originalRequest)
+		{
+		    if(originalRequest.responseText=="False")
+		    {
+		        alert('סוג הקובץ אינו חוקי')
+		        
+		        flag=false
+		         alert(flag)
+		    }
+		    flag=true
+		  
+		}
+		function submitFormTempSave(pathToSaveFile,UrlToComeBack,FileReName)
+		{
+				//pathToSaveFile --> The Path In which you want to save the file in without the filename
+				//UrlToComeBack --> the page you want to return to , if you don't want to refresh send 0
+				//FileName-->If you want to change the file name when saving,if not send 0
+				
+				 try
+				    {
+				        while(UrlToComeBack.indexOf("+")>-1)
+				        {
+				            UrlToComeBack=UrlToComeBack.replace("+","$*$")
+				        }
+				    }
+				    catch(e)
+				    {}
+				FormUplaodFile.action="UploadFilesIframe.aspx?TempSave=yes&PathSavingFile="+pathToSaveFile+"&Command=saveFile&UrlToComeBack="+UrlToComeBack+"&FileReName="+FileReName
+				FormUplaodFile.submit()
+			
+		}
+		</script>
+	</head>
+	<body id="PageBody" ms_positioning="GridLayout" style="margin-left:0;margin-right:0;margin-bottom:0;margin-top:0" dir="RTL">
+		<form name="FormUplaodFile" method="post" action="uploadFilesIframe.htm" id="FormUplaodFile" enctype="multipart/form-data">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTM5MDU2OTQ0NQ9kFgJmDxYCHgNEaXIFA1JUTGRkYZ6q4LS0/L6LKLLXwxG159UXGEw=">
+</div>
+
+			<input name="fileUpload" type="file" id="fileUpload" class="textbox" size="25"> 
+			<input type="submit" id="submitFile" style="DISPLAY:none" value="Submit Query">
+			
+		</form>
+	
+
+<div style="display: none; " id="hiddenlpsubmitdiv"></div><script>try{for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){ var lastpass_f = document.forms[lastpass_iter]; if(typeof(lastpass_f.lpsubmitorig2)=="undefined"){ lastpass_f.lpsubmitorig2 = lastpass_f.submit; lastpass_f.submit = function(){ var form=this; var customEvent = document.createEvent("Event"); customEvent.initEvent("lpCustomEvent", true, true); var d = document.getElementById("hiddenlpsubmitdiv"); for(var i = 0; i < document.forms.length; i++){ if(document.forms[i]==form){ d.innerText=i; } } d.dispatchEvent(customEvent); form.lpsubmitorig2(); } } }}catch(e){}</script></body></html>

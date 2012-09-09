@@ -1,0 +1,339 @@
+
+<!-- saved from url=(0222)http://hl.hit.ac.il/bareket/ItemOptions.asp?random=19025&iid=107543&eid=&qid=&mode=&sid=47554&user=&sentfrom=ExerciseMenu.asp&sign=no&alone=&RealItemID=107543&ReqCourseGUID=0xF83011475F2E754491B481B987817383&FromLinkBoard= -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
+
+<script language="javascript" src="common.js"></script>
+<script language="javascript">
+
+window.setTimeout("PutRedirectWord()",3000)
+function FreeMemory(url,randomNumber) {
+
+		if(parent.parent.name=="vcCourseMain")
+			parent.location=url
+		else
+			top.location=url
+
+}
+function HideImg()
+{
+	window.setTimeout("Hide()",1000)
+	//document.all['closeImg'].style.display="none"
+}
+function Hide()
+{
+	document.all['closeImg'][0].style.display="none"
+	document.all['closeImg'][1].style.display="none"
+	//document.all['closeImg'].style.display="none"
+}
+function closeImg() {
+		try{
+			if(parent.parent.name=="vcCourseMain")
+			{
+				document.all['closeImg'][1].style.display="none"
+			}
+		}
+		catch(e){}
+}
+function sendXml( page, message ) {
+	if(isE)
+		var xmlhttp = new ActiveXObject( 'Microsoft.XMLHTTP' );
+	else
+		var xmlhttp = new XMLHttpRequest();
+		
+	xmlhttp.open( 'GET', page, false );
+	if( message == null || message == '' ) message = '<root></root>';
+	xmlhttp.send( message );
+	return xmlhttp.responseText;
+}
+
+function ActionFavoriteItem(action)
+{
+	var ItemType = 2
+	var CommandDelete = 'Delete'
+	
+	if (action == 'RemoveFavorite')
+		doMyFavoriteAction(CommandDelete, ItemType  )
+	else
+		doFavoriteItem( ItemType )
+}
+function doMyFavoriteAction(Command, FavoriteType ) 
+{
+	var _Height = 200
+	var _Width = 300
+	var _IID = "107543"
+	var _CourseGUID = "0xF83011475F2E754491B481B987817383"
+	var _CourseID = "55119"
+	var CurrLEID="55119"
+	var ItemName = "%F4%E5%F8%E5%ED+%F2%EC+%FA%F8%E2%E9%EC+%EE%F1%27+3"
+	var ParamString = "&CourseID=" + _CourseID + "&ItemID=" +_IID	+ "&FavoriteType=" + FavoriteType+"&CurrLEID="+CurrLEID	
+	var ParamStr = '/favorites/FavoriteActions.asp?Command=' + Command + ParamString
+	var result = sendXml( ParamStr, null );
+	document.location.reload()	
+	
+}
+
+function doFavoriteItem(  ) {
+	
+	var Command = "AddItemToFavorite"
+	var _Height = 200
+	var _Width = 300
+	var _IID = "107543"
+	var _CourseGUID = "0xF83011475F2E754491B481B987817383"
+	var _CourseID = "55119"
+	var ItemName = "%F4%E5%F8%E5%ED+%F2%EC+%FA%F8%E2%E9%EC+%EE%F1%27+3"
+	var CurrLEID="55119"
+	var ParamString = "&vcCourseID=" + _CourseID + "&vcCourseGUID=" + _CourseGUID + "&vcCourseName=" + ItemName + "&ItemID=" +_IID+"&CurrLEID="+CurrLEID		
+	var ParamStr = '/favorites/AddCourseToFavoritesPopup.asp?Command=' + Command + ParamString
+	var result = sendXml( ParamStr, null );
+	window.document.location.href=window.document.location.href;
+	alert(result)
+	
+	//var WinAttribStr = 'left=300,top=200,height=' + _Height + ',width=' + _Width + ',status=no,toolbar=no,menubar=no,location=no,titlebar=no'
+	//var RefModalDialog = window.open(ParamStr,'',WinAttribStr);		
+	
+}
+
+function OpenToOldRemark()
+{
+	var OptionID="";
+	try{
+		var MainPage=parent.frames['ItemBody']
+		var MainUrl=MainPage.location.href
+		var StartUrl=MainUrl.indexOf('OptionID=')
+		var EndUrl=MainUrl.indexOf('&')
+		if(StartUrl>0 && StartUrl<EndUrl)
+			OptionID=MainUrl.substring(StartUrl+9,EndUrl)
+	}
+	catch(e)
+	{}
+	
+	RemarkWindow=window.open('RemarksAdd.asp?random=11631&iid=107543&studentid=32020', 'RemarkWindow','toolbar=yes,width=600,height=400,resizable=yes,scrollbars=yes');
+	RemarkWindow.focus();
+}
+function OpenToRemark()
+{
+	var OptionID="";
+	try{
+		var MainPage=parent.frames['ItemBody']
+		var MainUrl=MainPage.location.href
+		var StartUrl=MainUrl.indexOf('OptionID=')
+		var EndUrl=MainUrl.indexOf('&')
+		if(StartUrl>0 && StartUrl<EndUrl)
+			OptionID=MainUrl.substring(StartUrl+9,EndUrl)
+	}
+	catch(e)
+	{
+		
+	}
+	
+	RemarkWindow=window.open('AddRemark.asp?random=28942&iid=107543&studentid=32020&OptionID='+OptionID+'&vcCourseID=55119&FromLinkBoard=', 'RemarkWindow','width=600,height=460,resizable=yes,scrollbars=yes');
+	RemarkWindow.focus()
+}
+function PrintTop()
+{
+	var bodyStr=parent.frames["ItemBody"].location.href
+	var pos=bodyStr.toLowerCase().indexOf("redirectword")
+	if(pos>=0)
+		var PrintPage=parent.frames["ItemBody"].frames["vcBodyWord"]
+	else	
+		var PrintPage=parent.frames["ItemBody"]
+	
+	PrintPage.focus()
+	PrintPage.print()
+}
+</script>
+
+
+<title>צפייה בפריט מידע - מסך אפשרויות</title><link rel="STYLESHEET" href="http://hl.hit.ac.il/upload/misc/CssFiles/stylesff.css">
+
+<script language="javascript">
+
+
+function sign() {
+	x="";
+	location.href="http://hl.hit.ac.il/Bareket/ItemOptions.asp?random=15515&RealItemID=107543&tid=&eid=&iid=107543&qid=&mode=&sid=47554&order=1&user=&sentfrom=ExerciseMenu.asp&DeleteSessions=&alone=&EndTest=&BeenSigned=yes&id="+x
+}
+
+
+function GOTORelatedItem() {
+str=navigator.appVersion
+var IsXP=0
+oper_sys=str.split(";")[2]
+oper_sys_final=oper_sys.split(")")[0]
+oper_sys_final= oper_sys_final.slice(1)
+if(oper_sys_final=="Windows NT 5.1")
+{
+	IsXP=1	
+}
+			
+var params = 'RE,SB';
+var Height = 74;
+if(IsXP==1)
+	Height = 64;
+
+if(screen.height==600) 
+{
+	if(IsXP==0)
+		 Height = 71;
+	else
+		 Height = 61;	
+}
+
+/*if (!document.RelatedItem.iid.options[0].selected) {
+		try{
+			if(parent.parent.parent.parent.parent.frames['ClearC'])
+				NewItem=parent.parent.parent.parent.parent.frames['ClearC'].window.open('ShowItemByType.asp?random=11394&iid='+document.RelatedItem.iid.value+'&tid='+document.RelatedItem.iid.value+'&user=&SentFrom=ExerciseMenu.asp&LinkedItem=yes&vcCourseGuid=0xF83011475F2E754491B481B987817383&vcCourseID=55119', 'NewItem', 'toolbar=yes,menubar=yes,scrollbars=yes,resizable=yes,width=600,height=400,top=' + ( screen.height - 400 ) / 2 + ',left=' + ( screen.width - 600 ) / 2)
+			else if (parent.parent.window.opener.parent.parent.parent.frames['ClearC'])
+				NewItem=parent.parent.window.opener.parent.parent.parent.frames['ClearC'].window.open('ShowItemByType.asp?random=29654&iid='+document.RelatedItem.iid.value+'&tid='+document.RelatedItem.iid.value+'&user=&SentFrom=ExerciseMenu.asp&LinkedItem=yes&vcCourseGuid=0xF83011475F2E754491B481B987817383&vcCourseID=55119', 'NewItem', 'toolbar=yes,menubar=yes,scrollbars=yes,resizable=yes,width=600,height=400,top=' + ( screen.height - 400 ) / 2 + ',left=' + ( screen.width - 600 ) / 2)
+			else if(parent.parent.window.opener.opener.parent.parent.parent.frames['ClearC'])
+				NewItem=parent.parent.window.opener.opener.parent.parent.parent.frames['ClearC'].window.open('ShowItemByType.asp?random=13381&iid='+document.RelatedItem.iid.value+'&tid='+document.RelatedItem.iid.value+'&user=&SentFrom=ExerciseMenu.asp&LinkedItem=yes&vcCourseGuid=0xF83011475F2E754491B481B987817383&vcCourseID=55119', 'NewItem', 'toolbar=yes,menubar=yes,scrollbars=yes,resizable=yes,width=600,height=400,top=' + ( screen.height - 400 ) / 2 + ',left=' + ( screen.width - 600 ) / 2)
+		}catch(e){window.open('ShowItemByType.asp?random=17797&iid='+document.RelatedItem.iid.value+'&tid='+document.RelatedItem.iid.value+'&user=&SentFrom=ExerciseMenu.asp&LinkedItem=yes&vcCourseGuid=0xF83011475F2E754491B481B987817383&vcCourseID=55119', 'NewItem', 'toolbar=yes,menubar=yes,scrollbars=yes,resizable=yes,width=600,height=400,top=' + ( screen.height - 400 ) / 2 + ',left=' + ( screen.width - 600 ) / 2)}
+		try{NewItem.focus()}catch(e){}
+	}*/
+	if(IsXP==0)
+	{
+		if (!document.RelatedItem.iid.options[0].selected) {
+			try{
+				if(parent.parent.parent.parent.parent.frames['ClearC'])
+					NewItem=parent.parent.parent.parent.parent.frames['ClearC'].window.open('ShowItemByType.asp?random=10446&iid='+document.RelatedItem.iid.value+'&tid='+document.RelatedItem.iid.value+'&user=&SentFrom=ExerciseMenu.asp&LinkedItem=yes&vcCourseGuid=0xF83011475F2E754491B481B987817383&vcCourseID=55119', 'NewItem', 'toolbar=yes,menubar=yes,scrollbars=yes,resizable=yes,width='+0.95 * screen.width+',height='+Height/100 * screen.height+',top=65,left=30')
+				else if (parent.parent.window.opener.parent.parent.parent.frames['ClearC'])
+					NewItem=parent.parent.window.opener.parent.parent.parent.frames['ClearC'].window.open('ShowItemByType.asp?random=10298&iid='+document.RelatedItem.iid.value+'&tid='+document.RelatedItem.iid.value+'&user=&SentFrom=ExerciseMenu.asp&LinkedItem=yes&vcCourseGuid=0xF83011475F2E754491B481B987817383&vcCourseID=55119', 'NewItem', 'toolbar=yes,menubar=yes,scrollbars=yes,resizable=yes,width='+0.95 * screen.width+',height='+Height/100 * screen.height+',top=65,left=30')
+				else if(parent.parent.window.opener.opener.parent.parent.parent.frames['ClearC'])
+					NewItem=parent.parent.window.opener.opener.parent.parent.parent.frames['ClearC'].window.open('ShowItemByType.asp?random=27045&iid='+document.RelatedItem.iid.value+'&tid='+document.RelatedItem.iid.value+'&user=&SentFrom=ExerciseMenu.asp&LinkedItem=yes&vcCourseGuid=0xF83011475F2E754491B481B987817383&vcCourseID=55119', 'NewItem', 'toolbar=yes,menubar=yes,scrollbars=yes,resizable=yes,width='+0.95 * screen.width+',height='+Height/100 * screen.height+',top=65,left=30')
+			}catch(e){window.open('ShowItemByType.asp?random=21207&iid='+document.RelatedItem.iid.value+'&tid='+document.RelatedItem.iid.value+'&user=&SentFrom=ExerciseMenu.asp&LinkedItem=yes&vcCourseGuid=0xF83011475F2E754491B481B987817383&vcCourseID=55119', 'NewItem', 'toolbar=yes,menubar=yes,scrollbars=yes,resizable=yes,width='+0.95 * screen.width+',height='+Height/100 * screen.height+',top=65,left=30')}
+			try{NewItem.focus()}catch(e){}
+		}
+	}
+	else
+	{
+		if (!document.RelatedItem.iid.options[0].selected) {
+			try{
+				if(parent.parent.parent.parent.parent.frames['ClearC'])
+					NewItem=parent.parent.parent.parent.parent.frames['ClearC'].window.open('ShowItemByType.asp?random=10625&iid='+document.RelatedItem.iid.value+'&tid='+document.RelatedItem.iid.value+'&user=&SentFrom=ExerciseMenu.asp&LinkedItem=yes&vcCourseGuid=0xF83011475F2E754491B481B987817383&vcCourseID=55119', 'NewItem', 'toolbar=yes,menubar=yes,scrollbars=yes,resizable=yes,width='+0.95 * screen.width+',height='+Height/100 * screen.height+',top=75,left=30')
+				else if (parent.parent.window.opener.parent.parent.parent.frames['ClearC'])
+					NewItem=parent.parent.window.opener.parent.parent.parent.frames['ClearC'].window.open('ShowItemByType.asp?random=20168&iid='+document.RelatedItem.iid.value+'&tid='+document.RelatedItem.iid.value+'&user=&SentFrom=ExerciseMenu.asp&LinkedItem=yes&vcCourseGuid=0xF83011475F2E754491B481B987817383&vcCourseID=55119', 'NewItem', 'toolbar=yes,menubar=yes,scrollbars=yes,resizable=yes,width='+0.95 * screen.width+',height='+Height/100 * screen.height+',top=75,left=30')
+				else if(parent.parent.window.opener.opener.parent.parent.parent.frames['ClearC'])
+					NewItem=parent.parent.window.opener.opener.parent.parent.parent.frames['ClearC'].window.open('ShowItemByType.asp?random=25533&iid='+document.RelatedItem.iid.value+'&tid='+document.RelatedItem.iid.value+'&user=&SentFrom=ExerciseMenu.asp&LinkedItem=yes&vcCourseGuid=0xF83011475F2E754491B481B987817383&vcCourseID=55119', 'NewItem', 'toolbar=yes,menubar=yes,scrollbars=yes,resizable=yes,width='+0.95 * screen.width+',height='+Height/100 * screen.height+',top=75,left=30')
+			}catch(e){window.open('ShowItemByType.asp?random=31641&iid='+document.RelatedItem.iid.value+'&tid='+document.RelatedItem.iid.value+'&user=&SentFrom=ExerciseMenu.asp&LinkedItem=yes&vcCourseGuid=0xF83011475F2E754491B481B987817383&vcCourseID=55119', 'NewItem', 'toolbar=yes,menubar=yes,scrollbars=yes,resizable=yes,width='+0.95 * screen.width+',height='+Height/100 * screen.height+',top=75,left=30')}
+			try{NewItem.focus()}catch(e){}
+		}	
+	}
+}
+
+function ShowTirgul() {
+	try
+		{
+		if(parent.window.opener.parent.window.opener.parent.frames['TopMenu'])
+		{
+			if(parent.window.opener.parent.window.opener.parent.frames['TopMenu'].TestID>0)
+			{
+				document.all.Tirgul.style.display='none'
+			}
+		}
+		else
+		{
+			if(parent.window.opener.parent.window.opener.parent.window.opener.parent.frames['TopMenu'])
+			{
+				if(parent.window.opener.parent.window.opener.parent.window.opener.parent.frames['TopMenu'].TestID>0)
+				{
+					document.all.Tirgul.style.display='none'
+				}
+			}
+			else
+			{
+				document.all.Tirgul.style.display='block'
+			}
+		}
+	}
+	catch(e)
+	{
+		try{document.all.Tirgul.style.display='block'}catch(e){}
+	}
+}	
+
+
+function PutRedirectWord()
+{
+	try{
+		var ItemBodyUrl=parent.frames["ItemBody"].location.href
+		var WinWordFile;
+		var WinWordPos=ItemBodyUrl.indexOf("ReDirectWord.asp")
+		if (WinWordPos>-1)
+		{
+			WinWordFile=ItemBodyUrl.substring(WinWordPos,ItemBodyUrl.length)
+			document.all["ReDirectWord"].value=WinWordFile
+		}
+	}
+	catch(e)
+	{}
+}
+
+function OpenMetadata()
+{
+
+	var _Height = 595
+	var _Width = 350
+	
+	Command = "DisplayItem"
+	var ItemID = 107543
+	ParamString = "&TypeID=-99&ItemID=" + ItemID
+
+	var ParamStr = 'SetFieldsValues.asp?Command=' + Command + ParamString
+	var WinAttribStr = 'center=yes;dialogHeight=' + _Height + 'px;dialogWidth=' + _Width + 'px;help=no;status=no,resizable=no'
+	
+	if(isE == true)
+		var RefModalDialog = window.showModalDialog(ParamStr,'',WinAttribStr);
+	else
+		var RefModalDialog = window.open(ParamStr,'',WinAttribStr);
+	
+}
+</script>
+</head>
+<body dir="rtl" vlink="blue" class="LowerMenu" topmargin="0" onload="closeImg();ShowTirgul()" marginwidth="0" marginheight="0">
+<table border="0" cellspacing="0" cellpadding="0" width="100%" height="100%" align="center">
+<tbody><tr><td valign="top" colspan="9"><img src="1pix.gif" width="1" height="7"></td></tr>
+<tr>
+		<td align="right" valign="middle">&nbsp;</td>
+<!-- PART IV -->
+
+		
+		
+		<td valign="middle" dir="rtl" align="right"><nobr>
+			<span class="Link_buttons" onclick="OpenMetadata()">המאפיינים</span>
+		</nobr></td>
+
+
+
+<!-- PART II -->
+
+		<td align="right" valign="middle" width="2">&nbsp;&nbsp;</td>
+
+			<td align="right" valign="middle" width="2">&nbsp;&nbsp;</td>	
+			<td valign="middle" align="right" width="23"><nobr>
+				<span class="Link_Buttons" onclick="OpenToOldRemark()">טוקבק (0)</span>
+			</nobr></td>
+		
+<!-- PART III -->
+
+	<td align="right" valign="middle" width="2">&nbsp;&nbsp;</td>
+	<td align="left" valign="middle" width="60" id="closeImg" dir="rtl" style="display:none"><nobr>
+			<span class="buttons_With_Img" onclick="javascript:PrintTop()">הדפס</span><img class="img" src="print.gif" onclick="javascript:PrintTop()">
+		</nobr></td>
+	<td align="right" valign="middle" width="2">&nbsp;&nbsp;</td>
+	<td valign="middle" width="20" id="closeImg" dir="rtl">
+	<nobr>
+		<span class="Buttons_With_Img" onclick="javascript:top.close()">סגור</span><img class="img" src="close.gif" onclick="javascript:top.close()">
+	</nobr>
+	</td>
+	<td align="right" valign="middle" width="2">&nbsp;&nbsp;</td>
+</tr>
+</tbody></table>
+
+
+<form id="form1" name="form1">
+<input type="hidden" name="ReDirectWord">
+</form>
+
+	
+<!-- AspEnd File -->
+<div style="display: none; " id="hiddenlpsubmitdiv"></div><script>try{for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){ var lastpass_f = document.forms[lastpass_iter]; if(typeof(lastpass_f.lpsubmitorig2)=="undefined"){ lastpass_f.lpsubmitorig2 = lastpass_f.submit; lastpass_f.submit = function(){ var form=this; var customEvent = document.createEvent("Event"); customEvent.initEvent("lpCustomEvent", true, true); var d = document.getElementById("hiddenlpsubmitdiv"); for(var i = 0; i < document.forms.length; i++){ if(document.forms[i]==form){ d.innerText=i; } } d.dispatchEvent(customEvent); form.lpsubmitorig2(); } } }}catch(e){}</script></body></html>
