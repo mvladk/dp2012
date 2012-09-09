@@ -22,7 +22,7 @@ namespace C12Ex02Y314440009V319512893
     /// <summary>
     /// FacebookAlbum wrapper for Facebook wraper API
     /// </summary>
-    public class FacebookAlbum
+    public class FacebookAlbum : IComponent
     {
         private FacebookAlbum() 
         {
@@ -42,6 +42,7 @@ namespace C12Ex02Y314440009V319512893
         private Panel m_AlbumsPhotosPanel;
         private FolderBrowserDialog m_FolderBrowserDialog;
         private ProgressBar m_ProgressBar;
+        private Hashtable m_albumsTaggetFriends = new Hashtable();
 
         /// <summary>
         /// Gets or sets the Facebook wrapper User 
@@ -130,24 +131,16 @@ namespace C12Ex02Y314440009V319512893
         {
             if (this.User.AlbumsListBox.SelectedItems.Count == 1)
             {
-                Hashtable albumsTaggetFreans = new Hashtable();
                 this.m_Album = this.m_User.AlbumsListBox.SelectedItem as Album;
 
                 this.AlbumsTaggetUsers.Items.Clear();
-                foreach (Photo selectedAlbumsfoto in this.m_Album.Photos)
+                foreach (Photo selectedAlbumsPhoto in this.m_Album.Photos)
                 {
-                    if (selectedAlbumsfoto != null && selectedAlbumsfoto.Tags != null)
+                    if (selectedAlbumsPhoto != null && selectedAlbumsPhoto.Tags != null)
                     {
-                        if (selectedAlbumsfoto.Tags.Count > 0)
+                        if (selectedAlbumsPhoto.Tags.Count > 0)
                         {
-                            foreach (PhotoTag tagg in selectedAlbumsfoto.Tags)
-                            {
-                                if (null != tagg.User.Name && !albumsTaggetFreans.ContainsKey(tagg.User.Name))
-                                {
-                                    albumsTaggetFreans.Add(tagg.User.Name, selectedAlbumsfoto);
-                                    this.AlbumsTaggetUsers.Items.Add(tagg.User.Name);
-                                }
-                            }
+                            displaySelectedPhotoTags(selectedAlbumsPhoto);
                         }
                     }
                 }
@@ -260,6 +253,18 @@ namespace C12Ex02Y314440009V319512893
                             }
                         }
                     }
+                }
+            }
+        }
+
+        public void displaySelectedPhotoTags(Photo i_Photo)
+        {
+            foreach (PhotoTag tagg in i_Photo.Tags)
+            {
+                if (null != tagg.User.Name && !m_albumsTaggetFriends.ContainsKey(tagg.User.Name))
+                {
+                    m_albumsTaggetFriends.Add(tagg.User.Name, i_Photo);
+                    this.AlbumsTaggetUsers.Items.Add(tagg.User.Name);
                 }
             }
         }

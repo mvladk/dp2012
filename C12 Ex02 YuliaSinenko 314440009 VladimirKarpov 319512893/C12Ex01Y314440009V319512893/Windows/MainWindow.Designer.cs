@@ -121,7 +121,6 @@ namespace C12Ex02Y314440009V319512893
             this.listBoxTaggetFriends.Location = new System.Drawing.Point(424, 371);
             this.listBoxTaggetFriends.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxTaggetFriends.Name = "listBoxTaggetFriends";
-            this.listBoxTaggetFriends.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.listBoxTaggetFriends.Size = new System.Drawing.Size(235, 147);
             this.listBoxTaggetFriends.TabIndex = 8;
             // 

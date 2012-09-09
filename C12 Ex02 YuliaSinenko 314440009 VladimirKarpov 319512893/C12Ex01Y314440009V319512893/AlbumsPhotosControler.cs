@@ -12,7 +12,7 @@ namespace C12Ex02Y314440009V319512893
     using System.Windows.Forms;
     using System.Windows.Forms.Design;
 
-    public partial class AlbumsPhotosControler : UserControl
+    public partial class AlbumsPhotosControler : UserControl, IComponent
     {
         public PictureBox PictureBox
         {
