@@ -24,9 +24,10 @@ namespace C12Ex02Y314440009V319512893
     /// </summary>
     public class FacebookAlbum : IComponent
     {
-        private FacebookAlbum() 
+        private FacebookAlbum()
         {
         }
+
         public static FacebookAlbum Instance
         {
             get

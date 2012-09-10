@@ -12,9 +12,8 @@ namespace C12Ex02Y314440009V319512893
         private static volatile T s_Instance;
         private static object s_LockObj = new object();
 
-        static Singleton()
-        {
-        }
+        //// static Singleton() { }
+
         public static T Instance
         {
             get
@@ -35,6 +34,7 @@ namespace C12Ex02Y314440009V319512893
                             {
                                 throw new Exception(null, exception);
                             }
+
                             if (constructor == null || constructor.IsAssembly)
                             {
                                 throw new Exception(string.Format("A private or protected constructor is missing for '{0}'.", typeof(T).Name));

@@ -79,6 +79,5 @@ namespace Infrastructure.Adapters.Facebook
                 throw new Exception(this.m_loginResult.ErrorMessage);
             }
         }
-
     }
 }

@@ -7,11 +7,10 @@ using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 using Infrastructure.Adapters.Facebook;
 
-
 namespace C12Ex02Y314440009V319512893
 {
-    interface IComponent
+    public interface IComponent
     {
-        void displaySelectedPhotoTags( Photo i_photo);
+        void displaySelectedPhotoTags(Photo i_photo);
     }
 }
