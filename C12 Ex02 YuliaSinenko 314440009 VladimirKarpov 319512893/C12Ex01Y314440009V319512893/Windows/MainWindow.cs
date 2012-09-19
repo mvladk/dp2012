@@ -27,7 +27,7 @@ namespace C12Ex02Y314440009V319512893
     /// </summary>
     public partial class MainWindow : Form
     {
-        private FBAdapter m_FBAdapter;
+        private ILoginable m_FBAdapter;
         private FacebookUser m_FacebookUser = new FacebookUser();
         private FacebookUser m_FacebookUserFriend = new FacebookUser();
         private FacebookAlbum m_FacebookAlbum = FacebookAlbum.Instance;
@@ -45,7 +45,7 @@ namespace C12Ex02Y314440009V319512893
         private void loginAndInit()
         {
             this.m_FBAdapter.Login();
-            this.m_FacebookUser.User = this.m_FBAdapter.LoggedInUser;
+            this.m_FacebookUser.User = (this.m_FBAdapter as FBAdapter).LoggedInUser;
             this.m_FacebookUser.ProfilePictureBox = this.image_smallPictureBox;
             this.m_FacebookUser.FriendsListBox = this.listBoxFriends;
             this.m_FacebookUser.AlbumsListBox = this.listBoxAlbums;
