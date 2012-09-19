@@ -30,7 +30,7 @@ namespace C12Ex02Y314440009V319512893
         public AlbumsPhotosControler(string i_Url, int i_PhotosCount)
         {
             InitializeComponent();
-            this.pictureBoxAlbumsPhoto.LoadAsync(i_Url);
+            this.pictureBoxAlbumsPhoto.Load(i_Url);
             this.pictureBoxAlbumsPhoto.Click += new EventHandler(pictureBoxAlbumsPhoto_Click);
 
             this.Location = new Point(0, 100 * i_PhotosCount);

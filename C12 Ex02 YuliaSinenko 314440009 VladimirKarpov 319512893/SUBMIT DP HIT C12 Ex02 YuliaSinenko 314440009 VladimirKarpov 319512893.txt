@@ -3,9 +3,9 @@ Exercise No...........: 2
 First Student Details.: 314440009 - Yulia Sinenko
 Second Student Details: 319512893 - Vldimir Karpov
 Delivery Date.........: 26 - August - 2012
-Delivered In Delay....: No
+Delivered In Delay....: Yes 19 days
 Lecturer Confirmation.: No
 Delay Reason..........: Not enough time
-Comments..............: .
+Comments..............: We had exam moed miuhad of COMPUTABILITY AND COMPLEXITY OF ALGORITHMS (61306) at 03.09.2012
 VS Version............: Visual Studio 2010
 =======================End Exercise Checking Report=========================

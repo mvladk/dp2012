@@ -14,7 +14,7 @@ namespace C12Ex02Y314440009V319512893
 {
     public interface IPictureBox
     {
-        void LoadAsync(string url);
+        void Load(string url);
     }
 
     public class PictureBoxProxy : PictureBox, IPictureBox
@@ -38,7 +38,7 @@ namespace C12Ex02Y314440009V319512893
         /*
          TODO: There is a bug of refreshing tags list when loading from cached results
          */
-        public new void LoadAsync(string i_Url)
+        public new void Load(string i_Url)
         {
             if (PictureBoxProxy.s_AlbumsPhotosCollection.Count > 0 && PictureBoxProxy.s_AlbumsPhotosCollection.ContainsKey(i_Url))
             {
