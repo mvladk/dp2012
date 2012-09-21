@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8' ?>
-<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Fri Sep 21 20:13:00 IDT 2012'>
+<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Fri Sep 21 23:30:34 IDT 2012'>
   <XMI.header>    <XMI.documentation>
       <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
       <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
@@ -180,7 +180,7 @@
           </UML:GeneralizableElement.generalization>
           <UML:Classifier.feature>
             <UML:Attribute xmi.id = '-64--88-56-1--582d86b5:139e05056c6:-8000:0000000000000896'
-              name = 'm_Album' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              name = '-m_Album' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
               changeability = 'changeable' targetScope = 'instance'>
               <UML:StructuralFeature.multiplicity>
                 <UML:Multiplicity xmi.id = '-64--88-56-1--582d86b5:139e05056c6:-8000:0000000000000897'>
@@ -195,7 +195,7 @@
               </UML:StructuralFeature.type>
             </UML:Attribute>
             <UML:Attribute xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:0000000000000990'
-              name = 'm_User' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              name = '-m_User' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
               changeability = 'changeable' targetScope = 'instance'>
               <UML:StructuralFeature.multiplicity>
                 <UML:Multiplicity xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:0000000000000991'>
@@ -210,7 +210,7 @@
               </UML:StructuralFeature.type>
             </UML:Attribute>
             <UML:Operation xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009A1'
-              name = 'displaySelectedAlbumsPhotos' visibility = 'private' isSpecification = 'false'
+              name = '-displaySelectedAlbumsPhotos' visibility = 'private' isSpecification = 'false'
               ownerScope = 'instance' isQuery = 'false' concurrency = 'sequential' isRoot = 'false'
               isLeaf = 'false' isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
@@ -219,7 +219,7 @@
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009A3'
-              name = 'displaySelectedAlbumsTags' visibility = 'public' isSpecification = 'false'
+              name = '-displaySelectedAlbumsTags' visibility = 'public' isSpecification = 'false'
               ownerScope = 'instance' isQuery = 'false' concurrency = 'sequential' isRoot = 'false'
               isLeaf = 'false' isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
@@ -228,7 +228,7 @@
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009A5'
-              name = 'listBoxTaggetFriends_SelectedIndexChanged' visibility = 'public'
+              name = '-listBoxTaggetFriends_SelectedIndexChanged' visibility = 'public'
               isSpecification = 'false' ownerScope = 'instance' isQuery = 'false' concurrency = 'sequential'
               isRoot = 'false' isLeaf = 'false' isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
@@ -241,7 +241,7 @@
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009A9'
-              name = 'FriendsListBox_SelectedIndexChanged' visibility = 'public' isSpecification = 'false'
+              name = '+FriendsListBox_SelectedIndexChanged' visibility = 'public' isSpecification = 'false'
               ownerScope = 'instance' isQuery = 'false' concurrency = 'sequential' isRoot = 'false'
               isLeaf = 'false' isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
@@ -254,7 +254,7 @@
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009AD'
-              name = 'ListBoxAlbums_SelectedIndexChanged' visibility = 'public' isSpecification = 'false'
+              name = '+ListBoxAlbums_SelectedIndexChanged' visibility = 'public' isSpecification = 'false'
               ownerScope = 'instance' isQuery = 'false' concurrency = 'sequential' isRoot = 'false'
               isLeaf = 'false' isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
@@ -267,7 +267,7 @@
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009B1'
-              name = 'thumbnail_Click' visibility = 'public' isSpecification = 'false'
+              name = '-thumbnail_Click' visibility = 'public' isSpecification = 'false'
               ownerScope = 'instance' isQuery = 'false' concurrency = 'sequential' isRoot = 'false'
               isLeaf = 'false' isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
@@ -280,7 +280,7 @@
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009B5'
-              name = 'ListBoxFriends_SelectedIndexChanged' visibility = 'public' isSpecification = 'false'
+              name = '+ListBoxFriends_SelectedIndexChanged' visibility = 'public' isSpecification = 'false'
               ownerScope = 'instance' isQuery = 'false' concurrency = 'sequential' isRoot = 'false'
               isLeaf = 'false' isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
@@ -293,7 +293,7 @@
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009B9'
-              name = 'buttonDowload_Click' visibility = 'public' isSpecification = 'false'
+              name = '+buttonDowload_Click' visibility = 'public' isSpecification = 'false'
               ownerScope = 'instance' isQuery = 'false' concurrency = 'sequential' isRoot = 'false'
               isLeaf = 'false' isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
@@ -306,7 +306,7 @@
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Operation xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009BD'
-              name = 'displaySelectedPhotoTags' visibility = 'public' isSpecification = 'false'
+              name = '+displaySelectedPhotoTags' visibility = 'public' isSpecification = 'false'
               ownerScope = 'instance' isQuery = 'false' concurrency = 'sequential' isRoot = 'false'
               isLeaf = 'false' isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
@@ -317,7 +317,7 @@
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Attribute xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009C0'
-              name = 'm_AlbumPictureBox' visibility = 'public' isSpecification = 'false'
+              name = '-m_AlbumPictureBox' visibility = 'public' isSpecification = 'false'
               ownerScope = 'instance' changeability = 'changeable' targetScope = 'instance'>
               <UML:StructuralFeature.multiplicity>
                 <UML:Multiplicity xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009C1'>
@@ -332,7 +332,7 @@
               </UML:StructuralFeature.type>
             </UML:Attribute>
             <UML:Attribute xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009C5'
-              name = 'm_AlbumsTaggetUsers' visibility = 'public' isSpecification = 'false'
+              name = '-m_AlbumsTaggetUsers' visibility = 'public' isSpecification = 'false'
               ownerScope = 'instance' changeability = 'changeable' targetScope = 'instance'>
               <UML:StructuralFeature.multiplicity>
                 <UML:Multiplicity xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009C6'>
@@ -347,7 +347,7 @@
               </UML:StructuralFeature.type>
             </UML:Attribute>
             <UML:Attribute xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009C9'
-              name = 'm_AlbumsPhotosPanel' visibility = 'public' isSpecification = 'false'
+              name = '-m_AlbumsPhotosPanel' visibility = 'public' isSpecification = 'false'
               ownerScope = 'instance' changeability = 'changeable' targetScope = 'instance'>
               <UML:StructuralFeature.multiplicity>
                 <UML:Multiplicity xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009CA'>
@@ -362,7 +362,7 @@
               </UML:StructuralFeature.type>
             </UML:Attribute>
             <UML:Attribute xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009CD'
-              name = 'm_FolderBrowserDialog' visibility = 'public' isSpecification = 'false'
+              name = '-m_FolderBrowserDialog' visibility = 'public' isSpecification = 'false'
               ownerScope = 'instance' changeability = 'changeable' targetScope = 'instance'>
               <UML:StructuralFeature.multiplicity>
                 <UML:Multiplicity xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009CE'>
@@ -377,8 +377,8 @@
               </UML:StructuralFeature.type>
             </UML:Attribute>
             <UML:Attribute xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009D1'
-              name = 'm_ProgressBar' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
-              changeability = 'changeable' targetScope = 'instance'>
+              name = '-m_ProgressBar' visibility = 'public' isSpecification = 'false'
+              ownerScope = 'instance' changeability = 'changeable' targetScope = 'instance'>
               <UML:StructuralFeature.multiplicity>
                 <UML:Multiplicity xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009D2'>
                   <UML:Multiplicity.range>
@@ -392,7 +392,7 @@
               </UML:StructuralFeature.type>
             </UML:Attribute>
             <UML:Attribute xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009D5'
-              name = 'm_albumsTaggetFriends' visibility = 'public' isSpecification = 'false'
+              name = '-m_albumsTaggetFriends' visibility = 'public' isSpecification = 'false'
               ownerScope = 'instance' changeability = 'changeable' targetScope = 'instance'>
               <UML:StructuralFeature.multiplicity>
                 <UML:Multiplicity xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009D6'>
@@ -407,7 +407,7 @@
               </UML:StructuralFeature.type>
             </UML:Attribute>
             <UML:Attribute xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009D9'
-              name = 'User' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              name = '+User' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
               changeability = 'changeable' targetScope = 'instance'>
               <UML:StructuralFeature.multiplicity>
                 <UML:Multiplicity xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009DA'>
@@ -422,7 +422,7 @@
               </UML:StructuralFeature.type>
             </UML:Attribute>
             <UML:Attribute xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009DC'
-              name = 'AlbumPictureBox' visibility = 'public' isSpecification = 'false'
+              name = '+AlbumPictureBox' visibility = 'public' isSpecification = 'false'
               ownerScope = 'instance' changeability = 'changeable' targetScope = 'instance'>
               <UML:StructuralFeature.multiplicity>
                 <UML:Multiplicity xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009DD'>
@@ -437,7 +437,7 @@
               </UML:StructuralFeature.type>
             </UML:Attribute>
             <UML:Attribute xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009DF'
-              name = 'AlbumsTaggetUsers' visibility = 'public' isSpecification = 'false'
+              name = '+AlbumsTaggetUsers' visibility = 'public' isSpecification = 'false'
               ownerScope = 'instance' changeability = 'changeable' targetScope = 'instance'>
               <UML:StructuralFeature.multiplicity>
                 <UML:Multiplicity xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009E0'>
@@ -452,7 +452,7 @@
               </UML:StructuralFeature.type>
             </UML:Attribute>
             <UML:Attribute xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009E2'
-              name = 'AlbumsPhotosPanel' visibility = 'public' isSpecification = 'false'
+              name = '+AlbumsPhotosPanel' visibility = 'public' isSpecification = 'false'
               ownerScope = 'instance' changeability = 'changeable' targetScope = 'instance'>
               <UML:StructuralFeature.multiplicity>
                 <UML:Multiplicity xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009E3'>
@@ -467,7 +467,7 @@
               </UML:StructuralFeature.type>
             </UML:Attribute>
             <UML:Attribute xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009E5'
-              name = 'FolderBrowserDialog' visibility = 'public' isSpecification = 'false'
+              name = '+FolderBrowserDialog' visibility = 'public' isSpecification = 'false'
               ownerScope = 'instance' changeability = 'changeable' targetScope = 'instance'>
               <UML:StructuralFeature.multiplicity>
                 <UML:Multiplicity xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009E6'>
@@ -482,7 +482,7 @@
               </UML:StructuralFeature.type>
             </UML:Attribute>
             <UML:Attribute xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009E8'
-              name = 'ProgressBar' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              name = '+ProgressBar' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
               changeability = 'changeable' targetScope = 'instance'>
               <UML:StructuralFeature.multiplicity>
                 <UML:Multiplicity xmi.id = '-64--88-56-1-67e5dc31:139e5776bc6:-8000:00000000000009E9'>
@@ -691,7 +691,7 @@
           isLeaf = 'false' isAbstract = 'false' isActive = 'false'>
           <UML:Classifier.feature>
             <UML:Operation xmi.id = '-64--88-56-1-7e4577bc:139e9ba2a63:-8000:0000000000000A0A'
-              name = 'Load' visibility = 'private' isSpecification = 'false' ownerScope = 'instance'
+              name = '+Load' visibility = 'private' isSpecification = 'false' ownerScope = 'instance'
               isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
               isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
@@ -765,7 +765,7 @@
           isRoot = 'false' isLeaf = 'false' isAbstract = 'false' isActive = 'false'>
           <UML:Classifier.feature>
             <UML:Attribute xmi.id = '-64--88-56-1-7e4577bc:139e9ba2a63:-8000:00000000000009F8'
-              name = 'pictureBoxAlbumsPhoto' visibility = 'public' isSpecification = 'false'
+              name = '-pictureBoxAlbumsPhoto' visibility = 'public' isSpecification = 'false'
               ownerScope = 'instance' changeability = 'changeable' targetScope = 'instance'>
               <UML:StructuralFeature.multiplicity>
                 <UML:Multiplicity xmi.id = '-64--88-56-1-7e4577bc:139e9ba2a63:-8000:00000000000009F9'>
@@ -780,7 +780,7 @@
               </UML:StructuralFeature.type>
             </UML:Attribute>
             <UML:Attribute xmi.id = '-64--88-56-1-7e4577bc:139e9ba2a63:-8000:00000000000009FC'
-              name = 'PictureBox' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              name = '-PictureBox' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
               changeability = 'changeable' targetScope = 'instance'>
               <UML:StructuralFeature.multiplicity>
                 <UML:Multiplicity xmi.id = '-64--88-56-1-7e4577bc:139e9ba2a63:-8000:00000000000009FD'>
@@ -810,7 +810,7 @@
           </UML:GeneralizableElement.generalization>
           <UML:Classifier.feature>
             <UML:Operation xmi.id = '-64--88-56-1-7e4577bc:139e9ba2a63:-8000:0000000000000A07'
-              name = 'Load' visibility = 'private' isSpecification = 'false' ownerScope = 'instance'
+              name = '+Load' visibility = 'private' isSpecification = 'false' ownerScope = 'instance'
               isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
               isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
@@ -821,7 +821,7 @@
               </UML:BehavioralFeature.parameter>
             </UML:Operation>
             <UML:Attribute xmi.id = '-64--88-56-1-7e4577bc:139e9ba2a63:-8000:0000000000000A12'
-              name = 'm_AlbumPicture' visibility = 'public' isSpecification = 'false'
+              name = '-m_AlbumPicture' visibility = 'public' isSpecification = 'false'
               ownerScope = 'instance' changeability = 'changeable' targetScope = 'instance'>
               <UML:StructuralFeature.multiplicity>
                 <UML:Multiplicity xmi.id = '-64--88-56-1-7e4577bc:139e9ba2a63:-8000:0000000000000A13'>
@@ -836,7 +836,7 @@
               </UML:StructuralFeature.type>
             </UML:Attribute>
             <UML:Attribute xmi.id = '-64--88-56-1-7e4577bc:139e9ba2a63:-8000:0000000000000A15'
-              name = 'pictureBoxAlbumsPhoto' visibility = 'public' isSpecification = 'false'
+              name = '-pictureBoxAlbumsPhoto' visibility = 'public' isSpecification = 'false'
               ownerScope = 'instance' changeability = 'changeable' targetScope = 'instance'>
               <UML:StructuralFeature.multiplicity>
                 <UML:Multiplicity xmi.id = '-64--88-56-1-7e4577bc:139e9ba2a63:-8000:0000000000000A16'>
@@ -851,7 +851,7 @@
               </UML:StructuralFeature.type>
             </UML:Attribute>
             <UML:Attribute xmi.id = '-64--88-56-1-7e4577bc:139e9ba2a63:-8000:0000000000000A18'
-              name = 'AlbumsPhotosCollection' visibility = 'public' isSpecification = 'false'
+              name = '+AlbumsPhotosCollection' visibility = 'public' isSpecification = 'false'
               ownerScope = 'instance' changeability = 'changeable' targetScope = 'instance'>
               <UML:StructuralFeature.multiplicity>
                 <UML:Multiplicity xmi.id = '-64--88-56-1-7e4577bc:139e9ba2a63:-8000:0000000000000A19'>
@@ -881,7 +881,7 @@
           isLeaf = 'false' isAbstract = 'false'>
           <UML:Classifier.feature>
             <UML:Operation xmi.id = '-64--88-56-1-7e4577bc:139e9ba2a63:-8000:0000000000000A01'
-              name = 'Load' visibility = 'private' isSpecification = 'false' ownerScope = 'instance'
+              name = '+Load' visibility = 'private' isSpecification = 'false' ownerScope = 'instance'
               isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
               isAbstract = 'false'>
               <UML:BehavioralFeature.parameter>
@@ -986,10 +986,29 @@
         <UML:Comment xmi.id = '-64--88-56-1-7e4577bc:139e9ba2a63:-8000:0000000000000A2C'
           isSpecification = 'false' body = 'PictureBoxProxy Impersonate to PictureBox'>
           <UML:Comment.annotatedElement>
-            <UML:Association xmi.idref = '-64--88-56-1-7e4577bc:139e9ba2a63:-8000:0000000000000A23'/>
             <UML:Class xmi.idref = '-64--88-56-1-7e4577bc:139e9ba2a63:-8000:00000000000009FB'/>
+            <UML:Association xmi.idref = '-64--88-56-1-7e4577bc:139e9ba2a63:-8000:0000000000000A23'/>
           </UML:Comment.annotatedElement>
         </UML:Comment>
+        <UML:Class xmi.id = '10-0-0-1-4e0185d0:139ea53bdbb:-8000:0000000000001069'
+          name = '' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false' isActive = 'false'>
+          <UML:ModelElement.clientDependency>
+            <UML:Abstraction xmi.idref = '10-0-0-1-4e0185d0:139ea53bdbb:-8000:000000000000106A'/>
+          </UML:ModelElement.clientDependency>
+        </UML:Class>
+        <UML:Abstraction xmi.id = '10-0-0-1-4e0185d0:139ea53bdbb:-8000:000000000000106A'
+          isSpecification = 'false'>
+          <UML:ModelElement.stereotype>
+            <UML:Stereotype xmi.idref = '-64--88-56-1--582d86b5:139e05056c6:-8000:0000000000000879'/>
+          </UML:ModelElement.stereotype>
+          <UML:Dependency.client>
+            <UML:Class xmi.idref = '10-0-0-1-4e0185d0:139ea53bdbb:-8000:0000000000001069'/>
+          </UML:Dependency.client>
+          <UML:Dependency.supplier>
+            <UML:Interface xmi.idref = '-64--88-56-1-7e4577bc:139e9ba2a63:-8000:0000000000000A00'/>
+          </UML:Dependency.supplier>
+        </UML:Abstraction>
       </UML:Namespace.ownedElement>
     </UML:Model>
   </XMI.content>
