@@ -15,10 +15,6 @@ namespace Infrastructure.Adapters.Facebook
     using FacebookWrapper;
     using FacebookWrapper.ObjectModel;
 
-    public interface ILoginable
-    {
-        void Login();
-    }
     /// <summary>
     /// TODO: Update summary.
     /// </summary>

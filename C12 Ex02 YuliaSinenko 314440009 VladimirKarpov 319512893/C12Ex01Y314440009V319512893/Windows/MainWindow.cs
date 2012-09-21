@@ -19,6 +19,7 @@ using System.IO;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 using Infrastructure.Adapters.Facebook;
+using Infrastructure.Adapters;
 
 namespace C12Ex02Y314440009V319512893
 {
