@@ -23,13 +23,13 @@ namespace C12Ex02Y314440009V319512893
 
         private PictureBox m_AlbumPicture = new PictureBox();
 
-        public PictureBox pictureBoxAlbumsPhoto
+        private PictureBox pictureBoxAlbumsPhoto
         {
             get { return this.m_AlbumPicture; }
             set { this.m_AlbumPicture = value; }
         }
 
-        public Dictionary<string, Image> AlbumsPhotosCollection
+        private Dictionary<string, Image> AlbumsPhotosCollection
         {
             get { return s_AlbumsPhotosCollection; }
             set { s_AlbumsPhotosCollection = value; }
