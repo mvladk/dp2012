@@ -7,7 +7,7 @@ using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 using Infrastructure.Adapters.Facebook;
 
-namespace C12Ex02Y314440009V319512893
+namespace C12Ex03Y314440009V319512893
 {
     public interface IComponent
     {

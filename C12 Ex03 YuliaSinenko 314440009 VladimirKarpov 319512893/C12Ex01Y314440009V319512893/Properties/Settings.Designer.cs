@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace C12Ex02Y314440009V319512893.Properties {
+namespace C12Ex03Y314440009V319512893.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 
-namespace C12Ex02Y314440009V319512893
+namespace C12Ex03Y314440009V319512893
 {
     public static class Singleton<T>
         where T : class

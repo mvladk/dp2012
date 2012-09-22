@@ -1,9 +1,9 @@
 ==========================Exercise Checking Report==========================
-Exercise No...........: 2
+Exercise No...........: 3
 First Student Details.: 314440009 - Yulia Sinenko
 Second Student Details: 319512893 - Vldimir Karpov
-Delivery Date.........: 26 - August - 2012
-Delivered In Delay....: Yes 20 days
+Delivery Date.........: 12 - September - 2012
+Delivered In Delay....: Yes 10 days
 Lecturer Confirmation.: No
 Delay Reason..........: Not enough time, We had exam moed miuhad of COMPUTABILITY AND COMPLEXITY OF ALGORITHMS (61306) at 03.09.2012
 Comments..............: Facebook dlls should be located in FbApi folder inside project folder

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace C12Ex02Y314440009V319512893.Properties {
+namespace C12Ex03Y314440009V319512893.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace C12Ex02Y314440009V319512893.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("C12Ex02Y314440009V319512893.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("C12Ex03Y314440009V319512893.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
