@@ -93,7 +93,7 @@ namespace C12Ex03Y314440009V319512893
                 {
                     //this.m_AlbumsSortsComboBox.Invoke(new Action(() => this.m_FriendsSortsComboBox.Items.Add(new Comparer())));
                     //this.m_AlbumsSortsComboBox.Invoke(new Action(() => this.m_FriendsSortsComboBox.Items.Add(new Comparer())));
-                    s_IsInitedAlbumsSortsComboBox = true;
+                    s_IsInitedFriendSortsComboBox = true;
                 }
             }
         }
