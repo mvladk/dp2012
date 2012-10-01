@@ -43,6 +43,8 @@ namespace C12Ex03Y314440009V319512893
             this.folderBrowserDialogForDownload = new System.Windows.Forms.FolderBrowserDialog();
             this.progressBarPhotosDownload = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
+            this.friendsSortComboBox = new System.Windows.Forms.ComboBox();
+            this.albumsSortComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.image_smallPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageFriend)).BeginInit();
             this.SuspendLayout();
@@ -60,10 +62,10 @@ namespace C12Ex03Y314440009V319512893
             // 
             // image_smallPictureBox
             // 
-            this.image_smallPictureBox.Location = new System.Drawing.Point(129, 11);
+            this.image_smallPictureBox.Location = new System.Drawing.Point(133, 11);
             this.image_smallPictureBox.Margin = new System.Windows.Forms.Padding(2);
             this.image_smallPictureBox.Name = "image_smallPictureBox";
-            this.image_smallPictureBox.Size = new System.Drawing.Size(110, 124);
+            this.image_smallPictureBox.Size = new System.Drawing.Size(106, 112);
             this.image_smallPictureBox.TabIndex = 1;
             this.image_smallPictureBox.TabStop = false;
             // 
@@ -89,7 +91,7 @@ namespace C12Ex03Y314440009V319512893
             // labelAlbumsList
             // 
             this.labelAlbumsList.AutoSize = true;
-            this.labelAlbumsList.Location = new System.Drawing.Point(22, 331);
+            this.labelAlbumsList.Location = new System.Drawing.Point(22, 344);
             this.labelAlbumsList.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelAlbumsList.Name = "labelAlbumsList";
             this.labelAlbumsList.Size = new System.Drawing.Size(41, 13);
@@ -99,7 +101,7 @@ namespace C12Ex03Y314440009V319512893
             // listBoxAlbums
             // 
             this.listBoxAlbums.FormattingEnabled = true;
-            this.listBoxAlbums.Location = new System.Drawing.Point(21, 345);
+            this.listBoxAlbums.Location = new System.Drawing.Point(21, 358);
             this.listBoxAlbums.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxAlbums.Name = "listBoxAlbums";
             this.listBoxAlbums.Size = new System.Drawing.Size(218, 173);
@@ -121,7 +123,7 @@ namespace C12Ex03Y314440009V319512893
             this.listBoxTaggetFriends.Location = new System.Drawing.Point(424, 371);
             this.listBoxTaggetFriends.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxTaggetFriends.Name = "listBoxTaggetFriends";
-            this.listBoxTaggetFriends.Size = new System.Drawing.Size(235, 147);
+            this.listBoxTaggetFriends.Size = new System.Drawing.Size(235, 160);
             this.listBoxTaggetFriends.TabIndex = 8;
             // 
             // buttonDownloadSelectedPhotos
@@ -150,7 +152,7 @@ namespace C12Ex03Y314440009V319512893
             this.albumsPhotosPanel.AutoScroll = true;
             this.albumsPhotosPanel.Location = new System.Drawing.Point(267, 9);
             this.albumsPhotosPanel.Name = "albumsPhotosPanel";
-            this.albumsPhotosPanel.Size = new System.Drawing.Size(128, 505);
+            this.albumsPhotosPanel.Size = new System.Drawing.Size(128, 522);
             this.albumsPhotosPanel.TabIndex = 11;
             // 
             // progressBarPhotosDownload
@@ -170,11 +172,39 @@ namespace C12Ex03Y314440009V319512893
             this.label1.TabIndex = 13;
             this.label1.Text = "Tagged Users";
             // 
+            // friendsSortComboBox
+            // 
+            this.friendsSortComboBox.FormattingEnabled = true;
+            this.friendsSortComboBox.Items.AddRange(new object[] {
+            "Age - asc",
+            "Age - desc"});
+            this.friendsSortComboBox.Location = new System.Drawing.Point(90, 130);
+            this.friendsSortComboBox.MaxDropDownItems = 2;
+            this.friendsSortComboBox.Name = "friendsSortComboBox";
+            this.friendsSortComboBox.Size = new System.Drawing.Size(148, 21);
+            this.friendsSortComboBox.TabIndex = 14;
+            // 
+            // albumsSortComboBox
+            // 
+            this.albumsSortComboBox.FormattingEnabled = true;
+            this.albumsSortComboBox.Items.AddRange(new object[] {
+            "Tagged friends count - asc",
+            "Tagged friends count  - desc",
+            "Photos count - asc",
+            "Photos count - desc"});
+            this.albumsSortComboBox.Location = new System.Drawing.Point(89, 336);
+            this.albumsSortComboBox.Name = "albumsSortComboBox";
+            this.albumsSortComboBox.Size = new System.Drawing.Size(150, 21);
+            this.albumsSortComboBox.TabIndex = 15;
+            this.albumsSortComboBox.Text = "Albums Sort";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(886, 532);
+            this.ClientSize = new System.Drawing.Size(888, 547);
+            this.Controls.Add(this.albumsSortComboBox);
+            this.Controls.Add(this.friendsSortComboBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.progressBarPhotosDownload);
             this.Controls.Add(this.albumsPhotosPanel);
@@ -214,6 +244,8 @@ namespace C12Ex03Y314440009V319512893
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogForDownload;
         private System.Windows.Forms.ProgressBar progressBarPhotosDownload;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox friendsSortComboBox;
+        private System.Windows.Forms.ComboBox albumsSortComboBox;
     }
 }
 

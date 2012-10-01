@@ -75,11 +75,13 @@
     </Compile>
     <Compile Include="Classes\FacebookAlbum.cs" />
     <Compile Include="Classes\FacebookUser.cs" />
+    <Compile Include="Comparer.cs" />
     <Compile Include="IComponent.cs" />
     <Compile Include="PictureBoxProxy.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Singleton.cs" />
+    <Compile Include="Sorter.cs" />
     <Compile Include="Windows\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>

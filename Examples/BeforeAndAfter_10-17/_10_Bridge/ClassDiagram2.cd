@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Comment CommentText="Concrete Generic Factory(ies) (all in the same one)">
+    <Position X="5.188" Y="1.792" Height="0.406" Width="1.825" />
+  </Comment>
+  <Comment CommentText="All Concrete Buttons (in one genereic class)">
+    <Position X="1.344" Y="3.667" Height="0.291" Width="2.69" />
+  </Comment>
+  <Comment CommentText="All Concrete CheckBoxes (in one genereic class)">
+    <Position X="1.094" Y="6.167" Height="0.291" Width="2.919" />
+  </Comment>
+  <Comment CommentText="Product 2">
+    <Position X="2.396" Y="5" Height="0.291" Width="0.742" />
+  </Comment>
+  <Comment CommentText="Product 1">
+    <Position X="2.385" Y="2.479" Height="0.291" Width="0.742" />
+  </Comment>
+  <Class Name="_03_AbstractFactory.FormWithControls&lt;Renderer&gt;">
+    <Position X="1" Y="0.5" Width="2.25" />
+    <AssociationLine Name="m_Button" Type="_03_AbstractFactory.Button">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.836" Y="0.131" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="m_CheckBox" Type="_03_AbstractFactory.CheckBox">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.058" Y="-0.284" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAQAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WithCSharp3.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="m_Button" />
+      <Field Name="m_CheckBox" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="_03_AbstractFactory.Button" Collapsed="true">
+    <Position X="1.5" Y="2" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAACAAAAgA=</HashCode>
+      <FileName>Before.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_03_AbstractFactory.Button&lt;TRenderer&gt;" Collapsed="true">
+    <Position X="1.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WithCSharp3.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_03_AbstractFactory.Control" Collapsed="true">
+    <Position X="3.5" Y="2" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="m_Renderer" Type="_03_AbstractFactory.IRenderer">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-1.765" Y="0.289" Height="0.182" Width="1.597" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAggAAAAIIAAAAAAAAAAAAAAAACQIAAAA=</HashCode>
+      <FileName>Before.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="m_Renderer" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="_03_AbstractFactory.CheckBox" Collapsed="true">
+    <Position X="1.5" Y="4.5" Width="1.5" />
+    <InheritanceLine Type="_03_AbstractFactory.Control" ManuallyRouted="true">
+      <Path>
+        <Point X="4.25" Y="2.562" />
+        <Point X="4.25" Y="4.125" />
+        <Point X="2.25" Y="4.125" />
+        <Point X="2.25" Y="4.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Before.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_03_AbstractFactory.CheckBox&lt;TRenderer&gt;" Collapsed="true">
+    <Position X="1.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WithCSharp3.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_03_AbstractFactory.ControlFactory&lt;TRenderer&gt;">
+    <Position X="4.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAEAAAA=</HashCode>
+      <FileName>WithCSharp3.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_03_AbstractFactory.Renderer98">
+    <Position X="5.5" Y="4.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WithCSharp3.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="_03_AbstractFactory.RendererXP">
+    <Position X="4.25" Y="6.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WithCSharp3.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="_03_AbstractFactory.IRenderer">
+    <Position X="4.75" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WithCSharp3.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
