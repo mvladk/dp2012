@@ -60,6 +60,8 @@ namespace Infrastructure.Adapters.Facebook
             ////this.m_loginResult = FacebookService.Login(
             ////    "229916837130733",
             ////    "user_about_me",
+            ////    "friends_birthday",
+            ////    "user_birthday",
             ////    "friends_about_me", 
             ////    "publish_stream", 
             ////    "user_events", 
