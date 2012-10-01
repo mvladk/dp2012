@@ -70,7 +70,7 @@ namespace C12Ex03Y314440009V319512893
             get { return this.m_FriendsSortsComboBox; }
             set { this.m_FriendsSortsComboBox = value; }
         }
-        
+
         public ComboBox AlbumsSortsComboBox
         {
             get { return this.m_AlbumsSortsComboBox; }
@@ -82,13 +82,8 @@ namespace C12Ex03Y314440009V319512893
         /// </summary>
         public void FetchUserInfo()
         {
-<<<<<<< HEAD
             this.ProfilePictureBox.Invoke(new Action(() => this.ProfilePictureBox.LoadAsync(this.User.PictureNormalURL)));
-            this.displaySelectedAlbums();
-=======
-            this.ProfilePictureBox.LoadAsync(this.User.PictureNormalURL);
             this.displaySelectedAlbums(this.User.Albums.ToArray());
->>>>>>> Added Album sort
         }
 
         /// <summary>
@@ -117,7 +112,7 @@ namespace C12Ex03Y314440009V319512893
                 this.ProfilePictureBox.LoadAsync(this.User.PictureLargeURL);
                 if (this.User.Albums.Count > 0)
                 {
-                    this.AlbumsListBox.Items.Clear();
+                    this.AlbumsListBox.Invoke(new Action(() => this.AlbumsListBox.Items.Clear()));
                     this.displaySelectedAlbums(this.User.Albums.ToArray());
                 }
             }
@@ -127,10 +122,10 @@ namespace C12Ex03Y314440009V319512893
         /// </summary>
         private void displaySelectedAlbums(Album[] i_UserAlbums)
         {
+            this.AlbumsListBox.Invoke(new Action(() => this.AlbumsListBox.DisplayMember = "Name"));
             foreach (Album album in i_UserAlbums)
             {
-                this.AlbumsListBox.DisplayMember = "Name";
-                this.AlbumsListBox.Items.Add(album);
+                this.AlbumsListBox.Invoke(new Action(() => this.AlbumsListBox.Items.Add(album)));
             }
         }
 
@@ -139,8 +134,8 @@ namespace C12Ex03Y314440009V319512893
             if (sender is ComboBox)
             {
                 string sortBy = m_FriendsSortsComboBox.SelectedItem.ToString();
-               // object[] tr = {this.User.Friends};
-              //  int[] tr = { 1,3,8,5 };
+                // object[] tr = {this.User.Friends};
+                //  int[] tr = { 1,3,8,5 };
                 switch (sortBy)
                 {
                     case "Age - asc":
@@ -153,25 +148,16 @@ namespace C12Ex03Y314440009V319512893
                         return;
 
                 }
-              //  sorter.Sort(tr);
+                //  sorter.Sort(tr);
             }
         }
 
         public void AlbumsSortComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-            this.AlbumsListBox.Invoke(new Action(() => this.AlbumsListBox.Items.Clear()));
-            if (this.User.Albums.Count > 0)
-            {
-                this.AlbumsListBox.Invoke(new Action(() => this.AlbumsListBox.DisplayMember = "Name"));
-                foreach (Album album in this.User.Albums)
-                {
-                    this.AlbumsListBox.Invoke(new Action(() => this.AlbumsListBox.Items.Add(album)));
-=======
             if (sender is ComboBox)
             {
-                int i=0;
-               // Album[] friendsAlbums = new Album[] { this.User.Albums.ToArray() };
+                int i = 0;
+                // Album[] friendsAlbums = new Album[] { this.User.Albums.ToArray() };
                 Album[] friendsAlbums = new Album[this.User.Albums.Count];
                 foreach (Album item in this.User.Albums)
                 {
@@ -180,7 +166,7 @@ namespace C12Ex03Y314440009V319512893
                 }
                 this.AlbumsListBox.Items.Clear();
 
-            
+
                 string sortBy = m_AlbumsSortsComboBox.SelectedItem.ToString();
                 switch (sortBy)
                 {
@@ -192,12 +178,12 @@ namespace C12Ex03Y314440009V319512893
                         break;
                     default:
                         return;
->>>>>>> Added Album sort
                 }
                 sorter.Sort(friendsAlbums);
-                this.AlbumsListBox.Items.Clear();
+                this.AlbumsListBox.Invoke(new Action(() => this.AlbumsListBox.Items.Clear()));
                 this.displaySelectedAlbums(friendsAlbums);
             }
+
         }
     }
 }
