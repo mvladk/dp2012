@@ -50,16 +50,8 @@ namespace C12Ex03Y314440009V319512893
             this.m_FacebookUser.ProfilePictureBox = this.image_smallPictureBox;
             this.m_FacebookUser.FriendsListBox = this.listBoxFriends;
             this.m_FacebookUser.AlbumsListBox = this.listBoxAlbums;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
             this.m_FacebookUser.FriendsSortsComboBox = this.friendsSortComboBox;
             this.m_FacebookUser.AlbumsSortsComboBox = this.albumsSortComboBox;
-=======
-
-            ////this.m_FacebookUser.Invoke(new Action(() => this.m_FacebookUser.FetchUserInfo()));
->>>>>>> e974b839ac325aa15a22c88714a7aad4b009215c
->>>>>>> aabf36c8059f866088480dc57ec5faed84be2d59
             this.m_FacebookUser.FetchUserInfo();
             this.m_FacebookUser.FetchFriends();
             this.m_FacebookUser.FriendsSortsComboBox = this.friendsSortComboBox;
