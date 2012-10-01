@@ -50,13 +50,22 @@ namespace C12Ex03Y314440009V319512893
             this.m_FacebookUser.ProfilePictureBox = this.image_smallPictureBox;
             this.m_FacebookUser.FriendsListBox = this.listBoxFriends;
             this.m_FacebookUser.AlbumsListBox = this.listBoxAlbums;
+<<<<<<< HEAD
 
             ////this.m_FacebookUser.Invoke(new Action(() => this.m_FacebookUser.FetchUserInfo()));
+=======
+            this.m_FacebookUser.FriendsSortsComboBox = this.friendsSortComboBox;
+            this.m_FacebookUser.AlbumsSortsComboBox = this.albumsSortComboBox;
+>>>>>>> Added Album sort
             this.m_FacebookUser.FetchUserInfo();
             this.m_FacebookUser.FetchFriends();
             this.m_FacebookUser.FriendsListBox.SelectedIndexChanged += this.m_FacebookUserFriend.ListBoxFriends_SelectedIndexChanged;
             this.m_FacebookUser.FriendsListBox.SelectedIndexChanged += this.m_FacebookAlbum.FriendsListBox_SelectedIndexChanged;
             this.m_FacebookUser.FriendsListBox.SelectedIndexChanged += this.m_FacebookAlbum.ListBoxFriends_SelectedIndexChanged;
+            this.m_FacebookUser.FriendsSortsComboBox.SelectedIndexChanged += this.m_FacebookUser.FriendsSortComboBox_SelectedIndexChanged;
+            this.m_FacebookUser.AlbumsSortsComboBox.SelectedIndexChanged += this.m_FacebookUser.AlbumsSortComboBox_SelectedIndexChanged;
+             
+
 
             this.m_FacebookUserFriend.ProfilePictureBox = this.imageFriend;
             this.m_FacebookUserFriend.AlbumsListBox = this.listBoxAlbums;

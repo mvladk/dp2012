@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="_02_AbstractFactory.FormWithControls">
+    <Position X="0.5" Y="0.5" Width="3.5" />
+    <AssociationLine Name="m_Button" Type="_02_AbstractFactory.Button">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.322" Y="5.296" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="m_ControlFactory" Type="_02_AbstractFactory.ControlFactory">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="3.875" Y="0.837" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="m_CheckBox" Type="_02_AbstractFactory.CheckBox" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="1.203" Y="1.796" />
+        <Point X="1.203" Y="2.438" />
+        <Point X="1.75" Y="2.438" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.099" Y="2.624" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAQAAAAAAAAAAIEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>After.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="m_Button" />
+      <Field Name="m_ControlFactory" />
+      <Field Name="m_CheckBox" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="_02_AbstractFactory.Button" Collapsed="true">
+    <Position X="1.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>After.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_02_AbstractFactory.CheckBox" Collapsed="true">
+    <Position X="1.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>After.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_02_AbstractFactory.CheckBox98" Collapsed="true">
+    <Position X="0.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>After.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_02_AbstractFactory.CheckBoxXP" Collapsed="true">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>After.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_02_AbstractFactory.Button98" Collapsed="true">
+    <Position X="2.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>After.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_02_AbstractFactory.ButtonXP" Collapsed="true">
+    <Position X="0.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>After.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_02_AbstractFactory.ControlFactory">
+    <Position X="4.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAEAAAA=</HashCode>
+      <FileName>After.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_02_AbstractFactory.ControlFactory98">
+    <Position X="4.5" Y="4.25" Width="2.25" />
+    <InheritanceLine Type="_02_AbstractFactory.ControlFactory" FixedToPoint="true">
+      <Path>
+        <Point X="5.625" Y="1.796" />
+        <Point X="5.625" Y="2.036" />
+        <Point X="6.99" Y="2.036" />
+        <Point X="6.99" Y="4.875" />
+        <Point X="6.75" Y="4.875" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAEAAAA=</HashCode>
+      <FileName>After.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_02_AbstractFactory.ControlFactoryXP">
+    <Position X="4.5" Y="2.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAEAAAA=</HashCode>
+      <FileName>After.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

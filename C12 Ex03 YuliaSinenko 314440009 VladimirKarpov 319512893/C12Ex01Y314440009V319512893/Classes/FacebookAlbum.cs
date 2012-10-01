@@ -47,6 +47,7 @@ namespace C12Ex03Y314440009V319512893
         private ProgressBar m_ProgressBar;
         //private Hashtable m_albumsTaggetFriends = new Hashtable();
 
+
         /// <summary>
         /// Gets or sets the Facebook wrapper User 
         /// </summary>
@@ -316,5 +317,6 @@ namespace C12Ex03Y314440009V319512893
                 }
             }
         }
+
     }
 }

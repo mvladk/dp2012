@@ -25,6 +25,9 @@ namespace C12Ex03Y314440009V319512893
         private User m_User;
         private ListBox m_FriendsList;
         private ListBox m_AlbumsList;
+        private ComboBox m_FriendsSortsComboBox;
+        private ComboBox m_AlbumsSortsComboBox;
+        private Sorter sorter = new Sorter(new ComparerUp());
 
         /// <summary>
         /// Gets or sets the Facebook wrapper User 
@@ -62,13 +65,30 @@ namespace C12Ex03Y314440009V319512893
             set { this.m_AlbumsList = value; }
         }
 
+        public ComboBox FriendsSortsComboBox
+        {
+            get { return this.m_FriendsSortsComboBox; }
+            set { this.m_FriendsSortsComboBox = value; }
+        }
+        
+        public ComboBox AlbumsSortsComboBox
+        {
+            get { return this.m_AlbumsSortsComboBox; }
+            set { this.m_AlbumsSortsComboBox = value; }
+        }
+
         /// <summary>
         /// Login initial actions
         /// </summary>
         public void FetchUserInfo()
         {
+<<<<<<< HEAD
             this.ProfilePictureBox.Invoke(new Action(() => this.ProfilePictureBox.LoadAsync(this.User.PictureNormalURL)));
             this.displaySelectedAlbums();
+=======
+            this.ProfilePictureBox.LoadAsync(this.User.PictureNormalURL);
+            this.displaySelectedAlbums(this.User.Albums.ToArray());
+>>>>>>> Added Album sort
         }
 
         /// <summary>
@@ -95,15 +115,51 @@ namespace C12Ex03Y314440009V319512893
                 ListBox friendsListBox = sender as ListBox;
                 this.User = friendsListBox.SelectedItem as User;
                 this.ProfilePictureBox.LoadAsync(this.User.PictureLargeURL);
-                this.displaySelectedAlbums();
+                if (this.User.Albums.Count > 0)
+                {
+                    this.AlbumsListBox.Items.Clear();
+                    this.displaySelectedAlbums(this.User.Albums.ToArray());
+                }
             }
         }
-
         /// <summary>
         /// Display Friend's selected album
         /// </summary>
-        private void displaySelectedAlbums()
+        private void displaySelectedAlbums(Album[] i_UserAlbums)
         {
+            foreach (Album album in i_UserAlbums)
+            {
+                this.AlbumsListBox.DisplayMember = "Name";
+                this.AlbumsListBox.Items.Add(album);
+            }
+        }
+
+        public void FriendsSortComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (sender is ComboBox)
+            {
+                string sortBy = m_FriendsSortsComboBox.SelectedItem.ToString();
+               // object[] tr = {this.User.Friends};
+              //  int[] tr = { 1,3,8,5 };
+                switch (sortBy)
+                {
+                    case "Age - asc":
+                        sorter.Comparer = new ComparerUp();
+                        break;
+                    case "Age - desc":
+                        sorter.Comparer = new ComparerDown();
+                        break;
+                    default:
+                        return;
+
+                }
+              //  sorter.Sort(tr);
+            }
+        }
+
+        public void AlbumsSortComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+<<<<<<< HEAD
             this.AlbumsListBox.Invoke(new Action(() => this.AlbumsListBox.Items.Clear()));
             if (this.User.Albums.Count > 0)
             {
@@ -111,7 +167,36 @@ namespace C12Ex03Y314440009V319512893
                 foreach (Album album in this.User.Albums)
                 {
                     this.AlbumsListBox.Invoke(new Action(() => this.AlbumsListBox.Items.Add(album)));
+=======
+            if (sender is ComboBox)
+            {
+                int i=0;
+               // Album[] friendsAlbums = new Album[] { this.User.Albums.ToArray() };
+                Album[] friendsAlbums = new Album[this.User.Albums.Count];
+                foreach (Album item in this.User.Albums)
+                {
+                    friendsAlbums[i] = item;
+                    i++;
                 }
+                this.AlbumsListBox.Items.Clear();
+
+            
+                string sortBy = m_AlbumsSortsComboBox.SelectedItem.ToString();
+                switch (sortBy)
+                {
+                    case "Photos count - asc":
+                        sorter.Comparer = new ComparerUp();
+                        break;
+                    case "Photos count - desc":
+                        sorter.Comparer = new ComparerDown();
+                        break;
+                    default:
+                        return;
+>>>>>>> Added Album sort
+                }
+                sorter.Sort(friendsAlbums);
+                this.AlbumsListBox.Items.Clear();
+                this.displaySelectedAlbums(friendsAlbums);
             }
         }
     }
