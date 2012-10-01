@@ -19,6 +19,8 @@ namespace C12Ex03Y314440009V319512893
 
     public class PictureBoxProxy : PictureBox, IPictureBox
     {
+        private static object s_LockObj = new object();
+
         public static Dictionary<string, Image> s_AlbumsPhotosCollection = new Dictionary<string, Image>();
 
         private PictureBox m_AlbumPicture = new PictureBox();
@@ -35,23 +37,42 @@ namespace C12Ex03Y314440009V319512893
             set { s_AlbumsPhotosCollection = value; }
         }
 
-        /*
-         TODO: There is a bug of refreshing tags list when loading from cached results
-         */
         public new void Load(string i_Url)
         {
-            if (PictureBoxProxy.s_AlbumsPhotosCollection.Count > 0 && PictureBoxProxy.s_AlbumsPhotosCollection.ContainsKey(i_Url))
+            if (PictureBoxProxy.s_AlbumsPhotosCollection.Count < 1 || !PictureBoxProxy.s_AlbumsPhotosCollection.ContainsKey(i_Url))
             {
-                this.Image = PictureBoxProxy.s_AlbumsPhotosCollection[i_Url];
-                this.ImageLocation = i_Url;
+                this.m_AlbumPicture.Load(i_Url);
+                lock (s_LockObj)
+                {
+                    if (PictureBoxProxy.s_AlbumsPhotosCollection.Count < 1 || !PictureBoxProxy.s_AlbumsPhotosCollection.ContainsKey(i_Url))
+                    {
+                        PictureBoxProxy.s_AlbumsPhotosCollection.Add(i_Url, this.m_AlbumPicture.Image);
+                        this.Image = this.m_AlbumPicture.Image;
+                        this.ImageLocation = this.m_AlbumPicture.ImageLocation;
+                    }
+                }
             }
             else
             {
-                this.m_AlbumPicture.Load(i_Url);
-                PictureBoxProxy.s_AlbumsPhotosCollection.Add(i_Url, this.m_AlbumPicture.Image);
-                this.Image = this.m_AlbumPicture.Image;
-                this.ImageLocation = this.m_AlbumPicture.ImageLocation;
+                lock (s_LockObj)
+                {
+                    this.Image = PictureBoxProxy.s_AlbumsPhotosCollection[i_Url];
+                    this.ImageLocation = i_Url;
+                }
             }
+
+            ////if (PictureBoxProxy.s_AlbumsPhotosCollection.Count > 0 && PictureBoxProxy.s_AlbumsPhotosCollection.ContainsKey(i_Url))
+            ////{
+            ////    this.Image = PictureBoxProxy.s_AlbumsPhotosCollection[i_Url];
+            ////    this.ImageLocation = i_Url;
+            ////}
+            ////else
+            ////{
+            ////    this.m_AlbumPicture.Load(i_Url);
+            ////    PictureBoxProxy.s_AlbumsPhotosCollection.Add(i_Url, this.m_AlbumPicture.Image);
+            ////    this.Image = this.m_AlbumPicture.Image;
+            ////    this.ImageLocation = this.m_AlbumPicture.ImageLocation;
+            ////}
         }
     }
 }

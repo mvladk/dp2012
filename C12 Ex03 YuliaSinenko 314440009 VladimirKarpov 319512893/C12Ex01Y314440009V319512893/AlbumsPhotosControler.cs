@@ -12,6 +12,7 @@ namespace C12Ex03Y314440009V319512893
     using System.Windows.Forms;
     using System.Windows.Forms.Design;
     using FacebookWrapper.ObjectModel;
+    using System.Threading;
 
     public partial class AlbumsPhotosControler : UserControl, IComponent
     {
@@ -30,7 +31,12 @@ namespace C12Ex03Y314440009V319512893
         public AlbumsPhotosControler(string i_Url, int i_PhotosCount)
         {
             InitializeComponent();
-            this.pictureBoxAlbumsPhoto.Load(i_Url);
+
+            Thread threadPictureBoxAlbumsPhoto = new Thread(new ThreadStart(
+                () => this.pictureBoxAlbumsPhoto.Load(i_Url)
+                ));
+            threadPictureBoxAlbumsPhoto.Start();
+
             this.pictureBoxAlbumsPhoto.Click += new EventHandler(pictureBoxAlbumsPhoto_Click);
 
             this.Location = new Point(0, 100 * i_PhotosCount);
