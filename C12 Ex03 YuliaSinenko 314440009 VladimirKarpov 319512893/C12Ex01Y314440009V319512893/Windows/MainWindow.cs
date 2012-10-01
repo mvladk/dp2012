@@ -38,6 +38,7 @@ namespace C12Ex03Y314440009V319512893
             this.InitializeComponent();
             this.Text = "Facebook Photos Browser.DP.H.B12.319512893.314440009";
             this.m_FBAdapter = new FBAdapter();
+            this.m_FBAdapter.LoginFinished += new EventHandler(m_FBAdapter_LoginFinished);
         }
 
         /// <summary>
@@ -45,13 +46,17 @@ namespace C12Ex03Y314440009V319512893
         /// </summary>
         private void loginAndInit()
         {
-            this.m_FBAdapter.Login();
             this.m_FacebookUser.User = (this.m_FBAdapter as FBAdapter).LoggedInUser;
             this.m_FacebookUser.ProfilePictureBox = this.image_smallPictureBox;
             this.m_FacebookUser.FriendsListBox = this.listBoxFriends;
             this.m_FacebookUser.AlbumsListBox = this.listBoxAlbums;
+<<<<<<< HEAD
             this.m_FacebookUser.FriendsSortsComboBox = this.friendsSortComboBox;
             this.m_FacebookUser.AlbumsSortsComboBox = this.albumsSortComboBox;
+=======
+
+            ////this.m_FacebookUser.Invoke(new Action(() => this.m_FacebookUser.FetchUserInfo()));
+>>>>>>> e974b839ac325aa15a22c88714a7aad4b009215c
             this.m_FacebookUser.FetchUserInfo();
             this.m_FacebookUser.FetchFriends();
             this.m_FacebookUser.FriendsListBox.SelectedIndexChanged += this.m_FacebookUserFriend.ListBoxFriends_SelectedIndexChanged;
@@ -81,12 +86,20 @@ namespace C12Ex03Y314440009V319512893
         /// </summary>
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            this.loginAndInit();
+            if (null == this.m_FacebookUser.User)
+            {
+                this.m_FBAdapter.LoginAsync();
+            }
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void m_FBAdapter_LoginFinished(object sender, EventArgs e) 
+        {
+                this.loginAndInit();
         }
     }
 }

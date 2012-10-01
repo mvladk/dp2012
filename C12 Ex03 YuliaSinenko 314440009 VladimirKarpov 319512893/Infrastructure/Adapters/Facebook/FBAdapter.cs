@@ -14,6 +14,7 @@ namespace Infrastructure.Adapters.Facebook
     using System.Text;
     using FacebookWrapper;
     using FacebookWrapper.ObjectModel;
+    using System.Threading;
 
     /// <summary>
     /// TODO: Update summary.
@@ -29,6 +30,11 @@ namespace Infrastructure.Adapters.Facebook
         /// Login result
         /// </summary>
         private LoginResult m_loginResult;
+
+        /// <summary>
+        /// Login result
+        /// </summary>
+        public event EventHandler LoginFinished;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FBAdapter"/> class.
@@ -78,6 +84,17 @@ namespace Infrastructure.Adapters.Facebook
             {
                 throw new Exception(this.m_loginResult.ErrorMessage);
             }
+
+            if (this.LoginFinished != null)
+            {
+                this.LoginFinished.Invoke(this, EventArgs.Empty);
+            }
+        }
+
+        public void LoginAsync()
+        {
+            Thread thread = new Thread(new ThreadStart(this.Login));
+            thread.Start();
         }
     }
 }

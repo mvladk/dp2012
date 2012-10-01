@@ -82,8 +82,13 @@ namespace C12Ex03Y314440009V319512893
         /// </summary>
         public void FetchUserInfo()
         {
+<<<<<<< HEAD
             this.ProfilePictureBox.LoadAsync(this.User.PictureNormalURL);
             this.displaySelectedAlbums(this.User.Albums.ToArray());
+=======
+            this.ProfilePictureBox.Invoke(new Action(() => this.ProfilePictureBox.LoadAsync(this.User.PictureNormalURL)));
+            this.displaySelectedAlbums();
+>>>>>>> e974b839ac325aa15a22c88714a7aad4b009215c
         }
 
         /// <summary>
@@ -91,10 +96,10 @@ namespace C12Ex03Y314440009V319512893
         /// </summary>
         public void FetchFriends()
         {
-            this.FriendsListBox.DisplayMember = "Name";
+            this.FriendsListBox.Invoke(new Action(() => this.FriendsListBox.DisplayMember = "Name"));
             foreach (User friend in this.User.Friends)
             {
-                this.FriendsListBox.Items.Add(friend);
+                this.FriendsListBox.Invoke(new Action(() => this.FriendsListBox.Items.Add(friend)));
             }
         }
 
@@ -154,6 +159,7 @@ namespace C12Ex03Y314440009V319512893
 
         public void AlbumsSortComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             if (sender is ComboBox)
             {
                 int i=0;
@@ -178,6 +184,15 @@ namespace C12Ex03Y314440009V319512893
                         break;
                     default:
                         return;
+=======
+            this.AlbumsListBox.Invoke(new Action(() => this.AlbumsListBox.Items.Clear()));
+            if (this.User.Albums.Count > 0)
+            {
+                this.AlbumsListBox.Invoke(new Action(() => this.AlbumsListBox.DisplayMember = "Name"));
+                foreach (Album album in this.User.Albums)
+                {
+                    this.AlbumsListBox.Invoke(new Action(() => this.AlbumsListBox.Items.Add(album)));
+>>>>>>> e974b839ac325aa15a22c88714a7aad4b009215c
                 }
                 sorter.Sort(friendsAlbums);
                 this.AlbumsListBox.Items.Clear();

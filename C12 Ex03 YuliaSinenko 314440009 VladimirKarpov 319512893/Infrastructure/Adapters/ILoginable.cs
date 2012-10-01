@@ -18,8 +18,18 @@ namespace Infrastructure.Adapters
     public interface ILoginable
     {
         /// <summary>
+        /// Login result
+        /// </summary>
+        event EventHandler LoginFinished;
+
+        /// <summary>
         /// Login to somewhere.
         /// </summary>
         void Login();
+
+        /// <summary>
+        /// Login async to somewhere.
+        /// </summary>
+        void LoginAsync();
     }
 }
