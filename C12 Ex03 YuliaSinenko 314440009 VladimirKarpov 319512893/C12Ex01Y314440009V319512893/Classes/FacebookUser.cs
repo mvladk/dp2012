@@ -70,7 +70,11 @@ namespace C12Ex03Y314440009V319512893
             get { return this.m_FriendsSortsComboBox; }
             set { this.m_FriendsSortsComboBox = value; }
         }
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> aabf36c8059f866088480dc57ec5faed84be2d59
         public ComboBox AlbumsSortsComboBox
         {
             get { return this.m_AlbumsSortsComboBox; }
@@ -82,8 +86,17 @@ namespace C12Ex03Y314440009V319512893
         /// </summary>
         public void FetchUserInfo()
         {
-            this.ProfilePictureBox.Invoke(new Action(() => this.ProfilePictureBox.LoadAsync(this.User.PictureNormalURL)));
+<<<<<<< HEAD
+            this.ProfilePictureBox.LoadAsync(this.User.PictureNormalURL);
             this.displaySelectedAlbums(this.User.Albums.ToArray());
+=======
+            this.ProfilePictureBox.Invoke(new Action(() => this.ProfilePictureBox.LoadAsync(this.User.PictureNormalURL)));
+<<<<<<< HEAD
+            this.displaySelectedAlbums(this.User.Albums.ToArray());
+=======
+            this.displaySelectedAlbums();
+>>>>>>> e974b839ac325aa15a22c88714a7aad4b009215c
+>>>>>>> aabf36c8059f866088480dc57ec5faed84be2d59
         }
 
         /// <summary>
@@ -112,7 +125,11 @@ namespace C12Ex03Y314440009V319512893
                 this.ProfilePictureBox.LoadAsync(this.User.PictureLargeURL);
                 if (this.User.Albums.Count > 0)
                 {
+<<<<<<< HEAD
                     this.AlbumsListBox.Invoke(new Action(() => this.AlbumsListBox.Items.Clear()));
+=======
+                    this.AlbumsListBox.Items.Clear();
+>>>>>>> aabf36c8059f866088480dc57ec5faed84be2d59
                     this.displaySelectedAlbums(this.User.Albums.ToArray());
                 }
             }
@@ -122,20 +139,29 @@ namespace C12Ex03Y314440009V319512893
         /// </summary>
         private void displaySelectedAlbums(Album[] i_UserAlbums)
         {
+<<<<<<< HEAD
             this.AlbumsListBox.Invoke(new Action(() => this.AlbumsListBox.DisplayMember = "Name"));
             foreach (Album album in i_UserAlbums)
             {
                 this.AlbumsListBox.Invoke(new Action(() => this.AlbumsListBox.Items.Add(album)));
+=======
+            foreach (Album album in i_UserAlbums)
+            {
+                this.AlbumsListBox.DisplayMember = "Name";
+                this.AlbumsListBox.Items.Add(album);
+>>>>>>> aabf36c8059f866088480dc57ec5faed84be2d59
             }
         }
 
         public void FriendsSortComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (sender is ComboBox)
+<<<<<<< HEAD
+=======
             {
                 string sortBy = m_FriendsSortsComboBox.SelectedItem.ToString();
-                // object[] tr = {this.User.Friends};
-                //  int[] tr = { 1,3,8,5 };
+               // object[] tr = {this.User.Friends};
+              //  int[] tr = { 1,3,8,5 };
                 switch (sortBy)
                 {
                     case "Age - asc":
@@ -148,7 +174,67 @@ namespace C12Ex03Y314440009V319512893
                         return;
 
                 }
+              //  sorter.Sort(tr);
+            }
+        }
+
+        public void AlbumsSortComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+<<<<<<< HEAD
+            if (sender is ComboBox)
+            {
+                int i=0;
+               // Album[] friendsAlbums = new Album[] { this.User.Albums.ToArray() };
+                Album[] friendsAlbums = new Album[this.User.Albums.Count];
+                foreach (Album item in this.User.Albums)
+                {
+                    friendsAlbums[i] = item;
+                    i++;
+                }
+                this.AlbumsListBox.Items.Clear();
+
+            
+                string sortBy = m_AlbumsSortsComboBox.SelectedItem.ToString();
+                switch (sortBy)
+                {
+                    case "Photos count - asc":
+                        sorter.Comparer = new ComparerUp();
+                        break;
+                    case "Photos count - desc":
+                        sorter.Comparer = new ComparerDown();
+                        break;
+                    default:
+                        return;
+=======
+            this.AlbumsListBox.Invoke(new Action(() => this.AlbumsListBox.Items.Clear()));
+            if (this.User.Albums.Count > 0)
+>>>>>>> aabf36c8059f866088480dc57ec5faed84be2d59
+            {
+                string sortBy = m_FriendsSortsComboBox.SelectedItem.ToString();
+                // object[] tr = {this.User.Friends};
+                //  int[] tr = { 1,3,8,5 };
+                switch (sortBy)
+                {
+<<<<<<< HEAD
+                    case "Age - asc":
+                        sorter.Comparer = new ComparerUp();
+                        break;
+                    case "Age - desc":
+                        sorter.Comparer = new ComparerDown();
+                        break;
+                    default:
+                        return;
+
+                }
                 //  sorter.Sort(tr);
+=======
+                    this.AlbumsListBox.Invoke(new Action(() => this.AlbumsListBox.Items.Add(album)));
+>>>>>>> e974b839ac325aa15a22c88714a7aad4b009215c
+                }
+                sorter.Sort(friendsAlbums);
+                this.AlbumsListBox.Items.Clear();
+                this.displaySelectedAlbums(friendsAlbums);
+>>>>>>> aabf36c8059f866088480dc57ec5faed84be2d59
             }
         }
 
