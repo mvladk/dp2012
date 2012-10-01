@@ -21,6 +21,8 @@ namespace C12Ex03Y314440009V319512893
     /// </summary>
     public class FacebookUser
     {
+        private static bool s_IsInitedAlbumsSortsComboBox = false;
+        private static bool s_IsInitedFriendSortsComboBox = false;
         private PictureBox m_ProfilePicture;
         private User m_User;
         private ListBox m_FriendsList;
@@ -28,6 +30,7 @@ namespace C12Ex03Y314440009V319512893
         private ComboBox m_FriendsSortsComboBox;
         private ComboBox m_AlbumsSortsComboBox;
         private Sorter m_sorterAlbums = new Sorter(new ComparerUpAlbumsByPhotosCount());
+        
 
         /// <summary>
         /// Gets or sets the Facebook wrapper User 
@@ -65,24 +68,34 @@ namespace C12Ex03Y314440009V319512893
             set { this.m_AlbumsList = value; }
         }
 
-        public ComboBox FriendsSortsComboBox
-        {
-            get { return this.m_FriendsSortsComboBox; }
-            set { this.m_FriendsSortsComboBox = value; }
-        }
-
         public ComboBox AlbumsSortsComboBox
         {
             get { return this.m_AlbumsSortsComboBox; }
             set
             {
                 this.m_AlbumsSortsComboBox = value;
-                this.m_AlbumsSortsComboBox.Invoke(new Action(() => this.m_AlbumsSortsComboBox.Items.Add(new ComparerUpAlbumsByPhotosCount())));
-                this.m_AlbumsSortsComboBox.Invoke(new Action(() => this.m_AlbumsSortsComboBox.Items.Add(new ComparerDownAlbumsByPhotosCount())));
-                //m_AlbumsSortsComboBox.Items.Add(new ComparerDownAlbumsByPhotosCount());
+                if (!s_IsInitedAlbumsSortsComboBox)
+                {
+                    this.m_AlbumsSortsComboBox.Invoke(new Action(() => this.m_AlbumsSortsComboBox.Items.Add(new ComparerUpAlbumsByPhotosCount())));
+                    this.m_AlbumsSortsComboBox.Invoke(new Action(() => this.m_AlbumsSortsComboBox.Items.Add(new ComparerDownAlbumsByPhotosCount())));
+                    s_IsInitedAlbumsSortsComboBox = true;
+                }
             }
+        }
 
-
+        public ComboBox FriendsSortsComboBox
+        {
+            get { return this.m_FriendsSortsComboBox; }
+            set
+            {
+                this.m_FriendsSortsComboBox = value;
+                if (!s_IsInitedFriendSortsComboBox)
+                {
+                    //this.m_AlbumsSortsComboBox.Invoke(new Action(() => this.m_FriendsSortsComboBox.Items.Add(new Comparer())));
+                    //this.m_AlbumsSortsComboBox.Invoke(new Action(() => this.m_FriendsSortsComboBox.Items.Add(new Comparer())));
+                    s_IsInitedAlbumsSortsComboBox = true;
+                }
+            }
         }
 
         /// <summary>
@@ -142,30 +155,9 @@ namespace C12Ex03Y314440009V319512893
         //{
         //    if (sender is ComboBox)
         //    {
-        //        Sorter sorter;
-        //        string sortBy = m_FriendsSortsComboBox.SelectedItem.ToString();
-        //       // object[] tr = {this.User.Friends};
-        //      //  int[] tr = { 1,3,8,5 };
-        //        switch (sortBy)
-        //        {
-        //            case "Age - asc":
-        //                sorter.Comparer = new ComparerUp();
-        //                break;
-        //            case "Age - desc":
-        //                sorter.Comparer = new ComparerDown();
-        //                break;
-        //            default:
-        //                return;
-
-        //        }
-        //      //  sorter.Sort(tr);
+        //        
         //    }
         //}
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
 
         public void AlbumsSortComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {

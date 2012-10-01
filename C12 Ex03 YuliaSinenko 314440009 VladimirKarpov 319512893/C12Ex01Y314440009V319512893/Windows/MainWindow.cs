@@ -57,13 +57,15 @@ namespace C12Ex03Y314440009V319512893
             this.m_FacebookUser.FriendsListBox.SelectedIndexChanged += this.m_FacebookUserFriend.ListBoxFriends_SelectedIndexChanged;
             this.m_FacebookUser.FriendsListBox.SelectedIndexChanged += this.m_FacebookAlbum.FriendsListBox_SelectedIndexChanged;
             this.m_FacebookUser.FriendsListBox.SelectedIndexChanged += this.m_FacebookAlbum.ListBoxFriends_SelectedIndexChanged;
-           // this.m_FacebookUser.FriendsSortsComboBox.SelectedIndexChanged += this.m_FacebookUser.FriendsSortComboBox_SelectedIndexChanged;
             this.m_FacebookUser.AlbumsSortsComboBox.SelectedIndexChanged += this.m_FacebookUser.AlbumsSortComboBox_SelectedIndexChanged;
-             
+            // this.m_FacebookUser.FriendsSortsComboBox.SelectedIndexChanged += this.m_FacebookUser.FriendsSortComboBox_SelectedIndexChanged;
 
 
             this.m_FacebookUserFriend.ProfilePictureBox = this.imageFriend;
             this.m_FacebookUserFriend.AlbumsListBox = this.listBoxAlbums;
+            this.m_FacebookUserFriend.AlbumsSortsComboBox = this.albumsSortComboBox;
+            this.m_FacebookUserFriend.AlbumsSortsComboBox.SelectedIndexChanged += this.m_FacebookUserFriend.AlbumsSortComboBox_SelectedIndexChanged;
+            // this.m_FacebookUserFriend.FriendsSortsComboBox.SelectedIndexChanged += this.m_FacebookUserFriend.FriendsSortComboBox_SelectedIndexChanged;
 
             this.m_FacebookAlbum.User = this.m_FacebookUserFriend;
             this.m_FacebookAlbum.User.User = this.m_FacebookUser.User;

@@ -175,9 +175,6 @@ namespace C12Ex03Y314440009V319512893
             // friendsSortComboBox
             // 
             this.friendsSortComboBox.FormattingEnabled = true;
-            this.friendsSortComboBox.Items.AddRange(new object[] {
-            "Age - asc",
-            "Age - desc"});
             this.friendsSortComboBox.Location = new System.Drawing.Point(90, 130);
             this.friendsSortComboBox.MaxDropDownItems = 2;
             this.friendsSortComboBox.Name = "friendsSortComboBox";
