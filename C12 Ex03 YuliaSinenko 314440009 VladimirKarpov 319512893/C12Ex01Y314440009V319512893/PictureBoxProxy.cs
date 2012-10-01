@@ -60,19 +60,6 @@ namespace C12Ex03Y314440009V319512893
                     this.ImageLocation = i_Url;
                 }
             }
-
-            ////if (PictureBoxProxy.s_AlbumsPhotosCollection.Count > 0 && PictureBoxProxy.s_AlbumsPhotosCollection.ContainsKey(i_Url))
-            ////{
-            ////    this.Image = PictureBoxProxy.s_AlbumsPhotosCollection[i_Url];
-            ////    this.ImageLocation = i_Url;
-            ////}
-            ////else
-            ////{
-            ////    this.m_AlbumPicture.Load(i_Url);
-            ////    PictureBoxProxy.s_AlbumsPhotosCollection.Add(i_Url, this.m_AlbumPicture.Image);
-            ////    this.Image = this.m_AlbumPicture.Image;
-            ////    this.ImageLocation = this.m_AlbumPicture.ImageLocation;
-            ////}
         }
     }
 }
