@@ -161,6 +161,11 @@ namespace C12Ex03Y314440009V319512893
         //      //  sorter.Sort(tr);
         //    }
         //}
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         public void AlbumsSortComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
