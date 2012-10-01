@@ -27,7 +27,7 @@ namespace C12Ex03Y314440009V319512893
         private ListBox m_AlbumsList;
         private ComboBox m_FriendsSortsComboBox;
         private ComboBox m_AlbumsSortsComboBox;
-        private Sorter sorter = new Sorter(new ComparerUp());
+        private Sorter m_sorterAlbums = new Sorter(new ComparerUpAlbumsByPhotosCount());
 
         /// <summary>
         /// Gets or sets the Facebook wrapper User 
@@ -74,7 +74,15 @@ namespace C12Ex03Y314440009V319512893
         public ComboBox AlbumsSortsComboBox
         {
             get { return this.m_AlbumsSortsComboBox; }
-            set { this.m_AlbumsSortsComboBox = value; }
+            set
+            {
+                this.m_AlbumsSortsComboBox = value;
+                this.m_AlbumsSortsComboBox.Invoke(new Action(() => this.m_AlbumsSortsComboBox.Items.Add(new ComparerUpAlbumsByPhotosCount())));
+                this.m_AlbumsSortsComboBox.Invoke(new Action(() => this.m_AlbumsSortsComboBox.Items.Add(new ComparerDownAlbumsByPhotosCount())));
+                //m_AlbumsSortsComboBox.Items.Add(new ComparerDownAlbumsByPhotosCount());
+            }
+
+
         }
 
         /// <summary>
@@ -130,57 +138,39 @@ namespace C12Ex03Y314440009V319512893
             }
         }
 
-        public void FriendsSortComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (sender is ComboBox)
-            {
-                string sortBy = m_FriendsSortsComboBox.SelectedItem.ToString();
-               // object[] tr = {this.User.Friends};
-              //  int[] tr = { 1,3,8,5 };
-                switch (sortBy)
-                {
-                    case "Age - asc":
-                        sorter.Comparer = new ComparerUp();
-                        break;
-                    case "Age - desc":
-                        sorter.Comparer = new ComparerDown();
-                        break;
-                    default:
-                        return;
+        //public void FriendsSortComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    if (sender is ComboBox)
+        //    {
+        //        Sorter sorter;
+        //        string sortBy = m_FriendsSortsComboBox.SelectedItem.ToString();
+        //       // object[] tr = {this.User.Friends};
+        //      //  int[] tr = { 1,3,8,5 };
+        //        switch (sortBy)
+        //        {
+        //            case "Age - asc":
+        //                sorter.Comparer = new ComparerUp();
+        //                break;
+        //            case "Age - desc":
+        //                sorter.Comparer = new ComparerDown();
+        //                break;
+        //            default:
+        //                return;
 
-                }
-              //  sorter.Sort(tr);
-            }
-        }
+        //        }
+        //      //  sorter.Sort(tr);
+        //    }
+        //}
 
         public void AlbumsSortComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (sender is ComboBox)
             {
-                int i = 0;
-                // Album[] friendsAlbums = new Album[] { this.User.Albums.ToArray() };
-                Album[] friendsAlbums = new Album[this.User.Albums.Count];
-                foreach (Album item in this.User.Albums)
-                {
-                    friendsAlbums[i] = item;
-                    i++;
-                }
+                Album[] friendsAlbums =  this.User.Albums.ToArray();
                 this.AlbumsListBox.Items.Clear();
+                m_sorterAlbums.Comparer = m_AlbumsSortsComboBox.SelectedItem as Comparer;
 
-
-                string sortBy = m_AlbumsSortsComboBox.SelectedItem.ToString();
-                switch (sortBy)
-                {
-                    case "Photos count - asc":
-                        sorter.Comparer = new ComparerUp();
-                        break;
-                    case "Photos count - desc":
-                        sorter.Comparer = new ComparerDown();
-                        break;
-                    default:
-                        return;
-                }
-                sorter.Sort(friendsAlbums);
+                m_sorterAlbums.Sort(friendsAlbums);
                 this.AlbumsListBox.Invoke(new Action(() => this.AlbumsListBox.Items.Clear()));
                 this.displaySelectedAlbums(friendsAlbums);
             }

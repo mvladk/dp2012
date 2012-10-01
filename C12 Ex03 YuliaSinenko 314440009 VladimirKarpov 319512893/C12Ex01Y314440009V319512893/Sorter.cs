@@ -24,7 +24,7 @@ namespace C12Ex03Y314440009V319512893
             m_Comparer = i_Comparer;
         }
 
-        public void Sort(Album[] i_Array)
+        public void Sort(object[] i_Array)
         {
 
             for (int g = i_Array.Length / 2; g > 0; g /= 2)
@@ -34,18 +34,21 @@ namespace C12Ex03Y314440009V319512893
                     for (int j = i - g; j >= 0; j -= g)
                     {
                         if (m_Comparer.ShouldSwap(
-                            i_Array[j].Photos.Count, i_Array[j + g].Photos.Count))
+                            i_Array[j], i_Array[j + g]))
                         {
-                            doSwap(ref i_Array[j] , ref i_Array[j + g]);
+                            //doSwap(i_Array[j] , i_Array[j + g] );
+                            object temp = i_Array[j];
+                            i_Array[j] = i_Array[j + g];
+                            i_Array[j + g] = temp;
                         }
                     }
                 }
             }
         }
 
-        private void doSwap(ref Album io_Num1, ref Album io_Num2)
+        private void doSwap(object io_Num1, object io_Num2)
         {
-            Album temp = io_Num1;
+            object temp = io_Num1;
             io_Num1 = io_Num2;
             io_Num2 = temp;
         }

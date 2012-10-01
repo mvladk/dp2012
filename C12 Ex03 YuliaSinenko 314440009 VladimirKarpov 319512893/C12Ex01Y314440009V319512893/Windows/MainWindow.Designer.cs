@@ -187,11 +187,6 @@ namespace C12Ex03Y314440009V319512893
             // albumsSortComboBox
             // 
             this.albumsSortComboBox.FormattingEnabled = true;
-            this.albumsSortComboBox.Items.AddRange(new object[] {
-            "Tagged friends count - asc",
-            "Tagged friends count  - desc",
-            "Photos count - asc",
-            "Photos count - desc"});
             this.albumsSortComboBox.Location = new System.Drawing.Point(89, 336);
             this.albumsSortComboBox.Name = "albumsSortComboBox";
             this.albumsSortComboBox.Size = new System.Drawing.Size(150, 21);
