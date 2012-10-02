@@ -9,7 +9,7 @@ using Infrastructure.Adapters.Facebook;
 
 namespace C12Ex03Y314440009V319512893
 {
-    class Sorter
+    public class Sorter
     {
         private Comparer m_Comparer;
 
@@ -26,7 +26,6 @@ namespace C12Ex03Y314440009V319512893
 
         public void Sort(object[] i_Array)
         {
-
             for (int g = i_Array.Length / 2; g > 0; g /= 2)
             {
                 for (int i = g; i < i_Array.Length; i++)
@@ -36,7 +35,7 @@ namespace C12Ex03Y314440009V319512893
                         if (m_Comparer.ShouldSwap(
                             i_Array[j], i_Array[j + g]))
                         {
-                            //doSwap(i_Array[j] , i_Array[j + g] );
+                            ////doSwap(i_Array[j] , i_Array[j + g] );
                             object temp = i_Array[j];
                             i_Array[j] = i_Array[j + g];
                             i_Array[j + g] = temp;
@@ -53,6 +52,4 @@ namespace C12Ex03Y314440009V319512893
             io_Num2 = temp;
         }
     }
-
 }
-

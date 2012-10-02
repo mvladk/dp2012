@@ -67,21 +67,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AlbumsPhotosControler.cs">
+    <Compile Include="Classes\ComparerASCAlbumsByPhotosCount.cs" />
+    <Compile Include="Classes\ComparerDECAlbumsByPhotosCount.cs" />
+    <Compile Include="UIElements\AlbumsPhotosControler.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AlbumsPhotosControler.Designer.cs">
+    <Compile Include="UIElements\AlbumsPhotosControler.Designer.cs">
       <DependentUpon>AlbumsPhotosControler.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\FacebookAlbum.cs" />
     <Compile Include="Classes\FacebookUser.cs" />
-    <Compile Include="Comparer.cs" />
-    <Compile Include="IComponent.cs" />
-    <Compile Include="PictureBoxProxy.cs">
+    <Compile Include="Classes\Comparer.cs" />
+    <Compile Include="Classes\IComponent.cs" />
+    <Compile Include="UIElements\PictureBoxProxy.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Singleton.cs" />
-    <Compile Include="Sorter.cs" />
+    <Compile Include="Classes\Singleton.cs" />
+    <Compile Include="Classes\Sorter.cs" />
     <Compile Include="Windows\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,7 +92,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AlbumsPhotosControler.resx">
+    <EmbeddedResource Include="UIElements\AlbumsPhotosControler.resx">
       <DependentUpon>AlbumsPhotosControler.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -44,7 +44,7 @@ namespace C12Ex03Y314440009V319512893
 
         void pictureBoxAlbumsPhoto_Click(object sender, EventArgs e)
         {
-            //this.checkBoxAlbumsPhoto.Checked = !this.checkBoxAlbumsPhoto.Checked;
+            ////this.checkBoxAlbumsPhoto.Checked = !this.checkBoxAlbumsPhoto.Checked;
         }
 
         public void displaySelectedPhotoTags(Photo i_photo)

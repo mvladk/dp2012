@@ -12,9 +12,9 @@ namespace Infrastructure.Adapters.Facebook
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using System.Threading;
     using FacebookWrapper;
     using FacebookWrapper.ObjectModel;
-    using System.Threading;
 
     /// <summary>
     /// TODO: Update summary.
@@ -35,13 +35,6 @@ namespace Infrastructure.Adapters.Facebook
         /// Login result
         /// </summary>
         public event EventHandler LoginFinished;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FBAdapter"/> class.
-        /// </summary>
-        public FBAdapter()
-        {
-        }
 
         /// <summary>
         /// Gets the name of the User. 
@@ -92,6 +85,9 @@ namespace Infrastructure.Adapters.Facebook
             }
         }
 
+        /// <summary>
+        /// Logges in to facebook API by different thread
+        /// </summary>
         public void LoginAsync()
         {
             Thread thread = new Thread(new ThreadStart(this.Login));

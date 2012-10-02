@@ -14,11 +14,11 @@ namespace C12Ex03Y314440009V319512893
     using System.Collections;
     using System.Net;
     using System.IO;
+    using System.Threading;
     using Facebook;
     using FacebookWrapper;
     using FacebookWrapper.ObjectModel;
     using Infrastructure.Adapters.Facebook;
-    using System.Threading;
 
     /// <summary>
     /// FacebookAlbum wrapper for Facebook wraper API
@@ -45,8 +45,6 @@ namespace C12Ex03Y314440009V319512893
         private Panel m_AlbumsPhotosPanel;
         private FolderBrowserDialog m_FolderBrowserDialog;
         private ProgressBar m_ProgressBar;
-        //private Hashtable m_albumsTaggetFriends = new Hashtable();
-
 
         /// <summary>
         /// Gets or sets the Facebook wrapper User 
@@ -72,13 +70,13 @@ namespace C12Ex03Y314440009V319512893
         public ListBox AlbumsTaggetUsers
         {
             get { return this.m_AlbumsTaggetUsers; }
-            set 
-            { 
+            set
+            {
                 this.m_AlbumsTaggetUsers = value;
                 this.m_AlbumsTaggetUsers.SelectedIndexChanged += this.listBoxTaggetFriends_SelectedIndexChanged;
             }
         }
-        
+
         /// <summary>
         /// Gets or sets the AlbumsPhotosPanel
         /// </summary>
@@ -105,7 +103,7 @@ namespace C12Ex03Y314440009V319512893
             get { return this.m_ProgressBar; }
             set { this.m_ProgressBar = value; }
         }
-        
+
         /// <summary>
         /// Display selected album photos
         /// </summary>
@@ -117,12 +115,10 @@ namespace C12Ex03Y314440009V319512893
                 AlbumsPhotosPanel.Controls.Clear();
 
                 Thread threadDisplaySelectedAlbumsPhotos = new Thread(new ThreadStart(
-                    () => this.displaySelectedAlbumsPhotosThread(selectedAlbum)
-                    ));
+                    () => this.displaySelectedAlbumsPhotosThread(selectedAlbum)));
                 threadDisplaySelectedAlbumsPhotos.Start();
             }
         }
-
 
         /// <summary>
         /// Display selected album photos
@@ -131,13 +127,12 @@ namespace C12Ex03Y314440009V319512893
         {
             string url;
             this.m_Album = i_Album;
-            if ( i_Album.Photos.Count > 0)
+            if (i_Album.Photos.Count > 0)
             {
                 url = i_Album.Photos[0].URL;
 
                 Thread threadLoadAlbumPicture = new Thread(new ThreadStart(
-                    () => this.AlbumPictureBox.LoadAsync(url)
-                    ));
+                    () => this.AlbumPictureBox.LoadAsync(url)));
                 threadLoadAlbumPicture.Start();
                 foreach (Photo albumPhoto in i_Album.Photos)
                 {
@@ -156,7 +151,6 @@ namespace C12Ex03Y314440009V319512893
                 }
             }
         }
-
 
         /// <summary>
         /// Display selected album tags
@@ -236,7 +230,7 @@ namespace C12Ex03Y314440009V319512893
             if (sender is PictureBox)
             {
                 PictureBoxProxy tmpPicture = sender as PictureBoxProxy;
-                if ( null != tmpPicture.ImageLocation)
+                if (null != tmpPicture.ImageLocation)
                 {
                     this.AlbumPictureBox.LoadAsync(tmpPicture.ImageLocation);
                 }
@@ -265,8 +259,6 @@ namespace C12Ex03Y314440009V319512893
         public void buttonDowload_Click(object sender, EventArgs e)
         {
             string path;
-            
-
             DialogResult folderBrowserDialogResult = this.FolderBrowserDialog.ShowDialog();
 
             if (folderBrowserDialogResult == System.Windows.Forms.DialogResult.OK)
@@ -284,8 +276,7 @@ namespace C12Ex03Y314440009V319512893
                             if (SelectedItem.Is_Selected)
                             {
                                 Thread threadLoadAlbumPicture = new Thread(new ThreadStart(
-                                    () => this.downloadAsync(Client, SelectedItem.PictureBox.ImageLocation, path)
-                                ));
+                                    () => this.downloadAsync(Client, SelectedItem.PictureBox.ImageLocation, path)));
                                 threadLoadAlbumPicture.Start();
                             }
                         }
@@ -304,6 +295,7 @@ namespace C12Ex03Y314440009V319512893
             {
                 i_WebClient.DownloadFile(uri, i_Path + "\\" + filename);
             }
+
             this.ProgressBar.Invoke(new Action(() => this.ProgressBar.Value++));
         }
 
@@ -317,6 +309,5 @@ namespace C12Ex03Y314440009V319512893
                 }
             }
         }
-
     }
 }
