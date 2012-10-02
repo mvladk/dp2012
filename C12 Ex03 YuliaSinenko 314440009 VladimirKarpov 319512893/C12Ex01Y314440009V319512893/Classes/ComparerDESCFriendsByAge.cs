@@ -18,10 +18,16 @@ namespace C12Ex03Y314440009V319512893
 
             if (user1.Birthday != null && user2.Birthday != null)
             {
-                DateTime User1Birthday = DateTime.Parse(user1.Birthday, culture, System.Globalization.DateTimeStyles.AssumeLocal);
-                DateTime User2Birthday = DateTime.Parse(user2.Birthday, culture, System.Globalization.DateTimeStyles.AssumeLocal);
+                try
+                {
+                    DateTime User1Birthday = DateTime.Parse(user1.Birthday, culture, System.Globalization.DateTimeStyles.AssumeLocal);
+                    DateTime User2Birthday = DateTime.Parse(user2.Birthday, culture, System.Globalization.DateTimeStyles.AssumeLocal);
 
-                result = DateTime.Compare(User1Birthday, User2Birthday);
+                    result = DateTime.Compare(User1Birthday, User2Birthday);
+                }
+                catch (Exception)
+                {
+                }
             }
             return result > 0;
         }

@@ -11,6 +11,7 @@ namespace C12Ex03Y314440009V319512893
     using System.Linq;
     using System.Text;
     using System.Windows.Forms;
+    using System.Threading;
     using Facebook;
     using FacebookWrapper;
     using FacebookWrapper.ObjectModel;
@@ -161,9 +162,14 @@ namespace C12Ex03Y314440009V319512893
             if (sender is ComboBox)
             {
                 m_SorterFriends.Comparer = m_FriendsSortsComboBox.SelectedItem as Comparer;
-                m_SorterFriends.Sort(s_UserFriends);
                 this.FriendsListBox.Items.Clear();
-                this.FetchFriends();
+                Thread thread = new Thread(new ThreadStart(
+                    () => {
+                        m_SorterFriends.Sort(s_UserFriends);
+                        this.FetchFriends();
+                    }
+                    ));
+                thread.Start();
             }
         }
 
@@ -173,9 +179,9 @@ namespace C12Ex03Y314440009V319512893
             {
                 Album[] friendsAlbums = this.User.Albums.ToArray();
 
-                m_SorterAlbums.Comparer = m_AlbumsSortsComboBox.SelectedItem as Comparer; 
-                m_SorterAlbums.Sort(friendsAlbums);
+                m_SorterAlbums.Comparer = m_AlbumsSortsComboBox.SelectedItem as Comparer;
                 this.AlbumsListBox.Invoke(new Action(() => this.AlbumsListBox.Items.Clear()));
+                m_SorterAlbums.Sort(friendsAlbums);
                 this.displaySelectedAlbums(friendsAlbums);
             }
         }
