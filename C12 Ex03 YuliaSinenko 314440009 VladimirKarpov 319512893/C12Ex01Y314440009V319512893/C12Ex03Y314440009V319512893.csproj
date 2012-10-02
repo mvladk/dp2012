@@ -68,7 +68,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\ComparerASCAlbumsByPhotosCount.cs" />
+    <Compile Include="Classes\ComparerASCFriendsByAge.cs" />
     <Compile Include="Classes\ComparerDECAlbumsByPhotosCount.cs" />
+    <Compile Include="Classes\ComparerDESCFriendsByAge.cs" />
     <Compile Include="UIElements\AlbumsPhotosControler.cs">
       <SubType>UserControl</SubType>
     </Compile>

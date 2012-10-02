@@ -23,13 +23,15 @@ namespace C12Ex03Y314440009V319512893
     {
         private static bool s_IsInitedAlbumsSortsComboBox = false;
         private static bool s_IsInitedFriendSortsComboBox = false;
+        private static User[] s_UserFriends;
         private PictureBox m_ProfilePicture;
         private User m_User;
         private ListBox m_FriendsList;
         private ListBox m_AlbumsList;
         private ComboBox m_FriendsSortsComboBox;
         private ComboBox m_AlbumsSortsComboBox;
-        private Sorter m_sorterAlbums = new Sorter(new ComparerDECAlbumsByPhotosCount());
+        private Sorter m_SorterAlbums = new Sorter(new ComparerDECAlbumsByPhotosCount());
+        private Sorter m_SorterFriends = new Sorter(new ComparerDESCFriendsByAge());
 
         /// <summary>
         /// Gets or sets the Facebook wrapper User 
@@ -90,8 +92,8 @@ namespace C12Ex03Y314440009V319512893
                 this.m_FriendsSortsComboBox = value;
                 if (!s_IsInitedFriendSortsComboBox)
                 {
-                    ////this.m_AlbumsSortsComboBox.Invoke(new Action(() => this.m_FriendsSortsComboBox.Items.Add(new Comparer())));
-                    ////this.m_AlbumsSortsComboBox.Invoke(new Action(() => this.m_FriendsSortsComboBox.Items.Add(new Comparer())));
+                    this.m_FriendsSortsComboBox.Invoke(new Action(() => this.m_FriendsSortsComboBox.Items.Add(new ComparerDESCFriendsByAge())));
+                    this.m_FriendsSortsComboBox.Invoke(new Action(() => this.m_FriendsSortsComboBox.Items.Add(new ComparerASCFriendsByAge())));
                     s_IsInitedFriendSortsComboBox = true;
                 }
             }
@@ -111,8 +113,12 @@ namespace C12Ex03Y314440009V319512893
         /// </summary>
         public void FetchFriends()
         {
+            if (s_UserFriends==null)
+            {
+                s_UserFriends = this.User.Friends.ToArray();
+            }
             this.FriendsListBox.Invoke(new Action(() => this.FriendsListBox.DisplayMember = "Name"));
-            foreach (User friend in this.User.Friends)
+            foreach (User friend in s_UserFriends)
             {
                 this.FriendsListBox.Invoke(new Action(() => this.FriendsListBox.Items.Add(friend)));
             }
@@ -150,23 +156,25 @@ namespace C12Ex03Y314440009V319512893
             }
         }
 
-        ////public void FriendsSortComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        ////{
-        ////    if (sender is ComboBox)
-        ////    {
-        ////        
-        ////    }
-        ////}
+        public void FriendsSortComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (sender is ComboBox)
+            {
+                m_SorterFriends.Comparer = m_FriendsSortsComboBox.SelectedItem as Comparer;
+                m_SorterFriends.Sort(s_UserFriends);
+                this.FriendsListBox.Items.Clear();
+                this.FetchFriends();
+            }
+        }
 
         public void AlbumsSortComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (sender is ComboBox)
             {
                 Album[] friendsAlbums = this.User.Albums.ToArray();
-                this.AlbumsListBox.Items.Clear();
-                m_sorterAlbums.Comparer = m_AlbumsSortsComboBox.SelectedItem as Comparer;
 
-                m_sorterAlbums.Sort(friendsAlbums);
+                m_SorterAlbums.Comparer = m_AlbumsSortsComboBox.SelectedItem as Comparer; 
+                m_SorterAlbums.Sort(friendsAlbums);
                 this.AlbumsListBox.Invoke(new Action(() => this.AlbumsListBox.Items.Clear()));
                 this.displaySelectedAlbums(friendsAlbums);
             }

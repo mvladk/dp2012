@@ -12,7 +12,6 @@ namespace C12Ex03Y314440009V319512893
     using System.Text;
     using FacebookWrapper.ObjectModel;
 
-    /// another strategy implementation
     public class ComparerDECAlbumsByPhotosCount : Comparer
     {
         public override bool ShouldSwap(object i_Album1, object i_Album2)

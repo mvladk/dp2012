@@ -180,6 +180,7 @@ namespace C12Ex03Y314440009V319512893
             this.friendsSortComboBox.Name = "friendsSortComboBox";
             this.friendsSortComboBox.Size = new System.Drawing.Size(148, 21);
             this.friendsSortComboBox.TabIndex = 14;
+            this.friendsSortComboBox.Text = "Friends Sort";
             // 
             // albumsSortComboBox
             // 
