@@ -115,7 +115,7 @@ namespace C12Ex03Y314440009V319512893
                 this.m_Album = this.User.AlbumsListBox.SelectedItem as Album;
                 AlbumsPhotosPanel.Controls.Clear();
 
-                AlbumPhotosAggregate albumPhotosAggregate = new AlbumPhotosAggregate(this.m_Album);
+                IAggregate albumPhotosAggregate = new AlbumPhotosAggregate(this.m_Album);
                 IIterator albumPhotosIterator = albumPhotosAggregate.CreateIterator();
 
                 Thread threadDisplaySelectedAlbumsPhotos = new Thread(new ThreadStart(
@@ -156,7 +156,7 @@ namespace C12Ex03Y314440009V319512893
             {
                 this.m_Album = this.m_User.AlbumsListBox.SelectedItem as Album;
                 this.AlbumsTaggetUsers.Items.Clear();
-                AlbumPhotosAggregate albumPhotosAggregate = new AlbumPhotosAggregate(this.m_Album);
+                IAggregate albumPhotosAggregate = new AlbumPhotosAggregate(this.m_Album);
                 IIterator albumPhotosIterator = albumPhotosAggregate.CreateIterator();
 
                 foreach (Photo photo in albumPhotosIterator.NextItem)
@@ -178,7 +178,7 @@ namespace C12Ex03Y314440009V319512893
             {
                 string taggetFriendName = this.AlbumsTaggetUsers.SelectedItem.ToString();
                 AlbumsPhotosPanel.Controls.Clear();
-                AlbumPhotosAggregate albumPhotosAggregate = new AlbumPhotosAggregate(this.m_Album);
+                IAggregate albumPhotosAggregate = new AlbumPhotosAggregate(this.m_Album);
                 IIterator albumPhotosIterator = albumPhotosAggregate.CreateIterator();
 
                 if (!albumPhotosIterator.IsDone)
