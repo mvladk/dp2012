@@ -14,16 +14,16 @@ namespace C12Ex03Y314440009V319512893
            // copy properties using reflection to current object 
            foreach (var oPropertyInfo in i_CloneFrom.GetType().GetProperties())
            {
-               //Check the method is not static
+               // Check the method is not static
                if (!oPropertyInfo.GetGetMethod().IsStatic)
                {
-                   //Check this property can write
+                   // Check this property can write
                    if (i_CloneTo.GetType().GetProperty(oPropertyInfo.Name).CanWrite)
                    {
-                       //Check the supplied property can read
+                       // Check the supplied property can read
                        if (oPropertyInfo.CanRead)
                        {
-                           //Update the properties on this object
+                           // Update the properties on this object
                            i_CloneTo.GetType().GetProperty(oPropertyInfo.Name).SetValue(i_CloneTo, oPropertyInfo.GetValue(i_CloneFrom, null), null);
                        }
                    }

@@ -1,8 +1,8 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="AlbumPhotosAggregate.cs" company="">
-// TODO: Update copyright text.
+﻿// <copyright file="AlbumPhotosAggregate.cs" company="Holon Institute of Technology">
+//     Copyright (c) Holon Institute of Technology. All rights reserved.
 // </copyright>
-// -----------------------------------------------------------------------
+// <author>319512893 - Vldimir Karpov</author>
+// <author>314440009 - Yulia Sinenko</author>
 
 namespace C12Ex03Y314440009V319512893.Classes
 {
@@ -19,11 +19,12 @@ namespace C12Ex03Y314440009V319512893.Classes
     /// </summary>
     public class AlbumPhotosAggregate : IAggregate
     {
-        Album m_Album;
-        public AlbumPhotosAggregate(Album i_CloneFrom)
+        private Album m_Album;
+
+        public AlbumPhotosAggregate(Album i_Album)
             : base()
         {
-            this.m_Album = i_CloneFrom;
+            this.m_Album = i_Album;
         }
 
         public IIterator CreateIterator()
@@ -40,6 +41,16 @@ namespace C12Ex03Y314440009V319512893.Classes
             private int m_CurrentIdx = 0;
             private int m_Count = -1;
 
+            public object CurrentItem
+            {
+                get { return m_Collection[m_CurrentIdx]; }
+            }
+
+            public bool IsDone
+            {
+                get { return m_CurrentIdx >= m_Collection.Count; }
+            }
+
             public AlbumPhotosIterator(FacebookObjectCollection<Photo> i_Collection)
             {
                 m_Collection = i_Collection;
@@ -54,16 +65,6 @@ namespace C12Ex03Y314440009V319512893.Classes
             public bool Next()
             {
                 return ++m_CurrentIdx < m_Collection.Count;
-            }
-
-            public object CurrentItem
-            {
-                get { return m_Collection[m_CurrentIdx]; }
-            }
-
-            public bool IsDone
-            {
-                get { return m_CurrentIdx >= m_Collection.Count; }
             }
         }
     }

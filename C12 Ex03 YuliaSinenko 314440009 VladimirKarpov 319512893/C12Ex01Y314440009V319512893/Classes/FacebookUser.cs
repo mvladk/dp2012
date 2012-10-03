@@ -114,10 +114,11 @@ namespace C12Ex03Y314440009V319512893
         /// </summary>
         public void FetchFriends()
         {
-            if (s_UserFriends==null)
+            if (s_UserFriends == null)
             {
                 s_UserFriends = this.User.Friends.ToArray();
             }
+
             this.FriendsListBox.Invoke(new Action(() => this.FriendsListBox.DisplayMember = "Name"));
             foreach (User friend in s_UserFriends)
             {
@@ -167,11 +168,12 @@ namespace C12Ex03Y314440009V319512893
                 m_SorterFriends.Comparer = m_FriendsSortsComboBox.SelectedItem as Comparer;
                 this.FriendsListBox.Items.Clear();
                 Thread thread = new Thread(new ThreadStart(
-                    () => {
+                    () =>
+                    {
                         m_SorterFriends.Sort(s_UserFriends);
                         this.FetchFriends();
-                    }
-                    ));
+                    }));
+
                 thread.Start();
             }
         }

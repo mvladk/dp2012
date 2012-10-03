@@ -144,6 +144,7 @@ namespace C12Ex03Y314440009V319512893
                     {
                         this.AlbumsPhotosPanel.Invoke(new Action(() => AlbumsPhotosPanel.Controls.Add(thumbnail)));
                     }
+
                     i_AlbumPhotosIterator.Next();
                 }
             }

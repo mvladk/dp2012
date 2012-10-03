@@ -8,10 +8,14 @@ namespace C12Ex03Y314440009V319512893
     /// The Iterator interface
     public interface IIterator
     {
-        bool Next();
-        object CurrentItem { get; } /// polymorphic item reference
         bool IsDone { get; }
+
+        /// polymorphic item reference
+        object CurrentItem { get; }
+
         void Reset();
+
+        bool Next();
     }
 
     /// The Aggregte interface
