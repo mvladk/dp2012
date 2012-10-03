@@ -19,6 +19,7 @@ namespace C12Ex03Y314440009V319512893
     using FacebookWrapper;
     using FacebookWrapper.ObjectModel;
     using Infrastructure.Adapters.Facebook;
+    using C12Ex03Y314440009V319512893.Classes;
 
     /// <summary>
     /// FacebookAlbum wrapper for Facebook wraper API
@@ -112,10 +113,14 @@ namespace C12Ex03Y314440009V319512893
             if (this.User.AlbumsListBox.SelectedItems.Count == 1)
             {
                 Album selectedAlbum = this.User.AlbumsListBox.SelectedItem as Album;
+                this.m_Album = selectedAlbum;
                 AlbumsPhotosPanel.Controls.Clear();
 
+                AlbumPhotosAggregate albumPhotosAggregate = new AlbumPhotosAggregate(selectedAlbum);
+                IIterator albumPhotosIterator = albumPhotosAggregate.CreateIterator();
+
                 Thread threadDisplaySelectedAlbumsPhotos = new Thread(new ThreadStart(
-                    () => this.displaySelectedAlbumsPhotosThread(selectedAlbum)));
+                    () => this.displaySelectedAlbumsPhotosThread(albumPhotosIterator)));
                 threadDisplaySelectedAlbumsPhotos.Start();
             }
         }
@@ -123,31 +128,23 @@ namespace C12Ex03Y314440009V319512893
         /// <summary>
         /// Display selected album photos
         /// </summary>
-        private void displaySelectedAlbumsPhotosThread(Album i_Album)
+        private void displaySelectedAlbumsPhotosThread(IIterator i_AlbumPhotosIterator)
         {
-            string url;
-            this.m_Album = i_Album;
-            if (i_Album.Photos.Count > 0)
+            if (!i_AlbumPhotosIterator.IsDone)
             {
-                url = i_Album.Photos[0].URL;
-
                 Thread threadLoadAlbumPicture = new Thread(new ThreadStart(
-                    () => this.AlbumPictureBox.LoadAsync(url)));
+                    () => this.AlbumPictureBox.LoadAsync((i_AlbumPhotosIterator.CurrentItem as Photo).URL)));
                 threadLoadAlbumPicture.Start();
-                foreach (Photo albumPhoto in i_Album.Photos)
+
+                while (!i_AlbumPhotosIterator.IsDone)
                 {
-                    AlbumsPhotosControler thumbnail = new AlbumsPhotosControler(albumPhoto.URL, AlbumsPhotosPanel.Controls.Count);
+                    AlbumsPhotosControler thumbnail = new AlbumsPhotosControler((i_AlbumPhotosIterator.CurrentItem as Photo).URL, AlbumsPhotosPanel.Controls.Count);
                     thumbnail.PictureBox.Click += new EventHandler(this.thumbnail_Click);
-                    if (this.m_Album == i_Album)
+                    lock (s_LockObj)
                     {
-                        lock (s_LockObj)
-                        {
-                            if (this.m_Album == i_Album)
-                            {
-                                this.AlbumsPhotosPanel.Invoke(new Action(() => AlbumsPhotosPanel.Controls.Add(thumbnail)));
-                            }
-                        }
+                        this.AlbumsPhotosPanel.Invoke(new Action(() => AlbumsPhotosPanel.Controls.Add(thumbnail)));
                     }
+                    i_AlbumPhotosIterator.Next();
                 }
             }
         }

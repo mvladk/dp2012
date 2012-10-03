@@ -135,12 +135,15 @@ namespace C12Ex03Y314440009V319512893
             if (sender is ListBox)
             {
                 ListBox friendsListBox = sender as ListBox;
-                this.User = friendsListBox.SelectedItem as User;
-                this.ProfilePictureBox.LoadAsync(this.User.PictureLargeURL);
-                if (this.User.Albums.Count > 0)
+                if (null != friendsListBox.SelectedItem)
                 {
-                    this.AlbumsListBox.Invoke(new Action(() => this.AlbumsListBox.Items.Clear()));
-                    this.displaySelectedAlbums(this.User.Albums.ToArray());
+                    this.User = friendsListBox.SelectedItem as User;
+                    this.ProfilePictureBox.LoadAsync(this.User.PictureLargeURL);
+                    if (this.User.Albums.Count > 0)
+                    {
+                        this.AlbumsListBox.Invoke(new Action(() => this.AlbumsListBox.Items.Clear()));
+                        this.displaySelectedAlbums(this.User.Albums.ToArray());
+                    }
                 }
             }
         }
