@@ -112,11 +112,10 @@ namespace C12Ex03Y314440009V319512893
         {
             if (this.User.AlbumsListBox.SelectedItems.Count == 1)
             {
-                Album selectedAlbum = this.User.AlbumsListBox.SelectedItem as Album;
-                this.m_Album = selectedAlbum;
+                this.m_Album = this.User.AlbumsListBox.SelectedItem as Album;
                 AlbumsPhotosPanel.Controls.Clear();
 
-                AlbumPhotosAggregate albumPhotosAggregate = new AlbumPhotosAggregate(selectedAlbum);
+                AlbumPhotosAggregate albumPhotosAggregate = new AlbumPhotosAggregate(this.m_Album);
                 IIterator albumPhotosIterator = albumPhotosAggregate.CreateIterator();
 
                 Thread threadDisplaySelectedAlbumsPhotos = new Thread(new ThreadStart(
@@ -136,9 +135,9 @@ namespace C12Ex03Y314440009V319512893
                     () => this.AlbumPictureBox.LoadAsync((i_AlbumPhotosIterator.CurrentItem as Photo).URL)));
                 threadLoadAlbumPicture.Start();
 
-                foreach (Photo curPhoto in i_AlbumPhotosIterator.NextItem)
+                foreach (Photo photo in i_AlbumPhotosIterator.NextItem)
                 {
-                    AlbumsPhotosControler thumbnail = new AlbumsPhotosControler(curPhoto.URL, AlbumsPhotosPanel.Controls.Count);
+                    AlbumsPhotosControler thumbnail = new AlbumsPhotosControler(photo.URL, AlbumsPhotosPanel.Controls.Count);
                     thumbnail.PictureBox.Click += new EventHandler(this.thumbnail_Click);
                     lock (s_LockObj)
                     {
@@ -156,15 +155,17 @@ namespace C12Ex03Y314440009V319512893
             if (this.User.AlbumsListBox.SelectedItems.Count == 1)
             {
                 this.m_Album = this.m_User.AlbumsListBox.SelectedItem as Album;
-
                 this.AlbumsTaggetUsers.Items.Clear();
-                foreach (Photo selectedAlbumsPhoto in this.m_Album.Photos)
+                AlbumPhotosAggregate albumPhotosAggregate = new AlbumPhotosAggregate(this.m_Album);
+                IIterator albumPhotosIterator = albumPhotosAggregate.CreateIterator();
+
+                foreach (Photo photo in albumPhotosIterator.NextItem)
                 {
-                    if (selectedAlbumsPhoto != null && selectedAlbumsPhoto.Tags != null)
+                    if (photo != null && photo.Tags != null)
                     {
-                        if (selectedAlbumsPhoto.Tags.Count > 0)
+                        if (photo.Tags.Count > 0)
                         {
-                            displaySelectedPhotoTags(selectedAlbumsPhoto);
+                            displaySelectedPhotoTags(photo);
                         }
                     }
                 }
@@ -176,22 +177,27 @@ namespace C12Ex03Y314440009V319512893
             if (this.AlbumsTaggetUsers.SelectedItems.Count == 1)
             {
                 string taggetFriendName = this.AlbumsTaggetUsers.SelectedItem.ToString();
-
-                this.AlbumPictureBox.LoadAsync(this.m_Album.Photos[0].URL);
-
                 AlbumsPhotosPanel.Controls.Clear();
-                foreach (Photo albumPhoto in this.m_Album.Photos)
+                AlbumPhotosAggregate albumPhotosAggregate = new AlbumPhotosAggregate(this.m_Album);
+                IIterator albumPhotosIterator = albumPhotosAggregate.CreateIterator();
+
+                if (!albumPhotosIterator.IsDone)
                 {
-                    if (albumPhoto.Tags != null && albumPhoto.Tags.Count > 0)
+                    this.AlbumPictureBox.LoadAsync((albumPhotosIterator.CurrentItem as Photo).URL);
+
+                    foreach (Photo photo in albumPhotosIterator.NextItem)
                     {
-                        foreach (PhotoTag tagg in albumPhoto.Tags)
+                        if (photo.Tags != null && photo.Tags.Count > 0)
                         {
-                            if (tagg.User.Name == taggetFriendName)
+                            foreach (PhotoTag tagg in photo.Tags)
                             {
-                                AlbumsPhotosControler thumbnail = new AlbumsPhotosControler(albumPhoto.URL, this.AlbumsPhotosPanel.Controls.Count);
-                                thumbnail.PictureBox.Click += new EventHandler(this.thumbnail_Click);
-                                this.AlbumsPhotosPanel.Controls.Add(thumbnail);
-                                break;
+                                if (tagg.User.Name == taggetFriendName)
+                                {
+                                    AlbumsPhotosControler thumbnail = new AlbumsPhotosControler(photo.URL, this.AlbumsPhotosPanel.Controls.Count);
+                                    thumbnail.PictureBox.Click += new EventHandler(this.thumbnail_Click);
+                                    this.AlbumsPhotosPanel.Controls.Add(thumbnail);
+                                    break;
+                                }
                             }
                         }
                     }
