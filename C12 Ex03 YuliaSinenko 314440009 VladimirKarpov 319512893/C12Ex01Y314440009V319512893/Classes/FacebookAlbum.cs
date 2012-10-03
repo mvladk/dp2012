@@ -136,16 +136,14 @@ namespace C12Ex03Y314440009V319512893
                     () => this.AlbumPictureBox.LoadAsync((i_AlbumPhotosIterator.CurrentItem as Photo).URL)));
                 threadLoadAlbumPicture.Start();
 
-                while (!i_AlbumPhotosIterator.IsDone)
+                foreach (Photo curPhoto in i_AlbumPhotosIterator.NextItem)
                 {
-                    AlbumsPhotosControler thumbnail = new AlbumsPhotosControler((i_AlbumPhotosIterator.CurrentItem as Photo).URL, AlbumsPhotosPanel.Controls.Count);
+                    AlbumsPhotosControler thumbnail = new AlbumsPhotosControler(curPhoto.URL, AlbumsPhotosPanel.Controls.Count);
                     thumbnail.PictureBox.Click += new EventHandler(this.thumbnail_Click);
                     lock (s_LockObj)
                     {
                         this.AlbumsPhotosPanel.Invoke(new Action(() => AlbumsPhotosPanel.Controls.Add(thumbnail)));
                     }
-
-                    i_AlbumPhotosIterator.Next();
                 }
             }
         }

@@ -12,7 +12,9 @@ namespace C12Ex03Y314440009V319512893.Classes
     using System.Text;
     using System.Reflection;
     using System.Drawing;
+    using System.Collections;
     using FacebookWrapper.ObjectModel;
+    
 
     /// <summary>
     /// TODO: Update summary.
@@ -64,6 +66,18 @@ namespace C12Ex03Y314440009V319512893.Classes
             public bool Next()
             {
                 return ++m_CurrentIdx < m_Collection.Count;
+            }
+
+            public IEnumerable<object> NextItem
+            {
+                get
+                {
+                    while (!this.IsDone)
+                    {
+                        yield return CurrentItem;
+                        this.Next();
+                    }
+                }
             }
         }
     }
