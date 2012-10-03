@@ -3,9 +3,11 @@
 // </copyright>
 // <author>319512893 - Vldimir Karpov</author>
 // <author>314440009 - Yulia Sinenko</author>
-using System.Collections.Generic;
+
 namespace C12Ex03Y314440009V319512893
 {
+    using System.Collections.Generic;
+
     /// The Iterator interface
     public interface IIterator
     {

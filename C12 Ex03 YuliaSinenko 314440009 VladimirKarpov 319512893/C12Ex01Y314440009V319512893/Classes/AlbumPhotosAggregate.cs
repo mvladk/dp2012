@@ -14,7 +14,6 @@ namespace C12Ex03Y314440009V319512893.Classes
     using System.Drawing;
     using System.Collections;
     using FacebookWrapper.ObjectModel;
-    
 
     /// <summary>
     /// TODO: Update summary.
