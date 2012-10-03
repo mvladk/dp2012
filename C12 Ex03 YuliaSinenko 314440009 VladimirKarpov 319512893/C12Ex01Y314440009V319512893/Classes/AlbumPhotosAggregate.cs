@@ -22,7 +22,6 @@ namespace C12Ex03Y314440009V319512893.Classes
         private Album m_Album;
 
         public AlbumPhotosAggregate(Album i_Album)
-            : base()
         {
             this.m_Album = i_Album;
         }
